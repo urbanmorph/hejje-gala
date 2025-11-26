@@ -1,18 +1,6 @@
-# sv
+# hejje-gala
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
-
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```sh
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
-```
+This is the source for hejjegala.in (GBCAM challenge with WRI)
 
 ## Developing
 
@@ -25,6 +13,8 @@ npm run dev
 npm run dev -- --open
 ```
 
+Preview URL: https://hejje-gala.pages.dev
+
 ## Building
 
 To create a production version of your app:
@@ -36,3 +26,5 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+
+Production URL: https://hejjegala.in
