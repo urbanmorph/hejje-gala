@@ -28,12 +28,12 @@
 >
 	{#if href}
 		<a {href} class="block">
-			<Button variant="ghost" size="xl" class="relative {buttonClasses[variant]}">
+			<Button variant="ghost" size="lg" class="relative !h-auto {buttonClasses[variant]}">
 				{text}
 			</Button>
 		</a>
 	{:else}
-		<Button variant="ghost" size="xl" class="relative {buttonClasses[variant]}">
+		<Button variant="ghost" size="lg" class="relative !h-auto {buttonClasses[variant]}">
 			{text}
 		</Button>
 	{/if}

@@ -21,7 +21,7 @@ export const heroConfig = {
 	// Countdown end date (you can set a specific date)
 	countdownDate: new Date('2026-01-01T00:00:00'),
 	ctaText: 'REGISTER NOW',
-	ctaLink: '#register',
+	ctaLink: '/register',
 	poweredBy: [
 		{ name: 'altmo', logo: null },
 		{ name: 'WRI INDIA', logo: null }
@@ -123,7 +123,7 @@ export const footerCTAConfig = {
 	title: 'Active Mobility Challenge Branding',
 	description: 'Track your Active commutes',
 	ctaText: 'REGISTER NOW',
-	ctaLink: '#register',
+	ctaLink: '/register',
 	appStoreLinks: {
 		apple: 'https://apps.apple.com',
 		google: 'https://play.google.com'

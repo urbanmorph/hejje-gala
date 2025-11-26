@@ -21,6 +21,7 @@
 		"@sveltejs/kit": "^2.49.0",
 		"@sveltejs/vite-plugin-svelte": "^6.2.1",
 		"@tailwindcss/vite": "^4.1.17",
+		"@types/maplibre-gl": "^1.14.0",
 		"@types/node": "^24.10.1",
 		"clsx": "^2.1.1",
 		"eslint": "^9.39.1",
@@ -43,6 +44,7 @@
 	"dependencies": {
 		"@fontsource/manrope": "^5.2.8",
 		"@fontsource/poppins": "^5.2.7",
+		"maplibre-gl": "^5.13.0",
 		"shadcn": "^3.5.0"
 	}
 }

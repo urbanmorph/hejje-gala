@@ -9,6 +9,10 @@
 	import Footer from '$lib/components/landing/Footer.svelte';
 </script>
 
+<svelte:head>
+	<title>Active Mobility Challenge</title>
+</svelte:head>
+
 <div class="min-h-screen bg-white">
 	<Hero />
 	<Welcome />

@@ -50,7 +50,7 @@
 		</div>
 
 		<div class="mt-12 flex justify-center">
-			<CTAButton text="REGISTER NOW" variant="green" />
+			<CTAButton text="REGISTER NOW" variant="green" href="/register" />
 		</div>
 	</div>
 </section>
