@@ -1,6 +1,6 @@
 <script lang="ts">
 	interface Props {
-		dotPositions?: Array<{ x: number; y: number }>;
+		dotPositions?: Array;
 	}
 
 	let {
@@ -39,6 +39,6 @@
 			stroke-width="1.5"
 			opacity="0.6"
 		/>
-		<circle cx={pos.x} cy={pos.y} r="3" fill="#EC4899" />
+		<circle cx={pos.x} cy={pos.y} r="3" fill="#DB3E3E" />
 	{/each}
 </svg>

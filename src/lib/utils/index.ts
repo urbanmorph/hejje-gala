@@ -70,3 +70,19 @@ export function isInViewport(element: HTMLElement): boolean {
 		rect.right <= (window.innerWidth || document.documentElement.clientWidth)
 	);
 }
+
+/**
+ * Check if device is mobile (window width < 1280px, xl breakpoint)
+ */
+export function isMobile(): boolean {
+	if (typeof window === 'undefined') return false;
+	return window.innerWidth < 1280;
+}
+
+/**
+ * Check if device is desktop (window width >= 1280px, xl breakpoint)
+ */
+export function isDesktop(): boolean {
+	if (typeof window === 'undefined') return false;
+	return window.innerWidth >= 1280;
+}

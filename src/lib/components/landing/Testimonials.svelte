@@ -3,10 +3,10 @@
 </script>
 
 <section class="bg-[#FFFCF8] py-16">
-	<div class="mx-auto max-w-7xl px-6">
+	<div class="mx-auto max-w-5xl px-6">
 		<div class="mb-10 text-center">
-			<h2 class="mb-2 text-3xl font-semibold text-green-600">{testimonialsConfig.title}</h2>
-			<p class="font-[Manrope] text-sm font-medium text-gray-600">
+			<h2 class="mb-2 text-4xl font-semibold text-green-600">{testimonialsConfig.title}</h2>
+			<p class="text-sm font-medium text-gray-600">
 				{testimonialsConfig.description}
 			</p>
 		</div>
@@ -23,8 +23,8 @@
 					<!-- Text Card - Overlapping with image and narrower -->
 					<div class="relative -mt-20 w-[75%] bg-white p-5">
 						<!-- Quote -->
-						<p class="mb-4 text-left text-sm text-gray-600 italic">
-							<span class="font-serif text-lg text-pink-500">"</span>{testimonial.quote}
+						<p class="mb-4 text-left text-xs text-gray-600 italic">
+							<span class="text-red-500">"</span>{testimonial.quote}
 						</p>
 
 						<!-- User Info - Left aligned -->

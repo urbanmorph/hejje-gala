@@ -6,6 +6,8 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
+		"build-staging": "vite build --mode staging",
+		"build-production": "vite build --mode production",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -31,6 +33,7 @@
 		"prettier": "^3.6.2",
 		"prettier-plugin-svelte": "^3.4.0",
 		"prettier-plugin-tailwindcss": "^0.7.1",
+		"shadcn": "^3.5.1",
 		"svelte": "^5.44.0",
 		"svelte-check": "^4.3.4",
 		"tailwind-merge": "^3.4.0",
@@ -44,7 +47,17 @@
 	"dependencies": {
 		"@fontsource/manrope": "^5.2.8",
 		"@fontsource/poppins": "^5.2.7",
+		"@lottiefiles/svelte-lottie-player": "^0.3.1",
+		"@radix-ui/react-dialog": "^1.1.15",
+		"@radix-ui/react-popover": "^1.1.15",
+		"@tiptap/core": "^3.15.3",
+		"@tiptap/pm": "^3.15.3",
+		"@tiptap/starter-kit": "^3.15.3",
+		"@typescript-eslint/eslint-plugin": "^8.48.1",
+		"@typescript-eslint/parser": "^8.48.1",
+		"cmdk": "^1.1.1",
+		"form-data": "^4.0.5",
 		"maplibre-gl": "^5.13.0",
-		"shadcn": "^3.5.0"
+		"svelte-i18n": "^4.0.1"
 	}
 }

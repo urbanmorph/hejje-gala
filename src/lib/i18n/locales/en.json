@@ -1,0 +1,359 @@
+{
+	"common": {
+		"home": "Home",
+		"leaderboard": "Leaderboard",
+		"aboutChallenge": "About Challenge",
+		"blog": "Blog",
+		"faqs": "FAQs",
+		"registerNow": "REGISTER NOW",
+		"viewLeaderboard": "VIEW LEADERBOARD",
+		"knowMore": "KNOW MORE",
+		"readMore": "READ MORE",
+		"back": "Back",
+		"search": "Search",
+		"loading": "Loading...",
+		"noDataAvailable": "No results",
+		"close": "Close",
+		"save": "Save",
+		"cancel": "Cancel",
+		"submit": "Submit",
+		"login": "Login",
+		"logout": "Logout",
+		"english": "English | ಕನ್ನಡ",
+		"kannada": "English | ಕನ್ನಡ"
+	},
+	"header": {
+		"toggleMenu": "Toggle menu",
+		"toggleLanguage": "Toggle language"
+	},
+	"hero": {
+		"title": "Bengaluru's Corporate Active Mobility Challenge",
+		"poweredBy": "POWERED BY",
+		"aboutTitle": "About Hejje Gala",
+		"leaderboardTitle": "Leaderboard",
+		"blogTitle": "Blog",
+		"challengeHasBegun": "Challenge has begun"
+	},
+	"countdownTimer": {
+		"days": "Days",
+		"hours": "Hours",
+		"minutes": "Minutes",
+		"seconds": "Seconds"
+	},
+	"welcome": {
+		"title": "Registered for Hejje Gala",
+		"highlightText": "Hejje Gala",
+		"about": "About",
+		"subtitle": "Bengaluru's Corporate Active Mobility Challenge",
+		"description": "Hejje Gala is a city-wide active mobility challenge that encourages Bengaluru corporates to promote walking and cycling either as primary commute modes or as first- and last-mile links to public transport—fostering healthier, greener commuting through friendly, measurable competition.",
+		"companies": "Companies",
+		"corporations": "Corporations"
+	},
+	"stats": {
+		"title": "Track your activites with",
+		"altmo": "altmo",
+		"description": "Track your active commutes, measure your impact, and gamify your experience!",
+		"co2Offset": "CO2 offset (kgs)",
+		"fuelSaved": "Fuel saved (Itrs)",
+		"activeUsers": "Active Users",
+		"activities": "Activities",
+		"downloadAltmo": "Download",
+		"downloadAltmoToday": "today!",
+		"whyTitle": "Why are we doing this?",
+		"whatCanWeAchieve": "And how you could champion this.",
+		"before": "Before",
+		"after": "After",
+		"beforeTransformation": "Before transformation",
+		"afterTransformation": "After transformation"
+	},
+	"mobilityBills": {
+		"title": "Shaping the Future",
+		"howGovernmentWillSupport": "How the",
+		"government": "Government",
+		"willSupport": "will support",
+		"facilities": "Facilities",
+		"planning": "Planning",
+		"policy": "Policy",
+		"facilitiesDescription": "10 Bengaluru metro stations and 11 BMTC, TTMC stations have a basic provision of safe cycle parking and an integrated bicycle repair kiosk close to the station premises, sometimes inside the paid parking area. The metro stations also have walking facilities which work well in some and not so well in others. The goal is to increase the first mile/last mile to the metro and demand better cycling & walking facilities be extended to all metro stations.",
+		"planningDescription": "The 2020 Comprehensive Mobility Plan finalised by the Directorate of Urban Land Transport along with BMRCL has planned for 974 kms of footpath to be constructed with 600 kms of cycle track and 103 kms of Tender Sure Roads. In order to make these plans implementable, we will use the challenge as an opportunity to drive these conversations further.",
+		"policyDescription": "The Active Mobility Bill, drafted by DULT (Urban Development Department), provides a framework for Karnataka cities—especially those above 50,000 population—to promote walking and cycling. It proposes dedicated active mobility cells to enable budgeting, infrastructure delivery, and maintenance, and includes citizen audits and grievance redressal mechanisms.",
+		"currentInfrastructureTitle": "Here's the infrastructure we have currently",
+		"currentInfrastructure": [
+			"45 Cycle Stands",
+			"83 Metro Stations",
+			"100km Walkable footpath",
+			"8km Cycle Lanes"
+		],
+		"futurePlansTitle": "Here's what we're looking to bolster",
+		"futurePlans": [
+			"Mobility Plan 2020",
+			"Active Mobility Bill",
+			"Right to Walk"
+		]
+	},
+	"footer": {
+		"poweredBy": "Powered by"
+	},
+	"footerCTA": {
+		"title": "Active Mobility Challenge Branding",
+		"description": "Track your Active commutes",
+		"downloadAltmo": "Download",
+		"downloadAltmoToday": "today!"
+	},
+	"leaderboard": {
+		"title": "Hejje Gala Leaderboard",
+		"corpLeaderboard": "Corporation Leaderboard",
+		"companyLeaderboard": "Company Leaderboard",
+		"employeeLeaderboard": "Summary",
+		"corporationName": "Corporation",
+		"companyName": "Company",
+		"employeeName": "Employee",
+		"campus": "Corporation",
+		"companies": "No. of companies",
+		"employees": "Participants",
+		"activities": "Activities",
+		"co2Offset": "CO2 Offset",
+		"fuelSaved": "Fuel Saved",
+		"recreation": "Other",
+		"commute": "Commute",
+		"transit": "First/Last Mile",
+		"all": "All",
+		"walk": "Walk",
+		"cycle": "Cycle",
+		"hours": "hours",
+		"central": "Central",
+		"south": "South",
+		"east": "East",
+		"north": "North",
+		"west": "West",
+		"elcita": "ELCITA",
+		"back": "Go back to Main Leaderboard"
+	},
+	"about": {
+		"aboutTheCity": "About Bengaluru",
+		"aboutX": "About",
+		"cityDescription": "Hejje Gala is a city-wide active mobility challenge that encourages Bengaluru corporates to promote walking and cycling either as primary commute modes or as first- and last-mile links to public transport—fostering healthier, greener commuting through friendly, measurable competition. Hejje Gala is a city-wide active mobility challenge that encourages Bengaluru corporates to promote walking and cycling either as primary commute.",
+		"corporationDescription": "This corporation is committed to promoting active mobility and sustainability. Through the Hejje Gala Challenge, we encourage our employees to adopt healthier commuting habits and reduce carbon emissions.",
+		"companyDescription": "This company is dedicated to creating a sustainable future through active mobility. Our employees actively participate in walking and cycling activities, contributing to environmental conservation and personal well-being.",
+		"location": "Location information",
+		"sector": "Sector",
+		"employees": "Employees",
+		"activeUsers": "Active users",
+		"activeUsersHelper": "Employees regularly logging active commutes.",
+		"averageWeeklyActivities": "Average weekly activities",
+		"averageWeeklyActivitiesHelper": "Walk, cycle and other sustainable trips per week.",
+		"co2OffsetHelper": "Compared to equivalent solo car trips.",
+		"fuelSavedHelper": "Indicative fuel savings based on avoided trips."
+	},
+	"blog": {
+		"title": "Blog",
+		"pageTitle": "Blog - Hejje Gala",
+		"description": "Read posts from the Hejje Gala community",
+		"recommendedStories": "Recommended Stories",
+		"loadingBlogPosts": "Loading blog posts...",
+		"noBlogPostsAvailable": "No blog posts available yet.",
+		"bookmark": "Bookmark",
+		"createPost": "Create Post",
+		"loginToPost": "Login to Post",
+		"noPostsYet": "No posts yet. Be the first to share!",
+		"createFirstPost": "Create First Post",
+		"loginToCreatePost": "Login to Create Post",
+		"by": "By",
+		"backToBlog": "Back to Blog"
+	},
+	"post": {
+		"title": "Post",
+		"createPost": "Create Post",
+		"loggedInAs": "Logged in as",
+		"saving": "Saving...",
+		"savePost": "Save Post",
+		"backToHome": "Back to Home",
+		"pleaseEnterContent": "Please enter some content",
+		"postSavedSuccessfully": "Post saved successfully!",
+		"failedToSavePost": "Failed to save post. Please try again.",
+		"errorOccurred": "An error occurred. Please try again."
+	},
+	"register": {
+		"title": "Hejje Gala",
+		"organisationName": "Organisation Name",
+		"organisationNamePlaceholder": "Type your organisation name.",
+		"organisationLocation": "Organisation Address",
+		"organisationLocationPlaceholder": "Type your organisation address here.",
+		"representativeName": "Representative Name",
+		"representativeNamePlaceholder": "Type your name here.",
+		"representativeEmail": "Representative Email",
+		"representativeEmailPlaceholder": "Type your email here.",
+		"representativeDesignation": "Representative Designation",
+		"representativeDesignationPlaceholder": "Type your designation here.",
+		"representativePhone": "Representative Phone Number",
+		"representativePhonePlaceholder": "Type your phone number here.",
+		"numberOfEmployees": "Number of Employees",
+		"numberOfEmployeesPlaceholder": "Type number here.",
+		"registering": "Registering...",
+		"pleaseEnterOrganisationName": "Please enter an organisation name",
+		"pleaseEnterName": "Please enter your name",
+		"pleaseEnterEmail": "Please enter your email",
+		"pleaseEnterDesignation": "Please enter your designation",
+		"pleaseEnterPhone": "Please enter your phone number",
+		"pleaseSelectLocation": "Please select a location on the map for new organisations",
+		"pleaseEnterNumberOfEmployees": "Please enter the number of employees for new organisations",
+		"checkConfirmationEmail": "Check the confirmation email sent to",
+		"toConfirmRegistration": "to confirm your registration.",
+		"errorSubmittingRegistration": "An error occurred while submitting your registration. Please try again.",
+		"registrationSuccessTitle": "Thank you for registering for Hejje Gala!",
+		"registrationSuccessMessage": "You've taken the first step towards smart commuting.\nShortly you will find a confirmation in your email.",
+		"goBackToHome": "Go back to Home"
+	},
+	"login": {
+		"title": "Login",
+		"emailAddress": "Email Address",
+		"emailPlaceholder": "you@example.com",
+		"sending": "Sending...",
+		"sendLoginLink": "Send Login Link",
+		"checkEmailForLoginLink": "We'll send you a secure login link to your email address.",
+		"pleaseEnterValidEmail": "Please enter a valid email address",
+		"checkEmailForLink": "Check your email for a login link!",
+		"failedToSendLoginEmail": "Failed to send login email. Please try again.",
+		"errorOccurred": "An error occurred. Please try again."
+	},
+	"whatIsHejjeGala": {
+		"title": "What is",
+		"titleHejjeGala": "Hejje Gala",
+		"subtitle": "Bengaluru's Corporate Active Mobility Challenge"
+	},
+	"whyHejjeGala": {
+		"title": "Why",
+		"subtitle": "Hejje Gala?",
+		"buildCulture": {
+			"title": "Build a culture of active commuting at the workplace",
+			"description": "Workplace participation helps companies promote healthier habits while supporting city-wide sustainability goals."
+		},
+		"supportShift": {
+			"title": "Support Bengaluru's shift to sustainable mobility",
+			"description": "Hejje Gala inspires corporate employees to walk and cycle as part of their daily commute."
+		},
+		"measureImpact": {
+			"title": "Measure and recognise impact",
+			"description": "Organisations get dashboards and leaderboards to track participation, distance covered, and emissions saved, with top performers recognised for driving sustainable mobility in Bengaluru."
+		},
+		"registerNow": "REGISTER NOW",
+		"supportShiftTitle": "Support Bengaluru's shift to sustainable mobility"
+	},
+	"aboutFAQs": {
+		"title": "FAQs",
+		"showMore": "Show More FAQs",
+		"faqs": [
+			{
+				"question": "What is Hejje Gala?",
+				"answer": "Hejje Gala is a city-wide corporate active mobility challenge in Bengaluru that encourages employees to adopt walking and cycling as part of their daily commute. The challenge invites corporate organisations to officially participate and motivate their workforce to choose healthier and more sustainable ways of travelling to work.",
+				"type": "text"
+			},
+			{
+				"question": "What does \"active mobility\" mean in the context of this challenge?",
+				"answer": "Active mobility refers to walking and cycling, either as a primary mode of travel or as a first- and/or last-mile connection to public transport such as the metro or bus.",
+				"type": "text"
+			},
+			{
+				"question": "Who is the challenge for?",
+				"answer": "Hejje Gala is designed for corporate organisations and their employees in Bengaluru.",
+				"type": "text"
+			},
+			{
+				"question": "How do organisations participate in Hejje Gala?",
+				"answer": "Organisations participate by officially registering for the challenge and encouraging their employees to take part. Participation is organisation-led, with companies playing a key role in promoting active commuting within their workplace.",
+				"type": "text"
+			},
+			{
+				"question": "Can individual employees participate without their organisation?",
+				"answer": "Hejje Gala is a corporate challenge, and participation will be through registered organisations. Employees can only participate as part of their company's team and not individually.",
+				"type": "text"
+			},
+			{
+				"question": "What is the duration of the challenge?",
+				"type": "list",
+				"items": [
+					{ "label": "Launch:", "value": "December 2025" },
+					{ "label": "Challenge period:", "value": "1 January 2026 to 30 March 2026" },
+					{ "label": "Winners announced:", "value": "April 2026" }
+				]
+			},
+			{
+				"question": "How is participation tracked?",
+				"answer": "Employee participation is tracked through a digital platform that records walking and cycling activity. Participating organisations can view dashboards and leaderboards that show overall participation, kilometres covered, and aggregated impact.",
+				"type": "text"
+			},
+			{
+				"question": "What kind of data is measured?",
+				"type": "mixed",
+				"text": "The challenge tracks:",
+				"items": [
+					"Employee participation levels",
+					"Kilometres walked or cycled",
+					"Estimated carbon emission reductions"
+				],
+				"textAfter": "All data is presented at an aggregated level for organisations."
+			},
+			{
+				"question": "Are there winners or recognitions?",
+				"answer": "Yes. Organisations demonstrating strong participation and impact will be recognised and publicly acknowledged for their leadership in promoting active mobility and sustainable commuting in Bengaluru.",
+				"type": "text"
+			},
+			{
+				"question": "Does Hejje Gala involve building or redesigning streets or infrastructure?",
+				"answer": "No. Hejje Gala focuses on behaviour change, workplace engagement, and active commuting practices. It does not involve street design or infrastructure implementation.",
+				"type": "text"
+			},
+			{
+				"question": "How can my organisation register?",
+				"answer": "Organisations can register through the Hejje Gala website by clicking the \"Register Now\" button and completing the organisation sign-up process.",
+				"type": "text",
+				"highlightText": "Register Now"
+			},
+			{
+				"question": "Who can we contact for more information?",
+				"answer": "For queries related to participation, partnerships, or the challenge format, please reach out to [name + email address] or [name + email address].",
+				"type": "text"
+			}
+		]
+	},
+	"socialActivity": {
+		"title": "Here’s what we’ve achieved/done so far",
+		"viewAll": "View All",
+		"items": "items"
+	},
+	"blogPosts": {
+		"title": "Latest Posts",
+		"by": "By"
+	},
+	"map": {
+		"mapTitle": "Infrastructure near",
+		"metro": "Metro",
+		"bus": "Bus",
+		"cycle": "Cycle"
+	},
+	"cityCorporationCompany": {
+		"city": "City",
+		"corporation": "Corporation",
+		"company": "Company",
+		"loadingCityData": "Loading city data…",
+		"loadingCorporationData": "Loading corporation data…",
+		"loadingCompanyData": "Loading company data…",
+		"cityLeaderboard": "City Leaderboard",
+		"corporationLeaderboard": "Corporation Leaderboard",
+		"companyLeaderboard": "Company Leaderboard"
+	},
+	"landingLeaderboard": {
+		"title": "Hejje Gala Leaderboard",
+		"top3Corporations": "Top 3 Corporations",
+		"top3Companies": "Top 3 Companies",
+		"companiesRegistered": "Number of companies registered",
+		"walkActivities": "Number of walk activities",
+		"cycleActivities": "Number of cycle activities",
+		"noCorporationsAvailable": "No corporations available",
+		"noCompaniesAvailable": "No companies available",
+		"loading": "Loading...",
+		"error": "Error",
+		"viewLeaderboard": "View Leaderboard"
+	}
+}
+

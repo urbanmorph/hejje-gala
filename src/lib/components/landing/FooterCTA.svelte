@@ -2,24 +2,52 @@
 	import { footerCTAConfig } from '$lib/config/landing';
 	import CTAButton from './CTAButton.svelte';
 	import AppStoreButtons from './AppStoreButtons.svelte';
+	import { _ } from 'svelte-i18n';
 
-	const titleParts = footerCTAConfig.title.split(' ');
+	interface Props {
+		isMobile?: boolean;
+	}
+
+	let { isMobile = false }: Props = $props();
 </script>
 
-<section class="bg-gradient-to-r from-blue-600 via-blue-500 to-green-400 py-16">
-	<div class="mx-auto max-w-4xl px-6 text-center">
-		<h2 class="mb-3 text-3xl font-semibold text-white lg:text-4xl">
-			{titleParts.slice(0, 2).join(' ')}<br />{titleParts.slice(2).join(' ')}
-		</h2>
+<section
+	class={isMobile ? 'py-6 sm:py-8' : 'py-16'}
+	style="background: #DD2679; background-image: 
+radial-gradient(ellipse at top left, #153CE9 0%, rgba(21, 60, 233, 0.6) 30%, transparent 60%),
+radial-gradient(ellipse at bottom right, #153CE9 0%, rgba(21, 60, 233, 0.6) 30%, transparent 60%),
+radial-gradient(ellipse at top center, #0E6AA2 0%, rgba(19, 110, 166, 0.9) 50%, transparent 75%),
+radial-gradient(ellipse at bottom center, #0E6AA2 0%, rgba(19, 110, 166, 0.9) 50%, transparent 75%),
+radial-gradient(ellipse at center center, rgba(19, 110, 166, 0.9) 0%, rgba(19, 110, 166, 0.9) 20%, transparent 75%),
+radial-gradient(ellipse at top right, rgba(20, 184, 166, 0.0) 40%, rgba(20, 184, 166, 0.2) 50%, transparent 60%),
+radial-gradient(ellipse at bottom left, rgba(20, 184, 166, 0.0) 40%, rgba(20, 184, 166, 0.2) 50%, transparent 60%),
+radial-gradient(ellipse at top right, #DB3E3E 0%, transparent 40%),
+radial-gradient(ellipse at bottom left, #DB3E3E 0%, transparent 40%);"
+>
+	<div class="mx-auto {isMobile ? 'max-w-[95%]' : 'max-w-5xl'} px-3 sm:px-4 md:px-6 text-center">
+		<img
+			src="/assets/logo-footer-cta.png"
+			alt="Logo"
+			class="mx-auto mb-4 sm:mb-6 h-auto w-auto object-contain {isMobile
+				? 'scale-50 sm:scale-60'
+				: 'scale-75'} max-w-full"
+		/>
 
-		<p class="mb-6 font-[Manrope] text-sm font-medium text-white/90">
-			{footerCTAConfig.description}
-		</p>
-
-		<div class="mb-6">
-			<CTAButton text={footerCTAConfig.ctaText} variant="pink" href={footerCTAConfig.ctaLink} />
+		<div class="mb-4 sm:mb-6 {isMobile ? 'flex justify-center' : ''}">
+			<CTAButton text={$_('common.registerNow')} variant="pink" href="/register" />
 		</div>
 
-		<AppStoreButtons size="md" className="justify-center" />
+		<div
+			class="mb-4 sm:mb-6 text-white {isMobile
+				? 'text-sm sm:text-base px-2'
+				: 'text-xl'} font-medium break-words"
+		>
+			{$_('footerCTA.downloadAltmo')} <span class="font-bold">altmo</span>
+			{$_('footerCTA.downloadAltmoToday')}
+		</div>
+
+		<div class={isMobile ? 'flex justify-center' : ''}>
+			<AppStoreButtons size="md" className="justify-center" />
+		</div>
 	</div>
 </section>

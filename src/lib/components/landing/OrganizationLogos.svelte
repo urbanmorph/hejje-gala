@@ -1,20 +1,34 @@
 <script lang="ts">
+	interface Props {
+		isMobile?: boolean;
+	}
+
+	let { isMobile = false }: Props = $props();
+
 	const logos = [
-		{ src: '/assets/altmo.png', alt: 'AltMo' },
-		{ src: '/assets/wri.png', alt: 'WRI India' }
+		{ name: 'GBA', src: '/assets/gba.png', alt: 'GBA' },
+		{ name: 'WRI INDIA', src: '/assets/wri.png', alt: 'WRI India' },
+		{ name: 'altmo', src: '/assets/altmo.png', alt: 'AltMo' },
+		{ name: 'Walkaluru', src: '/assets/walkaluru.png', alt: 'Walkaluru' }
 	];
 </script>
 
-<div
-	class="absolute right-0 bottom-0 left-0 border-t border-white/20 bg-white/70 py-6 backdrop-blur-md"
->
-	<div class="mx-auto max-w-7xl px-6">
-		<div class="flex items-center justify-center gap-8">
-			{#each logos as logo}
-				<div class="flex h-10 w-28 items-center justify-center">
-					<img src={logo.src} alt={logo.alt} class="max-h-full max-w-full object-contain" />
-				</div>
-			{/each}
-		</div>
+{#if isMobile}
+	<!-- Mobile: 2 rows layout with larger size and spacing -->
+	<div class="grid grid-cols-2 gap-8 lg:gap-16 items-center justify-center">
+		{#each logos as logo}
+			<div class="flex h-12 w-auto items-center justify-center">
+				<img src={logo.src} alt={logo.alt} class="h-full w-auto object-contain scale-60" />
+			</div>
+		{/each}
 	</div>
-</div>
+{:else}
+	<!-- Desktop: single row layout -->
+	<div class="flex items-center gap-4 lg:gap-6 xl:gap-8">
+		{#each logos as logo}
+			<div class="flex h-8 w-auto items-center justify-center">
+				<img src={logo.src} alt={logo.alt} class="scale-80" />
+			</div>
+		{/each}
+	</div>
+{/if}

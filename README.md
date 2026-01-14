@@ -13,7 +13,7 @@ npm run dev
 npm run dev -- --open
 ```
 
-Preview URL: https://hejje-gala.pages.dev
+Preview URL: https://preview.hejjegala.in/
 
 ## Building
 

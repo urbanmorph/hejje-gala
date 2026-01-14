@@ -3,23 +3,23 @@
 // Modify values here to update the landing page content
 
 export const siteConfig = {
-	name: 'GBCAM',
+	name: 'Hejje Gala',
 	title: 'Active Mobility Challenge',
 	description: 'Track your active commutes, measure your impact, and gamify your experience'
 };
 
 export const navigation = [
 	{ label: 'Home', href: '#' },
-	{ label: 'Leaderboard', href: '#leaderboard' },
-	{ label: 'About Challenge', href: '#about' },
-	{ label: 'Blog', href: '#blog' },
-	{ label: 'FAQs', href: '#faqs' }
+	{ label: 'Leaderboard', href: '/leaderboard' },
+	{ label: 'About Challenge', href: '/about' },
+	{ label: 'Blog', href: '/blog' },
+	{ label: 'FAQs', href: '/about#faqs' }
 ];
 
 export const heroConfig = {
-	title: 'Active Mobility Challenge Branding',
+	title: 'Bengaluru’s Corporate Active Mobility Challenge',
 	// Countdown end date (you can set a specific date)
-	countdownDate: new Date('2026-01-01T00:00:00'),
+	countdownDate: new Date('2026-02-01T10:00:00'),
 	ctaText: 'REGISTER NOW',
 	ctaLink: '/register',
 	poweredBy: [
@@ -29,49 +29,46 @@ export const heroConfig = {
 };
 
 export const welcomeConfig = {
-	title: 'Welcome to your journey of smart',
-	highlightText: 'commuting!',
-	features: [
-		{
-			title: 'Active Mobility Challenge Branding',
-			description: 'Track your active commutes, measure your impact, and gamify your experience'
-		},
-		{
-			title: 'Active Mobility Challenge Branding',
-			description: 'Track your active commutes, measure your impact, and gamify your experience'
-		},
-		{
-			title: 'Active Mobility Challenge Branding',
-			description: 'Track your active commutes, measure your impact, and gamify your experience'
-		}
-	]
+	title: 'About',
+	highlightText: 'Hejje Gala',
+	subtitle: "Bengaluru's Corporate Active Mobility Challenge",
+	description:
+		'Hejje Gala is a city-wide active mobility challenge that encourages Bengaluru corporates to promote walking and cycling either as primary commute modes or as first- and last-mile links to public transport—fostering healthier, greener commuting through friendly, measurable competition.',
+	ctaText: 'KNOW MORE',
+	ctaLink: '/about'
 };
 
+export type StatsMetricKey = 'co2Offset' | 'fuelSaved' | 'people' | 'distance';
+
 export const statsConfig = {
-	title: 'Active Mobility Challenge Branding',
-	description: 'Track your active commutes, measure your impact, and gamify your experience',
+	title: 'Track your activities with altmo',
+	description: 'Track your active commutes, measure your impact, and gamify your experience!',
 	metrics: [
 		{
+			key: 'co2Offset' as StatsMetricKey,
 			value: '5,07,026',
 			label: 'CO2 offset (kgs)',
 			icon: '/assets/icon-co2.png',
 			color: 'text-green-500'
 		},
 		{
+			key: 'fuelSaved' as StatsMetricKey,
 			value: '2,19,004',
 			label: 'Fuel saved (Itrs)',
 			icon: '/assets/icon-fuel.png',
 			color: 'text-green-500'
 		},
 		{
+			key: 'people' as StatsMetricKey,
 			value: '9,023',
 			label: 'Active Users',
 			icon: '/assets/icon-users.png',
 			color: 'text-green-500'
 		},
 		{
+			key: 'distance' as StatsMetricKey,
 			value: '2,08,360',
-			label: 'Activities',
+			label: 'Distance covered (km)',
 			icon: '/assets/icon-activities.png',
 			color: 'text-green-500'
 		}
@@ -106,35 +103,49 @@ export const testimonialsConfig = {
 	]
 };
 
-export const mobilityBillsConfig = {
-	title: 'Mobility Bills',
-	bills: [
-		{ id: 'Bill 1', active: true },
-		{ id: 'Bill 2', active: false },
-		{ id: 'Bill 3', active: false }
+export type CityViewMode = 'city' | 'corporation' | 'company';
+
+export const citySectionConfig = {
+	modes: [
+		{ id: 'city' as CityViewMode, label: 'City' },
+		{ id: 'corporation' as CityViewMode, label: 'Corporation' },
+		{ id: 'company' as CityViewMode, label: 'Company' }
 	],
-	description:
-		'Egestas fringilla aliquam leo, habitasse arcu varius lorem elit. Neque pellentesque donec et tellus ac varius tortor, bibendum. Nulla felis ac turpis at amet. Purus malesuada placerat arcu at enim elit in accumsan.',
-	ctaText: 'READ MORE',
-	ctaLink: '#bills'
+	city: {
+		title: 'Corporations',
+		description:
+			"Compare corporate participation across Bengaluru's zones – East, West, Central, South, North, and ELCITA. Each zone is ranked based on employee participation, carbon savings, activities completed, distance covered, and cost savings."
+	},
+	corporation: {
+		title: 'Corporation view',
+		description:
+			'Dive deeper into a corporation and see how individual companies are performing within the challenge.',
+		label: 'Selected corporation',
+		activityTitle: 'Company activity overview',
+		activitySubtitle:
+			'Sample numbers to illustrate how this view will display performance insights.'
+	},
+	company: {
+		title: 'Company view',
+		description:
+			'Zoom in to an individual company to see its performance, policies and active mobility initiatives.',
+		label: 'Selected company',
+		summary:
+			'The company view brings together key indicators, from engagement and activities to emissions avoided and policy actions taken.',
+		bentoTitle: 'Bento activities'
+	}
 };
 
 export const footerCTAConfig = {
 	title: 'Active Mobility Challenge Branding',
 	description: 'Track your Active commutes',
 	ctaText: 'REGISTER NOW',
-	ctaLink: '/register',
-	appStoreLinks: {
-		apple: 'https://apps.apple.com',
-		google: 'https://play.google.com'
-	}
+	ctaLink: '/register'
 };
 
 export const footerConfig = {
 	links: navigation,
 	social: [
-		{ platform: 'facebook', href: '#', label: 'Facebook' },
-		{ platform: 'instagram', href: '#', label: 'Instagram' },
-		{ platform: 'youtube', href: '#', label: 'YouTube' }
+		{ platform: 'instagram', href: 'https://www.instagram.com/hejjegala_2026/', label: 'Instagram' }
 	]
 };
