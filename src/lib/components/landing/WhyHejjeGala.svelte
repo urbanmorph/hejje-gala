@@ -1,5 +1,6 @@
 <script lang="ts">
 	import CTAButton from './CTAButton.svelte';
+	import { urls } from '$lib/config/urls';
 	import { _ } from 'svelte-i18n';
 
 	interface Props {
@@ -151,7 +152,7 @@
 
 		<!-- CTA Button -->
 		<div class="flex justify-center">
-			<CTAButton text={$_('whyHejjeGala.registerNow')} variant="greenGradient" href="/register" />
+			<CTAButton text={$_('whyHejjeGala.registerNow')} variant="greenGradient" href={urls.becomeAChampion} />
 		</div>
 	</div>
 </section>

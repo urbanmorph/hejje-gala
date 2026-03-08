@@ -31,7 +31,11 @@
 				: ''} {invert ? 'invert' : ''}"
 		/>
 	</a>
-	<a href="https://testflight.apple.com/join/yPhZ7qJV" target="_blank" rel="noopener noreferrer">
+	<a
+		href="https://apps.apple.com/in/app/altmo-commute-ride-tracker/id6756569015"
+		target="_blank"
+		rel="noopener noreferrer"
+	>
 		<img
 			src="/assets/app-store.png"
 			alt="Download on App Store"

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { footerCTAConfig } from '$lib/config/landing';
+	import { urls } from '$lib/config/urls';
 	import CTAButton from './CTAButton.svelte';
-	import AppStoreButtons from './AppStoreButtons.svelte';
 	import { _ } from 'svelte-i18n';
 
 	interface Props {
@@ -33,21 +33,8 @@ radial-gradient(ellipse at bottom left, #DB3E3E 0%, transparent 40%);"
 				: 'scale-75'} max-w-full"
 		/>
 
-		<div class="mb-4 sm:mb-6 {isMobile ? 'flex justify-center' : ''}">
-			<CTAButton text={$_('common.registerNow')} variant="pink" href="/register" />
-		</div>
-
-		<div
-			class="mb-4 sm:mb-6 text-white {isMobile
-				? 'text-sm sm:text-base px-2'
-				: 'text-xl'} font-medium break-words"
-		>
-			{$_('footerCTA.downloadAltmo')} <span class="font-bold">altmo</span>
-			{$_('footerCTA.downloadAltmoToday')}
-		</div>
-
 		<div class={isMobile ? 'flex justify-center' : ''}>
-			<AppStoreButtons size="md" className="justify-center" />
+			<CTAButton text={$_('common.becomeAChampion')} variant="pink" href={urls.becomeAChampion} />
 		</div>
 	</div>
 </section>

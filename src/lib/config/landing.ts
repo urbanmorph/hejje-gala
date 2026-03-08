@@ -11,17 +11,15 @@ export const siteConfig = {
 export const navigation = [
 	{ label: 'Home', href: '#' },
 	{ label: 'Leaderboard', href: '/leaderboard' },
+	{ label: 'Champions', href: '/champions' },
+	{ label: 'Activities', href: '/activities' },
 	{ label: 'About Challenge', href: '/about' },
-	{ label: 'Blog', href: '/blog' },
 	{ label: 'FAQs', href: '/about#faqs' }
 ];
 
 export const heroConfig = {
-	title: 'Bengaluru’s Corporate Active Mobility Challenge',
-	// Countdown end date (you can set a specific date)
-	countdownDate: new Date('2026-02-01T10:00:00'),
-	ctaText: 'REGISTER NOW',
-	ctaLink: '/register',
+	title: "Bengaluru's Active Mobility Challenge",
+	ctaText: 'BECOME A CHAMPION',
 	poweredBy: [
 		{ name: 'altmo', logo: null },
 		{ name: 'WRI INDIA', logo: null }
@@ -31,9 +29,9 @@ export const heroConfig = {
 export const welcomeConfig = {
 	title: 'About',
 	highlightText: 'Hejje Gala',
-	subtitle: "Bengaluru's Corporate Active Mobility Challenge",
+	subtitle: "Bengaluru's Active Mobility Challenge",
 	description:
-		'Hejje Gala is a city-wide active mobility challenge that encourages Bengaluru corporates to promote walking and cycling either as primary commute modes or as first- and last-mile links to public transport—fostering healthier, greener commuting through friendly, measurable competition.',
+		'Hejje Gala is a city-wide active mobility event that encourages Bengalureans to walk and cycle -- whether as a primary commute mode or as a first- and last-mile link to public transport -- fostering healthier, greener movement across the city.',
 	ctaText: 'KNOW MORE',
 	ctaLink: '/about'
 };
@@ -139,8 +137,7 @@ export const citySectionConfig = {
 export const footerCTAConfig = {
 	title: 'Active Mobility Challenge Branding',
 	description: 'Track your Active commutes',
-	ctaText: 'REGISTER NOW',
-	ctaLink: '/register'
+	ctaText: 'BECOME A CHAMPION'
 };
 
 export const footerConfig = {

@@ -10,6 +10,7 @@
 	import { ChevronDown, X } from '@lucide/svelte';
 	import { _ } from 'svelte-i18n';
 	import GooglePlacesAutocomplete from '$lib/components/GooglePlacesAutocomplete.svelte';
+	import localCompaniesJson from '$lib/assets/companies-blr.json';
 	import { PUBLIC_GOOGLE_MAPS_API_KEY } from '$env/static/public';
 
 	interface Company {
@@ -17,6 +18,18 @@
 		name: string;
 		address: string;
 		empCount: number;
+	}
+
+	function getLocalCompanies(): Company[] {
+		try {
+			const data = localCompaniesJson as { success?: boolean; companies?: Company[] };
+			if (data && Array.isArray(data.companies)) {
+				return data.companies;
+			}
+		} catch (error) {
+			console.error('Error loading local companies JSON:', error);
+		}
+		return [];
 	}
 
 	let organisationName = $state('');
@@ -50,17 +63,33 @@
 
 		// Load companies
 		(async () => {
+			// Always start with local companies
+			const localCompanies = getLocalCompanies();
+			if (localCompanies.length > 0) {
+				companies = localCompanies;
+			}
+
 			try {
 				const response = await fetch('https://assets.hejjegala.in/other/companies-blr.json');
 				if (!response.ok) {
 					throw new Error(`Failed to load companies (${response.status})`);
 				}
 				const companiesData = await response.json();
-				if (companiesData.success && companiesData.companies) {
-					companies = companiesData.companies;
+				const fetchedCompanies: Company[] = companiesData?.companies ?? [];
+
+				// Merge local and fetched companies, de-duplicating by id
+				const mergedById = new Map();
+				for (const company of localCompanies) {
+					mergedById.set(company.id, company);
 				}
+				for (const company of fetchedCompanies) {
+					mergedById.set(company.id, company);
+				}
+				companies = Array.from(mergedById.values());
 			} catch (err) {
 				console.error('Error loading companies:', err);
+				// If fetch fails, fall back to only using local companies
+				companies = localCompanies;
 			}
 		})();
 

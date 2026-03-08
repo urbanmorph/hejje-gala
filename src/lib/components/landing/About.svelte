@@ -104,9 +104,6 @@
 									<p class="{isMobile ? 'text-xs' : 'text-sm'} font-semibold text-gray-900">
 										{metric.label}
 									</p>
-									{#if metric.helperText}
-										<p class="text-xs text-gray-600 mt-1">{metric.helperText}</p>
-									{/if}
 								</div>
 							{/each}
 						</div>

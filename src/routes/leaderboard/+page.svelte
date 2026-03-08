@@ -3,11 +3,9 @@
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import Hero from '$lib/components/landing/Hero.svelte';
-	import About from '$lib/components/landing/About.svelte';
 	import Leaderboard from '$lib/components/landing/Leaderboard.svelte';
 	import CompanyStats from '$lib/components/landing/CompanyStats.svelte';
 	import Map from '$lib/components/landing/Map.svelte';
-	import BlogPosts from '$lib/components/landing/BlogPosts.svelte';
 	import SocialActivity from '$lib/components/landing/SocialActivity.svelte';
 	import Footer from '$lib/components/landing/Footer.svelte';
 	import { _ } from 'svelte-i18n';
@@ -78,13 +76,6 @@
 	}
 
 	const selectedCompanyName = $derived(companyData?.name || '');
-	const aboutName = $derived(
-		view === 'city'
-			? 'Bengaluru'
-			: view === 'corporation'
-				? selectedCorporationName
-				: selectedCompanyName
-	);
 
 	// Consistent mock data for all companies
 	const getMockCompanyData = (companyId: string, companyName: string): CompanyRow => {
@@ -102,23 +93,19 @@
 			metrics: [
 				{
 					label: 'Active users',
-					value: '420',
-					helperText: 'Employees regularly logging active commutes.'
+					value: '420'
 				},
 				{
 					label: 'Average weekly activities',
-					value: '3,240',
-					helperText: 'Walk, cycle and other sustainable trips per week.'
+					value: '3,240'
 				},
 				{
 					label: 'CO₂ offset',
-					value: '12,340 kg',
-					helperText: 'Compared to equivalent solo car trips.'
+					value: '12,340 kg'
 				},
 				{
 					label: 'Fuel saved',
-					value: '2,980 ltrs',
-					helperText: 'Indicative fuel savings based on avoided trips.'
+					value: '2,980 ltrs'
 				}
 			]
 		};
@@ -213,17 +200,6 @@
 		{isMobile}
 	/>
 
-	<About
-		mode={view || 'city'}
-		name={aboutName}
-		description={view === 'city'
-			? $_('about.cityDescription')
-			: view === 'corporation'
-				? $_('about.corporationDescription')
-				: $_('about.companyDescription')}
-		{isMobile}
-	/>
-
 	{#if view === 'company' && selectedCorpId && selectedCompanyId}
 		{@const employeeDataUrl = `https://assets.hejjegala.in/leaderboard/${selectedCompanyId}-employee.json`}
 		<div class="bg-[#FFFCF8] {isMobile ? 'px-3 sm:px-4 py-2 sm:py-3' : 'px-6 py-4'}">
@@ -269,7 +245,6 @@
 		</div>
 		<CompanyStats dataUrl={employeeDataUrl} companyId={selectedCompanyId} {isMobile} />
 		<Map {selectedCorpId} {selectedCompanyId} name={selectedCompanyName} {isMobile} />
-		<BlogPosts corporationId={selectedCorpId} companyId={selectedCompanyId} limit={2} {isMobile} />
 		<SocialActivity entityName={selectedCompanyName} {isMobile} />
 	{:else if selectedCorpId}
 		{@const corpId = selectedCorpId}

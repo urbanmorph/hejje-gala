@@ -3,9 +3,7 @@
 		"home": "Home",
 		"leaderboard": "Leaderboard",
 		"aboutChallenge": "About Challenge",
-		"blog": "Blog",
 		"faqs": "FAQs",
-		"registerNow": "REGISTER NOW",
 		"viewLeaderboard": "VIEW LEADERBOARD",
 		"knowMore": "KNOW MORE",
 		"readMore": "READ MORE",
@@ -17,21 +15,23 @@
 		"save": "Save",
 		"cancel": "Cancel",
 		"submit": "Submit",
-		"login": "Login",
-		"logout": "Logout",
+		"registerNow": "REGISTER NOW",
 		"english": "English | ಕನ್ನಡ",
-		"kannada": "English | ಕನ್ನಡ"
+		"kannada": "English | ಕನ್ನಡ",
+		"gbaLetter": "GBA Letter",
+		"becomeAChampion": "BECOME A CHAMPION",
+		"champions": "Champions",
+		"activities": "Activities"
 	},
 	"header": {
 		"toggleMenu": "Toggle menu",
 		"toggleLanguage": "Toggle language"
 	},
 	"hero": {
-		"title": "Bengaluru's Corporate Active Mobility Challenge",
+		"title": "Bengaluru's Active Mobility Challenge",
 		"poweredBy": "POWERED BY",
 		"aboutTitle": "About Hejje Gala",
 		"leaderboardTitle": "Leaderboard",
-		"blogTitle": "Blog",
 		"challengeHasBegun": "Challenge has begun"
 	},
 	"countdownTimer": {
@@ -44,8 +44,8 @@
 		"title": "Registered for Hejje Gala",
 		"highlightText": "Hejje Gala",
 		"about": "About",
-		"subtitle": "Bengaluru's Corporate Active Mobility Challenge",
-		"description": "Hejje Gala is a city-wide active mobility challenge that encourages Bengaluru corporates to promote walking and cycling either as primary commute modes or as first- and last-mile links to public transport—fostering healthier, greener commuting through friendly, measurable competition.",
+		"subtitle": "Bengaluru's Active Mobility Challenge",
+		"description": "Hejje Gala is a city-wide active mobility event that encourages Bengalureans to walk and cycle — whether as a primary commute mode or as a first- and last-mile link to public transport — fostering healthier, greener movement across the city.",
 		"companies": "Companies",
 		"corporations": "Corporations"
 	},
@@ -92,7 +92,10 @@
 		]
 	},
 	"footer": {
-		"poweredBy": "Powered by"
+		"poweredBy": "Powered by",
+		"license": "All content on this site is covered under",
+		"licenseName": "CC-BY-SA 4.0 license",
+		"builtBy": "Built by"
 	},
 	"footerCTA": {
 		"title": "Active Mobility Challenge Branding",
@@ -132,7 +135,7 @@
 	"about": {
 		"aboutTheCity": "About Bengaluru",
 		"aboutX": "About",
-		"cityDescription": "Hejje Gala is a city-wide active mobility challenge that encourages Bengaluru corporates to promote walking and cycling either as primary commute modes or as first- and last-mile links to public transport—fostering healthier, greener commuting through friendly, measurable competition. Hejje Gala is a city-wide active mobility challenge that encourages Bengaluru corporates to promote walking and cycling either as primary commute.",
+		"cityDescription": "Hejje Gala is a city-wide active mobility event that encourages Bengalureans to walk and cycle — whether as a primary commute mode or as a first- and last-mile link to public transport — fostering healthier, greener movement across the city.",
 		"corporationDescription": "This corporation is committed to promoting active mobility and sustainability. Through the Hejje Gala Challenge, we encourage our employees to adopt healthier commuting habits and reduce carbon emissions.",
 		"companyDescription": "This company is dedicated to creating a sustainable future through active mobility. Our employees actively participate in walking and cycling activities, contributing to environmental conservation and personal well-being.",
 		"location": "Location information",
@@ -144,34 +147,6 @@
 		"averageWeeklyActivitiesHelper": "Walk, cycle and other sustainable trips per week.",
 		"co2OffsetHelper": "Compared to equivalent solo car trips.",
 		"fuelSavedHelper": "Indicative fuel savings based on avoided trips."
-	},
-	"blog": {
-		"title": "Blog",
-		"pageTitle": "Blog - Hejje Gala",
-		"description": "Read posts from the Hejje Gala community",
-		"recommendedStories": "Recommended Stories",
-		"loadingBlogPosts": "Loading blog posts...",
-		"noBlogPostsAvailable": "No blog posts available yet.",
-		"bookmark": "Bookmark",
-		"createPost": "Create Post",
-		"loginToPost": "Login to Post",
-		"noPostsYet": "No posts yet. Be the first to share!",
-		"createFirstPost": "Create First Post",
-		"loginToCreatePost": "Login to Create Post",
-		"by": "By",
-		"backToBlog": "Back to Blog"
-	},
-	"post": {
-		"title": "Post",
-		"createPost": "Create Post",
-		"loggedInAs": "Logged in as",
-		"saving": "Saving...",
-		"savePost": "Save Post",
-		"backToHome": "Back to Home",
-		"pleaseEnterContent": "Please enter some content",
-		"postSavedSuccessfully": "Post saved successfully!",
-		"failedToSavePost": "Failed to save post. Please try again.",
-		"errorOccurred": "An error occurred. Please try again."
 	},
 	"register": {
 		"title": "Hejje Gala",
@@ -204,39 +179,27 @@
 		"registrationSuccessMessage": "You've taken the first step towards smart commuting.\nShortly you will find a confirmation in your email.",
 		"goBackToHome": "Go back to Home"
 	},
-	"login": {
-		"title": "Login",
-		"emailAddress": "Email Address",
-		"emailPlaceholder": "you@example.com",
-		"sending": "Sending...",
-		"sendLoginLink": "Send Login Link",
-		"checkEmailForLoginLink": "We'll send you a secure login link to your email address.",
-		"pleaseEnterValidEmail": "Please enter a valid email address",
-		"checkEmailForLink": "Check your email for a login link!",
-		"failedToSendLoginEmail": "Failed to send login email. Please try again.",
-		"errorOccurred": "An error occurred. Please try again."
-	},
 	"whatIsHejjeGala": {
 		"title": "What is",
 		"titleHejjeGala": "Hejje Gala",
-		"subtitle": "Bengaluru's Corporate Active Mobility Challenge"
+		"subtitle": "Bengaluru's Active Mobility Challenge"
 	},
 	"whyHejjeGala": {
 		"title": "Why",
 		"subtitle": "Hejje Gala?",
 		"buildCulture": {
-			"title": "Build a culture of active commuting at the workplace",
-			"description": "Workplace participation helps companies promote healthier habits while supporting city-wide sustainability goals."
+			"title": "Build a culture of active commuting",
+			"description": "Hejje Gala helps build healthier habits across workplaces and communities while supporting city-wide sustainability goals."
 		},
 		"supportShift": {
 			"title": "Support Bengaluru's shift to sustainable mobility",
-			"description": "Hejje Gala inspires corporate employees to walk and cycle as part of their daily commute."
+			"description": "Hejje Gala inspires Bengalureans to walk and cycle as part of their daily commute."
 		},
 		"measureImpact": {
 			"title": "Measure and recognise impact",
-			"description": "Organisations get dashboards and leaderboards to track participation, distance covered, and emissions saved, with top performers recognised for driving sustainable mobility in Bengaluru."
+			"description": "Track participation, distance covered, and emissions saved — with top performers recognised for championing sustainable mobility in Bengaluru."
 		},
-		"registerNow": "REGISTER NOW",
+		"registerNow": "BECOME A CHAMPION",
 		"supportShiftTitle": "Support Bengaluru's shift to sustainable mobility"
 	},
 	"aboutFAQs": {
@@ -245,46 +208,115 @@
 		"faqs": [
 			{
 				"question": "What is Hejje Gala?",
-				"answer": "Hejje Gala is a city-wide corporate active mobility challenge in Bengaluru that encourages employees to adopt walking and cycling as part of their daily commute. The challenge invites corporate organisations to officially participate and motivate their workforce to choose healthier and more sustainable ways of travelling to work.",
-				"type": "text"
+				"answer": "Hejje Gala is a city-wide corporate challenge in Bengaluru that encourages employees to walk and cycle as part of their daily commute. Organisations officially register and motivate their teams to choose healthier, more sustainable ways of getting to work.",
+				"type": "text",
+				"section": "About Hejje Gala"
 			},
 			{
-				"question": "What does \"active mobility\" mean in the context of this challenge?",
-				"answer": "Active mobility refers to walking and cycling, either as a primary mode of travel or as a first- and/or last-mile connection to public transport such as the metro or bus.",
-				"type": "text"
+				"question": "What does \"active mobility\" mean?",
+				"answer": "Active mobility refers to walking and cycling - either as your primary way of commuting or as a first/last-mile connection to public transport like metro or bus.",
+				"type": "text",
+				"section": "About Hejje Gala"
 			},
 			{
-				"question": "Who is the challenge for?",
-				"answer": "Hejje Gala is designed for corporate organisations and their employees in Bengaluru.",
-				"type": "text"
+				"question": "Who is behind Hejje Gala?",
+				"answer": "Hejje Gala is organised by Urban Morph in partnership with the Greater Bengaluru Authority (GBA), WRI India, Walkaluru (coordinated by Arun Pai, who has led a walking revolution in Bengaluru), and the Bicycle Mayor of Bengaluru. Together, these partners bring expertise in urban mobility, infrastructure policy, and grassroots advocacy.",
+				"type": "text",
+				"section": "About Hejje Gala"
 			},
 			{
-				"question": "How do organisations participate in Hejje Gala?",
-				"answer": "Organisations participate by officially registering for the challenge and encouraging their employees to take part. Participation is organisation-led, with companies playing a key role in promoting active commuting within their workplace.",
-				"type": "text"
-			},
-			{
-				"question": "Can individual employees participate without their organisation?",
-				"answer": "Hejje Gala is a corporate challenge, and participation will be through registered organisations. Employees can only participate as part of their company's team and not individually.",
-				"type": "text"
-			},
-			{
-				"question": "What is the duration of the challenge?",
+				"question": "What are the key dates?",
 				"type": "list",
+				"section": "About Hejje Gala",
 				"items": [
-					{ "label": "Launch:", "value": "December 2025" },
-					{ "label": "Challenge period:", "value": "1 January 2026 to 30 March 2026" },
-					{ "label": "Winners announced:", "value": "April 2026" }
+					{ "label": "Launch:", "value": "15 January 2026" },
+					{ "label": "Challenge period:", "value": "15 February – 15 April 2026" },
+					{ "label": "Winners announced:", "value": "May 2026" }
 				]
 			},
 			{
-				"question": "How is participation tracked?",
-				"answer": "Employee participation is tracked through a digital platform that records walking and cycling activity. Participating organisations can view dashboards and leaderboards that show overall participation, kilometres covered, and aggregated impact.",
-				"type": "text"
+				"question": "Who can participate?",
+				"answer": "Hejje Gala is designed for corporate organisations and their employees in Bengaluru.",
+				"type": "text",
+				"section": "Participation & Eligibility"
 			},
 			{
-				"question": "What kind of data is measured?",
+				"question": "Can organisations outside Bengaluru participate?",
+				"answer": "No - Hejje Gala is specifically designed for Bengaluru. Your office location and employees' commutes should be within the city.",
+				"type": "text",
+				"section": "Participation & Eligibility"
+			},
+			{
+				"question": "Is there a minimum number of employees required?",
+				"answer": "No minimum is required. Organisations of all sizes are welcome - from startups to large enterprises. What matters is participation and commitment, not headcount.",
+				"type": "text",
+				"section": "Participation & Eligibility"
+			},
+			{
+				"question": "Is there a registration fee?",
+				"answer": "No. Participation in Hejje Gala is free for all organisations.",
+				"type": "text",
+				"section": "Participation & Eligibility"
+			},
+			{
+				"question": "Can employees from multiple office locations within the same organisation participate?",
+				"answer": "Yes. If your organisation has multiple offices in Bengaluru, employees from all locations can participate under a single organisational registration.",
+				"type": "text",
+				"section": "Participation & Eligibility"
+			},
+			{
+				"question": "Can employees participate without their organisation signing up?",
+				"answer": "No - Hejje Gala is a corporate challenge, so employees participate as part of their company's team. If your organisation hasn't signed up yet, this is a great opportunity to speak with your management about joining.",
+				"type": "text",
+				"section": "Participation & Eligibility"
+			},
+			{
+				"question": "How can I help drive participation at my company?",
+				"answer": "If you're an employee who wants to actively motivate your colleagues, this is the perfect chance to become an ambassador for your company. Speak to your leadership, encourage them to sign up, and ask to be nominated as your company's Hejje Gala ambassador. Ambassadors play a key role in rallying their teams and keeping the momentum going throughout the challenge.",
+				"type": "text",
+				"section": "Participation & Eligibility"
+			},
+			{
+				"question": "How do organisations register?",
+				"answer": "Visit [www.hejjegala.in](https://www.hejjegala.in), click \"Register Now,\" and complete the sign-up process. We encourage CxOs to register and demonstrate their commitment to Bengaluru's mobility future.",
+				"type": "text",
+				"section": "How to Register",
+				"highlightText": "Register Now"
+			},
+			{
+				"question": "What support does Hejje Gala provide to participating organisations?",
+				"answer": "Registered organisations receive communication kits, promotional materials, and internal engagement ideas to help rally their teams. You'll also get access to dashboards to track your organisation's progress throughout the challenge.",
+				"type": "text",
+				"section": "How to Register"
+			},
+			{
+				"question": "How is participation tracked?",
+				"answer": "Through Altmo, a mobile app available on Android and iOS. Employees log their walking and cycling activity, and organisations can view dashboards showing participation, kilometres covered, and aggregated impact.",
+				"type": "text",
+				"section": "Tracking & Eligibility"
+			},
+			{
+				"question": "Do I have to use Altmo?",
+				"answer": "Yes - the challenge relies on Altmo to track and verify activities. Altmo has a built-in tracker, so you can use it directly on your phone. If you're more comfortable using another device (like a smartwatch or fitness tracker), you'll need to ensure it syncs with Strava and that you've selected the correct activity type (walking or cycling). You still need to sign up on Altmo and connect your Strava account - only then will your activities count on the leaderboard.",
+				"type": "text",
+				"section": "Tracking & Eligibility"
+			},
+			{
+				"question": "What counts as a valid commute? Do weekend rides count?",
+				"answer": "Only commutes to your primary workplace (marked on the map in Altmo) are counted towards your organisation's commute total and emission offsets. You can still log non-commute activities like recreational rides or weekend trips - these will be shown separately as activities on the leaderboard, but won't count towards commute kilometres or carbon savings. The goal is to shift everyday commuting habits, not just add leisure activity.",
+				"type": "text",
+				"section": "Tracking & Eligibility"
+			},
+			{
+				"question": "What happens if I work from home some days?",
+				"answer": "That's fine - you only log activity on days you commute. There's no penalty for working from home. Every active commute you make during the challenge period counts toward your organisation's total.",
+				"type": "text",
+				"section": "Tracking & Eligibility"
+			},
+			{
+				"question": "What data is measured?",
 				"type": "mixed",
+				"section": "Tracking & Eligibility",
 				"text": "The challenge tracks:",
 				"items": [
 					"Employee participation levels",
@@ -294,36 +326,65 @@
 				"textAfter": "All data is presented at an aggregated level for organisations."
 			},
 			{
-				"question": "Are there winners or recognitions?",
-				"answer": "Yes. Organisations demonstrating strong participation and impact will be recognised and publicly acknowledged for their leadership in promoting active mobility and sustainable commuting in Bengaluru.",
-				"type": "text"
-			},
-			{
-				"question": "Does Hejje Gala involve building or redesigning streets or infrastructure?",
-				"answer": "No. Hejje Gala focuses on behaviour change, workplace engagement, and active commuting practices. It does not involve street design or infrastructure implementation.",
-				"type": "text"
-			},
-			{
-				"question": "How can my organisation register?",
-				"answer": "Organisations can register through the Hejje Gala website by clicking the \"Register Now\" button and completing the organisation sign-up process.",
+				"question": "How does Altmo protect my privacy?",
+				"answer": "Altmo has a strong privacy policy vetted by multinational corporations with world-class privacy standards. Personal data is never shared or sold. Only de-identified route information is provided to government agencies to help improve infrastructure.",
 				"type": "text",
-				"highlightText": "Register Now"
+				"section": "Privacy"
 			},
 			{
-				"question": "Who can we contact for more information?",
-				"answer": "For queries related to participation, partnerships, or the challenge format, please reach out to [name + email address] or [name + email address].",
-				"type": "text"
+				"question": "Are there prizes or recognition?",
+				"answer": "Yes. Organisations demonstrating strong participation and impact will be publicly recognised for their leadership in promoting active mobility and sustainable commuting.",
+				"type": "text",
+				"section": "Recognition & Prizes"
+			},
+			{
+				"question": "How are winners determined?",
+				"answer": "Winners are organisations, not individuals. Hejje Gala recognises companies based on a combination of factors including participation rate (percentage of employees who took part), total kilometres logged, and consistency throughout the challenge period. This ensures organisations of all sizes have a fair chance at recognition.\n\nAs the saying goes, \"If you want to go fast, go alone. If you want to go far, go together.\" Hejje Gala is built on the belief that collective action benefits everyone - when organisations commit together, we create the momentum needed to transform how Bengaluru moves.\n\nThat said, companies are free to create their own internal challenges on Altmo and reward their employees as they see fit. We can walk your company representative through how to set this up.",
+				"type": "text",
+				"section": "Recognition & Prizes"
+			},
+			{
+				"question": "Is there a leaderboard?",
+				"answer": "Yes. Participating organisations can view a leaderboard showing how they compare to others. This adds a friendly competitive element and helps motivate teams throughout the challenge.",
+				"type": "text",
+				"section": "Recognition & Prizes"
+			},
+			{
+				"question": "What is Altmo's track record?",
+				"answer": "Altmo has already shaped real infrastructure decisions in Bengaluru. Data from Altmo and the Bicycle Mayor influenced the allocation of budgets for cycle tracks and footpaths in the Comprehensive Mobility Plan of the Government of Karnataka, 2020. Altmo data also informed the planning of cycle lanes on the Outer Ring Road. Altmo was the official technology platform for the Smart City Mission's \"Freedom to Walk, Cycle and Run\" challenge, where officials from 30 cities across India competed on an Altmo-powered leaderboard.",
+				"type": "text",
+				"section": "Track Record & Proven Impact"
+			},
+			{
+				"question": "What has Walkaluru achieved?",
+				"answer": "Walkaluru has driven tangible change on the ground. Through sustained advocacy and community action, GBA and corporations have improved many kilometres of footpaths across Bengaluru, making the city more walkable for everyone. Over 1,500 citizens have walked over 100 kilometres on footpaths across 12 public events since November 2025 - as part of a mission to make Bengaluru a Walkaluru.",
+				"type": "text",
+				"section": "Track Record & Proven Impact"
+			},
+			{
+				"question": "What has WRI India contributed?",
+				"answer": "WRI India has transformed numerous junctions through their Suraksha 75 improvement plan, making streets safer for pedestrians and cyclists. They have led multiple successful campaigns promoting public transport and have been instrumental in shaping Bengaluru's Climate Action Plan and the Transit Oriented Development policy.",
+				"type": "text",
+				"section": "Track Record & Proven Impact"
+			},
+			{
+				"question": "Will Hejje Gala lead to better infrastructure?",
+				"answer": "Yes. The partners behind Hejje Gala have a proven track record of turning data and advocacy into real change. With corporate participation generating new commute data and demonstrating demand for active mobility, we aim to accelerate infrastructure improvements and policy reforms that make walking and cycling safer and more accessible across Bengaluru.",
+				"type": "text",
+				"section": "Future Infrastructure & Policy"
+			},
+			{
+				"question": "Who can I contact for more information?",
+				"answer": "Email [hejjegala@gmail.com](mailto:hejjegala@gmail.com) for questions about participation, partnerships, or the challenge format.",
+				"type": "text",
+				"section": "Contact"
 			}
 		]
 	},
 	"socialActivity": {
-		"title": "Here’s what we’ve achieved/done so far",
+		"title": "Here’s what we’ve done",
 		"viewAll": "View All",
 		"items": "items"
-	},
-	"blogPosts": {
-		"title": "Latest Posts",
-		"by": "By"
 	},
 	"map": {
 		"mapTitle": "Infrastructure near",
@@ -341,6 +402,41 @@
 		"cityLeaderboard": "City Leaderboard",
 		"corporationLeaderboard": "Corporation Leaderboard",
 		"companyLeaderboard": "Company Leaderboard"
+	},
+	"calendar": {
+		"title": "Calendar",
+		"walk": "Walk",
+		"cycle": "Cycle",
+		"event": "Event",
+		"noDescription": "No description available."
+	},
+	"champions": {
+		"title": "Champions",
+		"description": "Meet the champions leading Bengaluru's active mobility movement.",
+		"becomeChampion": "Become a Champion",
+		"searchPlaceholder": "Search by name or organization...",
+		"noChampions": "No champions registered yet.",
+		"totalCount": "{count} champions"
+	},
+	"activities": {
+		"title": "Activities",
+		"description": "Explore walking, cycling, and other activities organized by champions across Bengaluru.",
+		"all": "All",
+		"walk": "Walk",
+		"cycle": "Cycle",
+		"other": "Other",
+		"noActivities": "No activities recorded yet.",
+		"route": "Route",
+		"crowdCount": "Crowd Count",
+		"start": "Start",
+		"end": "End",
+		"distance": "Distance",
+		"participants": "Participants",
+		"observations": "Observations",
+		"inputsToAuthorities": "Inputs to Authorities",
+		"photos": "Photos",
+		"photoAlt": "Activity photo",
+		"totalCount": "{count} activities"
 	},
 	"landingLeaderboard": {
 		"title": "Hejje Gala Leaderboard",

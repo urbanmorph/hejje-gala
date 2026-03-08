@@ -202,7 +202,7 @@
 										<div
 											class="text-[10px] sm:text-xs text-black mt-0.5 sm:mt-1 lg:text-base break-words leading-tight"
 										>
-											{stat.label.split('(')[0]}
+											{stat.label}
 										</div>
 									</div>
 								</div>

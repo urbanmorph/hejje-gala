@@ -3,7 +3,6 @@
 	import { base } from '$app/paths';
 	import { page } from '$app/stores';
 	import { siteConfig, navigation } from '$lib/config/landing';
-	import AppStoreButtons from './AppStoreButtons.svelte';
 	import { locale, _ } from 'svelte-i18n';
 	import { onMount } from 'svelte';
 
@@ -12,7 +11,7 @@
 		disabledLabels?: Set;
 	}
 
-	let { isMobile = false, disabledLabels = new Set(['Leaderboard', 'Blog']) }: Props = $props();
+	let { isMobile = false, disabledLabels = new Set([]) }: Props = $props();
 
 	let mobileMenuOpen = $state(false);
 
@@ -21,8 +20,9 @@
 		const labelMap: Record = {
 			Home: 'common.home',
 			Leaderboard: 'common.leaderboard',
+			Champions: 'common.champions',
+			Activities: 'common.activities',
 			'About Challenge': 'common.aboutChallenge',
-			Blog: 'common.blog',
 			FAQs: 'common.faqs'
 		};
 		return labelMap[label] || label;
@@ -33,12 +33,10 @@
 		const path = $page.url.pathname;
 		const hash = $page.url.hash;
 		if (path === '/about' && hash === '#faqs') return 'FAQs';
-		if (path === '/post-registration/about' && hash === '#faqs') return 'FAQs';
 		if (path === '/about') return 'About Challenge';
-		if (path === '/post-registration/about') return 'About Challenge';
 		if (path === '/leaderboard') return 'Leaderboard';
-		if (path === '/blog') return 'Blog';
-		if (path === '/post-registration') return 'Home';
+		if (path === '/champions') return 'Champions';
+		if (path === '/activities') return 'Activities';
 		return 'Home';
 	});
 
@@ -78,11 +76,11 @@
 	<!-- Main header row -->
 	<div class="flex items-center w-full {isMobile ? 'py-3' : 'py-4'}">
 		<!-- Left spacer for desktop (matches right language toggle width) -->
-		<div class="hidden lg:block w-[140px] flex-shrink-0 pl-4 xl:pl-6"></div>
+		<div class="hidden lg:block flex-shrink-0"></div>
 
 		<!-- Main header content with max-width constraint -->
 		<div
-			class="flex-1 flex items-center justify-between lg:max-w-[80%] mx-auto px-6 lg:px-10 xl:px-12"
+			class="flex-1 flex items-center justify-between lg:max-w-[85%] xl:max-w-[80%] mx-auto px-6 lg:px-0"
 		>
 			<!-- Left: Logo -->
 			<div class="flex-shrink-0">
@@ -93,7 +91,7 @@
 				/>
 			</div>
 
-			<!-- Center: Navigation + App Store Buttons (Desktop) -->
+			<!-- Center: Navigation (Desktop) -->
 			<div class="hidden lg:flex items-center justify-center flex-1">
 				<nav class="flex items-center justify-center gap-6 xl:gap-8">
 					{#each navigation as link}
@@ -120,9 +118,6 @@
 						{/if}
 					{/each}
 				</nav>
-				<div class="ml-8 xl:ml-12 flex-shrink-0">
-					<AppStoreButtons size="md" />
-				</div>
 			</div>
 
 			<!-- Language Toggle Button (Mobile - below lg) -->
@@ -199,9 +194,6 @@
 						</a>
 					{/if}
 				{/each}
-				<div class="pt-4 border-t border-white/20">
-					<AppStoreButtons size="sm" />
-				</div>
 			</nav>
 		</div>
 	{/if}

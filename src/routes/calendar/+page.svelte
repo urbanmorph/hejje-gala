@@ -1,14 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import Hero from '$lib/components/landing/Hero.svelte';
+	import Header from '$lib/components/landing/Header.svelte';
 	import Calendar from '$lib/components/landing/Calendar.svelte';
-	import Welcome from '$lib/components/landing/Welcome.svelte';
-	import Stats from '$lib/components/landing/Stats.svelte';
-	import SocialActivity from '$lib/components/landing/SocialActivity.svelte';
-
-	import FooterCTA from '$lib/components/landing/FooterCTA.svelte';
 	import Footer from '$lib/components/landing/Footer.svelte';
-	import GbaLetterButton from '$lib/components/GbaLetterButton.svelte';
 	import { isMobile as checkIsMobile } from '$lib/utils';
 
 	let isMobile = $state(false);
@@ -28,17 +22,11 @@
 </script>
 
 <svelte:head>
-	<title>Hejje Gala</title>
+	<title>Event Calendar - Hejje Gala</title>
 </svelte:head>
 
 <div class="min-h-screen bg-[#FFFCF8]">
-	<Hero {isMobile} />
+	<Header {isMobile} />
 	<Calendar {isMobile} />
-	<Welcome {isMobile} />
-	<Stats {isMobile} />
-	<SocialActivity {isMobile} />
-	<FooterCTA {isMobile} />
 	<Footer {isMobile} />
 </div>
-
-<GbaLetterButton />

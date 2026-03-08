@@ -30,13 +30,7 @@
 </svelte:head>
 
 <div class="min-h-screen bg-[#FFFCF8]">
-	<Hero
-		title={$_('hero.aboutTitle')}
-		showCountdown={false}
-		showCTA={false}
-		compact={true}
-		{isMobile}
-	/>
+	<Hero title={$_('hero.aboutTitle')} showCTA={false} compact={true} {isMobile} />
 	<WhatIsHejjeGala {isMobile} />
 	<WhyHejjeGala {isMobile} />
 	<AboutFAQs {isMobile} />

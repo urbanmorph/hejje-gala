@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { heroConfig } from '$lib/config/landing';
-	import CountdownTimer from './CountdownTimer.svelte';
+	import { urls } from '$lib/config/urls';
 	import CTAButton from './CTAButton.svelte';
 	import OrganizationLogos from './OrganizationLogos.svelte';
 	import Header from './Header.svelte';
@@ -9,7 +9,6 @@
 
 	interface Props {
 		title?: string;
-		showCountdown?: boolean;
 		showCTA?: boolean;
 		compact?: boolean;
 		isMobile?: boolean;
@@ -19,11 +18,10 @@
 
 	let {
 		title,
-		showCountdown = true,
 		showCTA = true,
 		compact = false,
 		isMobile = false,
-		disabledLabels = new Set(['Leaderboard', 'Blog']),
+		disabledLabels = new Set(['']),
 		postRegistration = false
 	}: Props = $props();
 
@@ -111,22 +109,21 @@
 				class="{compact
 					? 'hidden mb-6 text-3xl'
 					: isMobile
-						? 'mb-12 text-2xl'
-						: 'mb-16 text-2xl'} leading-tight font-bold text-white lg:text-6xl max-w-4xl mx-auto"
+						? 'mt-8 mb-16 text-2xl'
+						: 'mt-16 mb-20 text-2xl'} leading-tight font-bold text-white lg:text-6xl max-w-4xl mx-auto"
 			>
 				{translatedTitle}
 			</h1>
-			{#if showCountdown && !postRegistration}
-				<div class={isMobile ? '' : 'mb-8'}>
-					<CountdownTimer targetDate={heroConfig.countdownDate} />
-				</div>
-			{/if}
 			{#if showCTA}
 				<div class={isMobile ? 'mb-6 flex justify-center' : 'mb-12'}>
 					{#if postRegistration}
 						<CTAButton text={$_('common.viewLeaderboard')} variant="pink" href="/leaderboard" />
 					{:else}
-						<CTAButton text={$_('common.registerNow')} variant="pink" href="/register" />
+						<CTAButton
+							text={$_('common.becomeAChampion')}
+							variant="pink"
+							href={urls.becomeAChampion}
+						/>
 					{/if}
 				</div>
 			{/if}

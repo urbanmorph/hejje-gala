@@ -9,15 +9,16 @@
 		disabledLabels?: Set;
 	}
 
-	let { isMobile = false, disabledLabels = new Set(['Leaderboard', 'Blog']) }: Props = $props();
+	let { isMobile = false, disabledLabels = new Set([]) }: Props = $props();
 
 	// Helper function to get translated navigation label
 	function getNavLabel(label: string): string {
 		const labelMap: Record = {
 			Home: 'common.home',
 			Leaderboard: 'common.leaderboard',
+			Champions: 'common.champions',
+			Activities: 'common.activities',
 			'About Challenge': 'common.aboutChallenge',
-			Blog: 'common.blog',
 			FAQs: 'common.faqs'
 		};
 		return labelMap[label] || label;
@@ -70,17 +71,25 @@
 				: 'items-center justify-between'}"
 		>
 			<span class="text-sm font-medium underline text-[#231A36]">
-				All content on this site is covered under
+				{$_('footer.license')}
 				<a
 					href="https://creativecommons.org/licenses/by-sa/4.0/"
 					target="_blank"
 					rel="noopener noreferrer"
 					class="underline hover:text-gray-400 transition-colors"
 				>
-					CC-BY-SA 4.0 license
+					{$_('footer.licenseName')}
 				</a>
 			</span>
-			<span class="text-sm text-[#231A36] {isMobile ? 'text-center' : ''}">Built by Altmo</span>
+			<span class="text-sm text-[#231A36] {isMobile ? 'text-center' : ''}"
+				>{$_('footer.builtBy')}
+				<a
+					href="https://altmo.app/"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="underline hover:text-gray-400 transition-colors">Altmo</a
+				></span
+			>
 		</div>
 	</div>
 </footer>
