@@ -35,7 +35,7 @@ radial-gradient(ellipse at bottom left, #DB3E3E 0%, transparent 40%);"
 
 		<div class="flex {isMobile ? 'flex-col items-center' : 'justify-center'} gap-4">
 			<CTAButton text={$_('common.viewLeaderboard')} variant="pink" href="/leaderboard" />
-			<CTAButton text={$_('common.knowMore')} variant="pink" href="/about" />
+			<CTAButton text={$_('common.viewActivities')} variant="pink" href="/activities" />
 		</div>
 	</div>
 </section>

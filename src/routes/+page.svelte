@@ -31,11 +31,11 @@
 	<title>Hejje Gala</title>
 </svelte:head>
 
-<div class="min-h-screen bg-[#FFFCF8]">
+<div class="min-h-screen bg-white">
 	<Hero {isMobile} showCTA={false} />
 
 	<!-- Corporates & Individuals split section -->
-	<section class="bg-[#FFFCF8] py-6 sm:py-8 lg:py-16 xl:py-24">
+	<section class="bg-white py-6 sm:py-8 lg:py-16 xl:py-24">
 		<div class="mx-auto max-w-[95%] xl:max-w-[80%] px-3 sm:px-4 md:px-6">
 			<div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 xl:gap-12">
 				<div class="rounded-xl border border-gray-200 bg-white p-4 sm:p-5 lg:p-6 xl:p-8 shadow-sm">

@@ -154,75 +154,84 @@
 </script>
 
 <Header {isMobile} {disabledLabels} />
-<section
-	class="hero-section relative {compact
-		? 'h-90 lg:h-120'
-		: 'h-[50vh] lg:h-[65vh] xl:h-[73vh]'} overflow-hidden bg-[#FFFCF8] {compact ? '' : 'compact'}"
-	style="--banner-image: url('{bannerImage}')"
->
-	<div
-		class="relative z-10 mx-auto max-w-[95%] lg:max-w-[80%] px-6 {compact
-			? 'py-16'
-			: 'pt-12 pb-8 lg:pt-16'} overflow-x-hidden"
-	>
-		<div class="hero-text text-center">
-			<h1
-				class="{compact
-					? 'hidden mb-6 text-3xl'
-					: 'mt-2 mb-4 text-2xl lg:mt-4 lg:mb-6'} leading-tight font-bold text-white lg:text-5xl xl:text-6xl max-w-4xl mx-auto"
+<section class="bg-white">
+	{#if compact}
+		<div
+			class="hero-section relative h-90 lg:h-120 mx-auto max-w-[90%]"
+			style="--banner-image: url('{bannerImage}')"
+		>
+			<div
+				class="relative z-10 mx-auto max-w-[95%] lg:max-w-[80%] px-6 py-16 overflow-x-hidden"
 			>
-				{translatedTitle}
-			</h1>
-			{#if showCTA}
-				<div class="mb-6 flex justify-center lg:mb-12">
-					{#if postRegistration}
-						<CTAButton text={$_('common.viewLeaderboard')} variant="pink" href="/leaderboard" />
-					{:else}
-						<CTAButton
-							text={$_('common.becomeAChampion')}
-							variant="pink"
-							href={urls.becomeAChampion}
-						/>
+				<div class="hero-text text-center">
+					<h1 class="hidden mb-6 text-3xl leading-tight font-bold text-white lg:text-5xl xl:text-6xl max-w-4xl mx-auto">
+						{translatedTitle}
+					</h1>
+				</div>
+			</div>
+		</div>
+	{:else}
+		<div
+			class="hero-section relative mx-auto max-w-[90%]"
+			style="--banner-image: url('{bannerImage}'); aspect-ratio: 1782 / 769;"
+		>
+			<div
+				class="absolute inset-0 z-10 flex flex-col items-center justify-between px-6 pt-8 pb-4 lg:pt-12 lg:pb-8"
+			>
+				<div class="hero-text text-center">
+					<h1 class="mt-2 mb-4 text-xl sm:text-2xl lg:mt-4 lg:mb-6 leading-tight font-bold text-white lg:text-5xl xl:text-6xl max-w-4xl mx-auto">
+						{translatedTitle}
+					</h1>
+					{#if showCTA}
+						<div class="mb-6 flex justify-center lg:mb-12">
+							{#if postRegistration}
+								<CTAButton text={$_('common.viewLeaderboard')} variant="pink" href="/leaderboard" />
+							{:else}
+								<CTAButton
+									text={$_('common.becomeAChampion')}
+									variant="pink"
+									href={urls.becomeAChampion}
+								/>
+							{/if}
+						</div>
 					{/if}
 				</div>
-			{/if}
-		</div>
-	</div>
 
-	{#if !compact}
-		<div class="hero-text absolute bottom-6 left-0 right-0 z-10 flex justify-center gap-4 lg:bottom-10 lg:gap-6">
-			{#if countdownDone}
-				<span class="text-2xl font-bold text-white lg:text-5xl xl:text-6xl">
-					{$_('hero.challengeHasBegun')}
-				</span>
-			{:else}
-				<div class="flex flex-col items-center">
-					<span class="text-2xl font-bold text-white lg:text-5xl xl:text-6xl">{String(days).padStart(2, '0')}</span>
-					<span class="text-xs font-medium uppercase tracking-wider text-white/80 lg:text-sm">{$_('countdownTimer.days')}</span>
+				<div class="hero-text flex justify-center gap-2 sm:gap-4 lg:gap-6">
+					{#if countdownDone}
+						<span class="text-lg sm:text-2xl font-bold text-white lg:text-5xl xl:text-6xl">
+							{$_('hero.challengeHasBegun')}
+						</span>
+					{:else}
+						<div class="flex flex-col items-center">
+							<span class="text-lg sm:text-2xl font-bold text-white lg:text-5xl xl:text-6xl">{String(days).padStart(2, '0')}</span>
+							<span class="text-[10px] sm:text-xs font-medium uppercase tracking-wider text-white/80 lg:text-sm">{$_('countdownTimer.days')}</span>
+						</div>
+						<span class="text-lg sm:text-2xl font-bold text-white lg:text-5xl xl:text-6xl">:</span>
+						<div class="flex flex-col items-center">
+							<span class="text-lg sm:text-2xl font-bold text-white lg:text-5xl xl:text-6xl">{String(hours).padStart(2, '0')}</span>
+							<span class="text-[10px] sm:text-xs font-medium uppercase tracking-wider text-white/80 lg:text-sm">{$_('countdownTimer.hours')}</span>
+						</div>
+						<span class="text-lg sm:text-2xl font-bold text-white lg:text-5xl xl:text-6xl">:</span>
+						<div class="flex flex-col items-center">
+							<span class="text-lg sm:text-2xl font-bold text-white lg:text-5xl xl:text-6xl">{String(minutes).padStart(2, '0')}</span>
+							<span class="text-[10px] sm:text-xs font-medium uppercase tracking-wider text-white/80 lg:text-sm">{$_('countdownTimer.minutes')}</span>
+						</div>
+						<span class="text-lg sm:text-2xl font-bold text-white lg:text-5xl xl:text-6xl">:</span>
+						<div class="flex flex-col items-center">
+							<span class="text-lg sm:text-2xl font-bold text-white lg:text-5xl xl:text-6xl">{String(seconds).padStart(2, '0')}</span>
+							<span class="text-[10px] sm:text-xs font-medium uppercase tracking-wider text-white/80 lg:text-sm">{$_('countdownTimer.seconds')}</span>
+						</div>
+					{/if}
 				</div>
-				<span class="text-2xl font-bold text-white lg:text-5xl xl:text-6xl">:</span>
-				<div class="flex flex-col items-center">
-					<span class="text-2xl font-bold text-white lg:text-5xl xl:text-6xl">{String(hours).padStart(2, '0')}</span>
-					<span class="text-xs font-medium uppercase tracking-wider text-white/80 lg:text-sm">{$_('countdownTimer.hours')}</span>
-				</div>
-				<span class="text-2xl font-bold text-white lg:text-5xl xl:text-6xl">:</span>
-				<div class="flex flex-col items-center">
-					<span class="text-2xl font-bold text-white lg:text-5xl xl:text-6xl">{String(minutes).padStart(2, '0')}</span>
-					<span class="text-xs font-medium uppercase tracking-wider text-white/80 lg:text-sm">{$_('countdownTimer.minutes')}</span>
-				</div>
-				<span class="text-2xl font-bold text-white lg:text-5xl xl:text-6xl">:</span>
-				<div class="flex flex-col items-center">
-					<span class="text-2xl font-bold text-white lg:text-5xl xl:text-6xl">{String(seconds).padStart(2, '0')}</span>
-					<span class="text-xs font-medium uppercase tracking-wider text-white/80 lg:text-sm">{$_('countdownTimer.seconds')}</span>
-				</div>
-			{/if}
+			</div>
 		</div>
 	{/if}
 </section>
 
 {#if !compact}
 	<!-- Powered By and Logos row -->
-	<div class="z-20 w-full bg-[#FFFCF8] px-6 py-3 lg:py-4">
+	<div class="z-20 w-full bg-white px-6 py-3 lg:py-4">
 		<div
 			class="flex items-center gap-4 lg:gap-6 xl:gap-8 flex-wrap lg:flex-nowrap justify-center"
 		>
@@ -300,45 +309,25 @@
 {/if}
 
 <style>
+	.hero-section {
+		overflow: hidden;
+		background-color: transparent;
+	}
+
 	.hero-section::before {
 		content: '';
 		position: absolute;
 		inset: 0;
 		background-image: var(--banner-image);
-		background-size: cover;
-		background-position: center;
+		background-size: 100% auto;
+		background-position: top center;
 		background-repeat: no-repeat;
+		/* Darken only the image pixels using filter */
+		filter: brightness(0.6);
 		z-index: 0;
-	}
-
-	.hero-section::after {
-		content: '';
-		position: absolute;
-		inset: 0;
-		background: linear-gradient(to bottom, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.3) 100%);
-		z-index: 1;
 	}
 
 	.hero-text {
 		text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-	}
-
-	/* Use cover below 1280px */
-	@media (min-width: 1024px) and (max-width: 1279px) {
-		.hero-section.compact::before {
-			background-size: cover;
-			transform-origin: center center;
-			background-position: center center;
-		}
-	}
-	/* Use contain at 1280px and above */
-	@media (min-width: 1280px) {
-		.hero-section.compact::before {
-			background-size: contain;
-			transform-origin: center center;
-			background-repeat: no-repeat;
-			background-position: center center;
-			transform: scale(0.8);
-		}
 	}
 </style>

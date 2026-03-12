@@ -152,7 +152,17 @@
 		const key = `${selectedActivityType}${modeKey}` as keyof LeaderboardData['dimensions'];
 		const dimension = leaderboardData.dimensions[key];
 
-		return dimension?.rows || [];
+		const rawRows = dimension?.rows || [];
+
+		// Sort by score (activities as proxy), then participants, then re-rank
+		return [...rawRows]
+			.sort((a, b) => {
+				const scoreA = a.activities + a.co2OffsetKg + a.fuelSavedL;
+				const scoreB = b.activities + b.co2OffsetKg + b.fuelSavedL;
+				if (scoreB !== scoreA) return scoreB - scoreA;
+				return (b.employees ?? 0) - (a.employees ?? 0);
+			})
+			.map((row, i) => ({ ...row, rank: i + 1 }));
 	});
 
 	// Handle activity type selection
@@ -442,14 +452,14 @@
 							<th
 								class="{isMobile
 									? 'px-2 py-2 text-xs'
-									: 'px-6 py-4 text-sm'} text-left font-semibold text-[#0F172A] tracking-wider"
+									: 'px-3 py-3 text-sm'} text-left font-semibold text-[#0F172A] tracking-wider"
 							>
 								#
 							</th>
 							<th
 								class="{isMobile
 									? 'px-2 py-2 text-xs'
-									: 'px-6 py-4 text-sm'} text-left font-semibold text-[#0F172A] tracking-wider"
+									: 'px-3 py-3 text-sm'} text-left font-semibold text-[#0F172A] tracking-wider"
 							>
 								{nameColumnHeader}
 							</th>
@@ -457,7 +467,7 @@
 								<th
 									class="{isMobile
 										? 'px-2 py-2 text-xs'
-										: 'px-6 py-4 text-sm'} text-left font-semibold text-[#0F172A] tracking-wider"
+										: 'px-3 py-3 text-sm'} text-left font-semibold text-[#0F172A] tracking-wider"
 								>
 									{$_('leaderboard.companies')}
 								</th>
@@ -466,7 +476,7 @@
 								<th
 									class="{isMobile
 										? 'px-2 py-2 text-xs'
-										: 'px-6 py-4 text-sm'} text-left font-semibold text-[#0F172A] tracking-wider"
+										: 'px-3 py-3 text-sm'} text-left font-semibold text-[#0F172A] tracking-wider"
 								>
 									{$_('leaderboard.campus')}
 								</th>
@@ -475,7 +485,7 @@
 								<th
 									class="{isMobile
 										? 'px-2 py-2 text-xs'
-										: 'px-6 py-4 text-sm'} text-left font-semibold text-[#0F172A] tracking-wider"
+										: 'px-3 py-3 text-sm'} text-left font-semibold text-[#0F172A] tracking-wider"
 								>
 									{$_('leaderboard.employees')}
 								</th>
@@ -483,7 +493,7 @@
 							<th
 								class="{isMobile
 									? 'px-2 py-2 text-xs'
-									: 'px-6 py-4 text-sm'} text-left font-semibold text-[#0F172A] tracking-wider"
+									: 'px-3 py-3 text-sm'} text-left font-semibold text-[#0F172A] tracking-wider"
 							>
 								{$_('leaderboard.activities')}
 							</th>
@@ -491,14 +501,14 @@
 								<th
 									class="{isMobile
 										? 'px-2 py-2 text-xs'
-										: 'px-6 py-4 text-sm'} text-left font-semibold text-[#0F172A] tracking-wider"
+										: 'px-3 py-3 text-sm'} text-left font-semibold text-[#0F172A] tracking-wider"
 								>
 									{$_('leaderboard.co2Offset')}
 								</th>
 								<th
 									class="{isMobile
 										? 'px-2 py-2 text-xs'
-										: 'px-6 py-4 text-sm'} text-left font-semibold text-[#0F172A] tracking-wider"
+										: 'px-3 py-3 text-sm'} text-left font-semibold text-[#0F172A] tracking-wider"
 								>
 									{$_('leaderboard.fuelSaved')}
 								</th>
@@ -563,7 +573,7 @@
 									}}
 								>
 									<!-- Rank -->
-									<td class="{isMobile ? 'px-2 py-2' : 'px-6 py-4'} whitespace-nowrap">
+									<td class="{isMobile ? 'px-2 py-2' : 'px-3 py-3'} whitespace-nowrap">
 										<div class="flex items-center">
 											{#if row.rank === 1}
 												<svg
@@ -628,14 +638,14 @@
 									</td>
 
 									<!-- Employee Name (placeholder) -->
-									<td class="{isMobile ? 'px-2 py-2' : 'px-6 py-4'} whitespace-nowrap">
-										<div class="flex items-center {isMobile ? 'gap-1.5' : 'gap-3'}">
+									<td class="{isMobile ? 'px-2 py-2' : 'px-3 py-3'} max-w-[200px] lg:max-w-[300px]">
+										<div class="flex items-center {isMobile ? 'gap-1.5' : 'gap-2'}">
 											<div
 												class="{isMobile
 													? 'w-6 h-6'
-													: 'w-10 h-10'} rounded-full bg-green-500 flex-shrink-0"
+													: 'w-8 h-8'} rounded-full bg-green-500 flex-shrink-0"
 											></div>
-											<span class="{isMobile ? 'text-xs' : 'text-sm'} text-gray-900 font-medium"
+											<span class="{isMobile ? 'text-xs' : 'text-sm'} text-gray-900 font-medium truncate"
 												>{row.name}</span
 											>
 										</div>
@@ -643,7 +653,7 @@
 
 									{#if context === 'city'}
 										<!-- Companies -->
-										<td class="{isMobile ? 'px-2 py-2' : 'px-6 py-4'} whitespace-nowrap">
+										<td class="{isMobile ? 'px-2 py-2' : 'px-3 py-3'} whitespace-nowrap">
 											<span class="{isMobile ? 'text-xs' : 'text-sm'} text-gray-700"
 												>{row.companies ?? 0}</span
 											>
@@ -652,7 +662,7 @@
 
 									{#if context !== 'city'}
 										<!-- Campus -->
-										<td class="{isMobile ? 'px-2 py-2' : 'px-6 py-4'} whitespace-nowrap">
+										<td class="{isMobile ? 'px-2 py-2' : 'px-3 py-3'} whitespace-nowrap">
 											<span class="{isMobile ? 'text-xs' : 'text-sm'} text-gray-700 font-medium">
 												{row.location || row.campus || 'N/A'}
 											</span>
@@ -661,7 +671,7 @@
 
 									{#if context === 'corporation'}
 										<!-- Employees -->
-										<td class="{isMobile ? 'px-2 py-2' : 'px-6 py-4'} whitespace-nowrap">
+										<td class="{isMobile ? 'px-2 py-2' : 'px-3 py-3'} whitespace-nowrap">
 											<span class="{isMobile ? 'text-xs' : 'text-sm'} text-gray-700"
 												>{formatNumber(row.employees ?? 0)}</span
 											>
@@ -669,7 +679,7 @@
 									{/if}
 
 									<!-- Activities -->
-									<td class="{isMobile ? 'px-2 py-2' : 'px-6 py-4'} whitespace-nowrap">
+									<td class="{isMobile ? 'px-2 py-2' : 'px-3 py-3'} whitespace-nowrap">
 										<div class="flex items-center {isMobile ? 'gap-1' : 'gap-2'}">
 											<img
 												src="/assets/icons/activities.svg"
@@ -684,7 +694,7 @@
 
 									{#if selectedActivityType !== 'recreation'}
 										<!-- CO2 Offset -->
-										<td class="{isMobile ? 'px-2 py-2' : 'px-6 py-4'} whitespace-nowrap">
+										<td class="{isMobile ? 'px-2 py-2' : 'px-3 py-3'} whitespace-nowrap">
 											<div class="flex items-center {isMobile ? 'gap-1' : 'gap-2'}">
 												<img
 													src="/assets/icons/co2.svg"
@@ -698,7 +708,7 @@
 										</td>
 
 										<!-- Fuel Saved -->
-										<td class="{isMobile ? 'px-2 py-2' : 'px-6 py-4'} whitespace-nowrap">
+										<td class="{isMobile ? 'px-2 py-2' : 'px-3 py-3'} whitespace-nowrap">
 											<div class="flex items-center {isMobile ? 'gap-1' : 'gap-2'}">
 												<img
 													src="/assets/icons/fuel.svg"
