@@ -73,6 +73,26 @@
 	let loadingCompany = $state(false);
 	let isMobile = $state(false);
 
+	// Countdown timer for challenge start
+	const TARGET_DATE = new Date('2026-03-15T00:00:00+05:30');
+	let days = $state(0);
+	let hours = $state(0);
+	let minutes = $state(0);
+	let countdownDone = $state(false);
+	let countdownInterval: ReturnType<typeof setInterval> | null = null;
+
+	function updateCountdown() {
+		const diff = TARGET_DATE.getTime() - Date.now();
+		if (diff <= 0) {
+			countdownDone = true;
+			if (countdownInterval) clearInterval(countdownInterval);
+			return;
+		}
+		days = Math.floor(diff / (1000 * 60 * 60 * 24));
+		hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+		minutes = Math.floor((diff / (1000 * 60)) % 60);
+	}
+
 	function checkMobile() {
 		isMobile = checkIsMobile();
 	}
@@ -179,10 +199,13 @@
 
 	onMount(() => {
 		checkMobile();
+		updateCountdown();
+		countdownInterval = setInterval(updateCountdown, 60000);
 		const resizeHandler = () => checkMobile();
 		window.addEventListener('resize', resizeHandler);
 		return () => {
 			window.removeEventListener('resize', resizeHandler);
+			if (countdownInterval) clearInterval(countdownInterval);
 		};
 	});
 </script>
@@ -365,6 +388,32 @@
 		<Map {selectedCorpId} {selectedCompanyId} name={selectedCorporationName} {isMobile} />
 		<SocialActivity entityName={selectedCorporationName} {isMobile} />
 	{:else}
+		{#if !countdownDone}
+			<div class="bg-[#FFFCF8] {isMobile ? 'px-3 sm:px-4 pt-3 sm:pt-4' : 'px-6 pt-4'}">
+				<div class="mx-auto {isMobile ? 'max-w-[95%]' : 'max-w-[80%]'}">
+					<div class="rounded-xl bg-gradient-to-r from-[#0D6BA3] to-[#1a85c7] p-4 sm:p-6 text-center text-white">
+						<p class="text-xs sm:text-sm font-medium text-white/80 mb-2">The Hejje Gala Corporate Challenge begins in</p>
+						<div class="flex items-center justify-center gap-3 sm:gap-5">
+							<div class="flex flex-col items-center">
+								<span class="text-2xl sm:text-3xl lg:text-4xl font-bold">{days}</span>
+								<span class="text-[10px] sm:text-xs text-white/70 uppercase tracking-wider">days</span>
+							</div>
+							<span class="text-2xl sm:text-3xl font-bold text-white/40">:</span>
+							<div class="flex flex-col items-center">
+								<span class="text-2xl sm:text-3xl lg:text-4xl font-bold">{hours}</span>
+								<span class="text-[10px] sm:text-xs text-white/70 uppercase tracking-wider">hours</span>
+							</div>
+							<span class="text-2xl sm:text-3xl font-bold text-white/40">:</span>
+							<div class="flex flex-col items-center">
+								<span class="text-2xl sm:text-3xl lg:text-4xl font-bold">{minutes}</span>
+								<span class="text-[10px] sm:text-xs text-white/70 uppercase tracking-wider">mins</span>
+							</div>
+						</div>
+						<p class="text-xs sm:text-sm text-white/70 mt-2">Scores on the leaderboard will update once the challenge is live.</p>
+					</div>
+				</div>
+			</div>
+		{/if}
 		<div class="bg-[#FFFCF8] {isMobile ? 'px-3 sm:px-4 py-2 sm:py-3' : 'px-6 py-4'}">
 			<div class="mx-auto {isMobile ? 'max-w-[95%]' : 'max-w-[80%]'}">
 				<div

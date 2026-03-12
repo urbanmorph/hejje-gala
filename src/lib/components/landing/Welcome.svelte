@@ -24,7 +24,7 @@
 					class="relative z-10 flex h-48 w-48 sm:h-64 sm:w-64 lg:h-80 lg:w-80 xl:h-[500px] xl:w-[500px] items-center justify-center"
 				>
 					<img
-						src="/assets/circle.png"
+						src="/assets/circle.webp"
 						alt="Active Mobility"
 						class="h-3/5 w-3/5 object-contain"
 					/>

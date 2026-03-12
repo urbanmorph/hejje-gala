@@ -255,7 +255,7 @@
 							<!-- Phone image in front -->
 							<div class="relative z-20">
 								<img
-									src="/assets/phone.png"
+									src="/assets/phone.webp"
 									alt="App Screen"
 									class="h-[500px] w-auto object-contain drop-shadow-2xl lg:h-[550px]"
 								/>

@@ -150,18 +150,18 @@
 	const formatCount = (value: number | null | undefined) =>
 		typeof value === 'number' && Number.isFinite(value) ? value.toLocaleString('en-IN') : '—';
 
-	const bannerImage = $derived(compact ? '/assets/about-banner.png' : '/assets/landing-banner.png');
+	const bannerImage = $derived(compact ? '/assets/about-banner.webp' : '/assets/landing-banner.webp');
 </script>
 
 <Header {isMobile} {disabledLabels} />
 <section class="bg-white">
 	{#if compact}
 		<div
-			class="hero-section relative h-90 lg:h-120 mx-auto max-w-[90%]"
-			style="--banner-image: url('{bannerImage}')"
+			class="hero-section relative mx-auto max-w-[90%]"
+			style="--banner-image: url('{bannerImage}'); aspect-ratio: 1782 / 500;"
 		>
 			<div
-				class="relative z-10 mx-auto max-w-[95%] lg:max-w-[80%] px-6 py-16 overflow-x-hidden"
+				class="relative z-10 mx-auto max-w-[95%] lg:max-w-[80%] px-6 py-8 lg:py-12 overflow-x-hidden"
 			>
 				<div class="hero-text text-center">
 					<h1 class="hidden mb-6 text-3xl leading-tight font-bold text-white lg:text-5xl xl:text-6xl max-w-4xl mx-auto">
@@ -319,7 +319,7 @@
 		position: absolute;
 		inset: 0;
 		background-image: var(--banner-image);
-		background-size: 100% auto;
+		background-size: cover;
 		background-position: top center;
 		background-repeat: no-repeat;
 		/* Darken only the image pixels using filter */

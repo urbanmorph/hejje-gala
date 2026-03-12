@@ -17,7 +17,7 @@
 		mode,
 		name = '',
 		description = '',
-		image = '/assets/circle.png',
+		image = '/assets/circle.webp',
 		location = '',
 		sector = '',
 		employees,

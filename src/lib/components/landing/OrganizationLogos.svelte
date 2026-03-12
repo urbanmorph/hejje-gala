@@ -8,7 +8,7 @@
 	const logos = [
 		{
 			name: 'GBA',
-			src: '/assets/gba-karnataka.png',
+			src: '/assets/gba-karnataka.webp',
 			alt: 'Greater Bengaluru Authority',
 			scale: 1.5
 		},

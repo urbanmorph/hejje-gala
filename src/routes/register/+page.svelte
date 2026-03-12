@@ -334,7 +334,7 @@
 
 <div
 	class="relative min-h-screen overflow-hidden bg-cover bg-center"
-	style="background-image: url('/assets/registration-banner.png');"
+	style="background-image: url('/assets/registration-banner.webp');"
 >
 	<Header />
 
