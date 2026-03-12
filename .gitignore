@@ -24,4 +24,5 @@ vite.config.ts.timestamp-*
 
 __pycache__
 src/lib/assets/*
+supporting-docs/
 

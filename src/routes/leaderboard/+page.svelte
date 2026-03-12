@@ -8,6 +8,8 @@
 	import Map from '$lib/components/landing/Map.svelte';
 	import SocialActivity from '$lib/components/landing/SocialActivity.svelte';
 	import Footer from '$lib/components/landing/Footer.svelte';
+	import AppStoreButtons from '$lib/components/landing/AppStoreButtons.svelte';
+	import { urls } from '$lib/config/urls';
 	import { _ } from 'svelte-i18n';
 	import { isMobile as checkIsMobile } from '$lib/utils';
 
@@ -246,6 +248,27 @@
 		<CompanyStats dataUrl={employeeDataUrl} companyId={selectedCompanyId} {isMobile} />
 		<Map {selectedCorpId} {selectedCompanyId} name={selectedCompanyName} {isMobile} />
 		<SocialActivity entityName={selectedCompanyName} {isMobile} />
+
+		<!-- Join CTA (compact) -->
+		<section class="bg-[#0D6BA3] py-6 sm:py-8">
+			<div class="mx-auto max-w-[95%] xl:max-w-[80%] px-3 sm:px-4 md:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+				<div class="text-center sm:text-left">
+					<p class="text-base sm:text-lg font-bold text-white">Want to join the challenge?</p>
+					<p class="text-xs sm:text-sm text-white/80">Download the altmo app or register your company to get started.</p>
+				</div>
+				<div class="flex items-center gap-3">
+					<a
+						href="https://altmo.app/users/sign_up?corporates=true&plan_name=corporate&verification=pending"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="rounded-full bg-white px-4 sm:px-5 py-2 text-xs sm:text-sm font-semibold text-[#0D6BA3] hover:bg-gray-100 transition-colors whitespace-nowrap"
+					>
+						Get Started with altmo
+					</a>
+					<AppStoreButtons size="sm" />
+				</div>
+			</div>
+		</section>
 	{:else if selectedCorpId}
 		{@const corpId = selectedCorpId}
 		{@const leaderboardUrl = `https://assets.hejjegala.in/leaderboard/${corpId === 'all' ? 'All.json' : `${corpId}.json`}`}
@@ -317,6 +340,28 @@
 			context="corporation"
 			{isMobile}
 		/>
+
+		<!-- Join CTA (compact) -->
+		<section class="bg-[#0D6BA3] py-6 sm:py-8">
+			<div class="mx-auto max-w-[95%] xl:max-w-[80%] px-3 sm:px-4 md:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+				<div class="text-center sm:text-left">
+					<p class="text-base sm:text-lg font-bold text-white">Want to join the challenge?</p>
+					<p class="text-xs sm:text-sm text-white/80">Download the altmo app or register your company to get started.</p>
+				</div>
+				<div class="flex items-center gap-3">
+					<a
+						href="https://altmo.app/users/sign_up?corporates=true&plan_name=corporate&verification=pending"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="rounded-full bg-white px-4 sm:px-5 py-2 text-xs sm:text-sm font-semibold text-[#0D6BA3] hover:bg-gray-100 transition-colors whitespace-nowrap"
+					>
+						Get Started with altmo
+					</a>
+					<AppStoreButtons size="sm" />
+				</div>
+			</div>
+		</section>
+
 		<Map {selectedCorpId} {selectedCompanyId} name={selectedCorporationName} {isMobile} />
 		<SocialActivity entityName={selectedCorporationName} {isMobile} />
 	{:else}
@@ -345,17 +390,64 @@
 			context="city"
 			{isMobile}
 		/>
-		<div class="bg-[#FFFCF8] {isMobile ? 'px-3 sm:px-4 py-2 sm:py-3' : 'px-6 py-4'}">
-			<div class="mx-auto {isMobile ? 'max-w-[95%]' : 'max-w-[80%]'}">
+
+		<!-- Join the Challenge CTA -->
+		<section class="bg-gradient-to-br from-[#0D6BA3] via-[#1a7bb8] to-[#0a5a8a] py-8 sm:py-10 lg:py-14">
+			<div class="mx-auto max-w-[95%] xl:max-w-[80%] px-3 sm:px-4 md:px-6">
+				<div class="text-center mb-6 sm:mb-8">
+					<h2 class="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-white mb-2">
+						Your company not on the board yet?
+					</h2>
+					<p class="text-sm sm:text-base lg:text-lg text-white/80 max-w-2xl mx-auto">
+						Sign up on altmo and join the Hejje Gala challenge. Track your walks, rides, and commutes — every step counts.
+					</p>
+				</div>
+
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 max-w-4xl mx-auto">
+					<!-- For Companies -->
+					<div class="rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 p-4 sm:p-6">
+						<div class="flex items-center gap-2 mb-3">
+							<span class="text-lg sm:text-xl">🏢</span>
+							<h3 class="text-base sm:text-lg font-bold text-white">For Companies</h3>
+						</div>
+						<p class="text-xs sm:text-sm text-white/80 mb-4">
+							Get access to the company dashboard, rally your employees, and climb the leaderboard. Show Bengaluru what your team is made of.
+						</p>
+						<a
+							href="https://altmo.app/users/sign_up?corporates=true&plan_name=corporate&verification=pending"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="inline-flex items-center gap-2 rounded-full bg-white px-4 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold text-[#0D6BA3] hover:bg-gray-100 transition-colors"
+						>
+							Get Started with altmo
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 sm:h-4 sm:w-4" viewBox="0 0 20 20" fill="currentColor">
+								<path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+							</svg>
+						</a>
+					</div>
+
+					<!-- For Individuals -->
+					<div class="rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 p-4 sm:p-6">
+						<div class="flex items-center gap-2 mb-3">
+							<span class="text-lg sm:text-xl">🚶</span>
+							<h3 class="text-base sm:text-lg font-bold text-white">For Individuals</h3>
+						</div>
+						<p class="text-xs sm:text-sm text-white/80 mb-4">
+							Download the altmo app, log your daily walks and rides, and help your company — or your neighbourhood — lead the way.
+						</p>
+						<AppStoreButtons size="sm" />
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<div class="bg-[#FFFCF8] px-3 sm:px-4 md:px-6 py-2 sm:py-3 lg:py-4">
+			<div class="mx-auto max-w-[95%] xl:max-w-[80%]">
 				<div
-					class="flex items-center justify-center {isMobile
-						? 'mb-3 sm:mb-4'
-						: 'mb-8'} flex-wrap gap-2 sm:gap-4"
+					class="flex items-center justify-center mb-3 sm:mb-4 lg:mb-8 flex-wrap gap-2 sm:gap-4"
 				>
 					<h1
-						class="{isMobile
-							? 'text-xl sm:text-2xl'
-							: 'text-4xl'} font-bold text-[#DB3E3E] text-center"
+						class="text-xl sm:text-2xl lg:text-4xl font-bold text-[#DB3E3E] text-center"
 					>
 						{$_('leaderboard.companyLeaderboard')}
 					</h1>

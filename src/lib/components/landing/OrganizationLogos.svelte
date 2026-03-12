@@ -18,22 +18,14 @@
 	];
 </script>
 
-{#if isMobile}
-	<!-- Mobile: 2 rows layout with larger size and spacing -->
-	<div class="grid grid-cols-2 gap-8 lg:gap-16 items-center justify-center">
-		{#each logos as logo}
-			<div class="flex w-auto items-center justify-center" style="height: {12 * logo.scale}px">
-				<img src={logo.src} alt={logo.alt} class="h-full w-auto object-contain scale-60" />
-			</div>
-		{/each}
-	</div>
-{:else}
-	<!-- Desktop: single row layout -->
-	<div class="flex items-center gap-4 lg:gap-6 xl:gap-8">
-		{#each logos as logo}
-			<div class="flex w-auto items-center justify-center" style="height: {32 * logo.scale}px">
-				<img src={logo.src} alt={logo.alt} class="h-full w-auto object-contain scale-80" />
-			</div>
-		{/each}
-	</div>
-{/if}
+<div class="flex flex-wrap items-center justify-center gap-6 sm:gap-8 lg:gap-10 xl:gap-12">
+	{#each logos as logo}
+		<div class="flex items-center justify-center" style="height: {logo.scale * 24}px">
+			<img
+				src={logo.src}
+				alt={logo.alt}
+				class="h-full w-auto object-contain scale-75 sm:scale-80 lg:scale-90 xl:scale-100"
+			/>
+		</div>
+	{/each}
+</div>

@@ -6,6 +6,7 @@
 	import OrganizationLogos from './OrganizationLogos.svelte';
 	import Header from './Header.svelte';
 	import { _ } from 'svelte-i18n';
+	import type { EventsData } from '$lib/types/event';
 
 	interface Props {
 		title?: string;
@@ -36,6 +37,34 @@
 	let stats = $state(null);
 	let statsError = $state(null);
 	let statsLoading = $state(true);
+	let activitiesCount = $state<number | null>(null);
+
+	const TARGET_DATE = new Date('2026-03-15T00:00:00+05:30');
+
+	let days = $state(0);
+	let hours = $state(0);
+	let minutes = $state(0);
+	let seconds = $state(0);
+	let countdownDone = $state(false);
+	let countdownInterval: ReturnType<typeof setInterval> | null = null;
+
+	function updateCountdown() {
+		const now = new Date();
+		const diff = TARGET_DATE.getTime() - now.getTime();
+		if (diff <= 0) {
+			days = 0;
+			hours = 0;
+			minutes = 0;
+			seconds = 0;
+			countdownDone = true;
+			if (countdownInterval) clearInterval(countdownInterval);
+			return;
+		}
+		days = Math.floor(diff / (1000 * 60 * 60 * 24));
+		hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+		minutes = Math.floor((diff / (1000 * 60)) % 60);
+		seconds = Math.floor((diff / 1000) % 60);
+	}
 
 	async function loadRegistrationStats() {
 		try {
@@ -76,8 +105,46 @@
 		}
 	}
 
+	async function loadActivitiesCount() {
+		try {
+			const isLocal = typeof window !== 'undefined' &&
+				(window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+
+			let data: EventsData | null = null;
+
+			if (!isLocal) {
+				try {
+					const res = await fetch(urls.eventsJson);
+					if (res.ok) data = await res.json();
+				} catch {
+					// Remote failed
+				}
+			}
+
+			if (!data) {
+				try {
+					const res = await fetch('/data/sample-events.json');
+					if (res.ok) data = await res.json();
+				} catch {
+					// Local fallback also failed
+				}
+			}
+
+			activitiesCount = data?.events?.length ?? 0;
+		} catch (err) {
+			console.error('Error loading activities count', err);
+			activitiesCount = 0;
+		}
+	}
+
 	onMount(() => {
 		loadRegistrationStats();
+		loadActivitiesCount();
+		updateCountdown();
+		countdownInterval = setInterval(updateCountdown, 1000);
+		return () => {
+			if (countdownInterval) clearInterval(countdownInterval);
+		};
 	});
 
 	const formatCount = (value: number | null | undefined) =>
@@ -90,32 +157,24 @@
 <section
 	class="hero-section relative {compact
 		? 'h-90 lg:h-120'
-		: isMobile
-			? 'min-h-auto'
-			: 'h-[73vh]'} overflow-hidden bg-[#FFFCF8] {isMobile && !compact
-		? 'flex flex-col'
-		: ''} {compact ? '' : 'compact'}"
+		: 'h-[50vh] lg:h-[65vh] xl:h-[73vh]'} overflow-hidden bg-[#FFFCF8] {compact ? '' : 'compact'}"
 	style="--banner-image: url('{bannerImage}')"
 >
 	<div
-		class="relative z-10 mx-auto {isMobile ? 'max-w-[95%]' : 'max-w-[80%]'} px-6 {compact
+		class="relative z-10 mx-auto max-w-[95%] lg:max-w-[80%] px-6 {compact
 			? 'py-16'
-			: isMobile
-				? 'pt-12 pb-8'
-				: 'pt-16 pb-8'} {isMobile && !compact ? 'flex-1' : ''} overflow-x-hidden"
+			: 'pt-12 pb-8 lg:pt-16'} overflow-x-hidden"
 	>
-		<div class="text-center">
+		<div class="hero-text text-center">
 			<h1
 				class="{compact
 					? 'hidden mb-6 text-3xl'
-					: isMobile
-						? 'mt-8 mb-16 text-2xl'
-						: 'mt-16 mb-20 text-2xl'} leading-tight font-bold text-white lg:text-6xl max-w-4xl mx-auto"
+					: 'mt-2 mb-4 text-2xl lg:mt-4 lg:mb-6'} leading-tight font-bold text-white lg:text-5xl xl:text-6xl max-w-4xl mx-auto"
 			>
 				{translatedTitle}
 			</h1>
 			{#if showCTA}
-				<div class={isMobile ? 'mb-6 flex justify-center' : 'mb-12'}>
+				<div class="mb-6 flex justify-center lg:mb-12">
 					{#if postRegistration}
 						<CTAButton text={$_('common.viewLeaderboard')} variant="pink" href="/leaderboard" />
 					{:else}
@@ -129,57 +188,69 @@
 			{/if}
 		</div>
 	</div>
+
+	{#if !compact}
+		<div class="hero-text absolute bottom-6 left-0 right-0 z-10 flex justify-center gap-4 lg:bottom-10 lg:gap-6">
+			{#if countdownDone}
+				<span class="text-2xl font-bold text-white lg:text-5xl xl:text-6xl">
+					{$_('hero.challengeHasBegun')}
+				</span>
+			{:else}
+				<div class="flex flex-col items-center">
+					<span class="text-2xl font-bold text-white lg:text-5xl xl:text-6xl">{String(days).padStart(2, '0')}</span>
+					<span class="text-xs font-medium uppercase tracking-wider text-white/80 lg:text-sm">{$_('countdownTimer.days')}</span>
+				</div>
+				<span class="text-2xl font-bold text-white lg:text-5xl xl:text-6xl">:</span>
+				<div class="flex flex-col items-center">
+					<span class="text-2xl font-bold text-white lg:text-5xl xl:text-6xl">{String(hours).padStart(2, '0')}</span>
+					<span class="text-xs font-medium uppercase tracking-wider text-white/80 lg:text-sm">{$_('countdownTimer.hours')}</span>
+				</div>
+				<span class="text-2xl font-bold text-white lg:text-5xl xl:text-6xl">:</span>
+				<div class="flex flex-col items-center">
+					<span class="text-2xl font-bold text-white lg:text-5xl xl:text-6xl">{String(minutes).padStart(2, '0')}</span>
+					<span class="text-xs font-medium uppercase tracking-wider text-white/80 lg:text-sm">{$_('countdownTimer.minutes')}</span>
+				</div>
+				<span class="text-2xl font-bold text-white lg:text-5xl xl:text-6xl">:</span>
+				<div class="flex flex-col items-center">
+					<span class="text-2xl font-bold text-white lg:text-5xl xl:text-6xl">{String(seconds).padStart(2, '0')}</span>
+					<span class="text-xs font-medium uppercase tracking-wider text-white/80 lg:text-sm">{$_('countdownTimer.seconds')}</span>
+				</div>
+			{/if}
+		</div>
+	{/if}
 </section>
 
 {#if !compact}
-	{#if !isMobile}
-		<!-- Powered By and10ogos row - Desktop: absolute positioned above blue section -->
-		<div class=" z-20 transform w-[100%] max-w-full px-6">
-			<div
-				class="flex items-center gap-4 lg:gap-6 xl:gap-8 py-3 flex-wrap xl:flex-nowrap justify-center"
-			>
-				<p class="text-xl lg:text-2xl font-medium tracking-wider text-black whitespace-nowrap">
-					{translatedPoweredBy}
-				</p>
-				<OrganizationLogos {isMobile} />
-			</div>
+	<!-- Powered By and Logos row -->
+	<div class="z-20 w-full bg-[#FFFCF8] px-6 py-3 lg:py-4">
+		<div
+			class="flex items-center gap-4 lg:gap-6 xl:gap-8 flex-wrap lg:flex-nowrap justify-center"
+		>
+			<p class="text-base lg:text-xl xl:text-2xl font-medium tracking-wider text-black whitespace-nowrap">
+				{translatedPoweredBy}
+			</p>
+			<OrganizationLogos {isMobile} />
 		</div>
-	{/if}
-
-	{#if isMobile}
-		<!-- Powered By and Logos row - Mobile: relative positioned above blue section over white background -->
-		<div class="relative z-20 bg-[#FFFCF8] py-4 mt-auto">
-			<div class="mx-auto max-w-[95%] px-6">
-				<div class="flex flex-col items-center gap-3">
-					<p class="text-base font-medium tracking-wider text-black">
-						{translatedPoweredBy}
-					</p>
-					<OrganizationLogos {isMobile} />
-				</div>
-			</div>
-		</div>
-	{/if}
+	</div>
 
 	<!-- Company and Corporation count - Full width blue background like Header -->
-	<div class="relative mt-6 left-0 right-0 bg-[#0D6BA3] z-20">
+	<div class="relative mt-2 lg:mt-4 left-0 right-0 bg-[#0D6BA3] z-20">
 		<div
-			class="mx-auto {isMobile ? 'max-w-[95%]' : 'max-w-[80%]'} px-6 {isMobile ? 'py-4' : 'py-3'}"
+			class="mx-auto max-w-[95%] xl:max-w-[80%] px-6 py-3 lg:py-4"
 		>
 			{#if postRegistration}
 				<div class="flex justify-center">
 					<span
-						class="{isMobile
-							? 'text-xl'
-							: 'text-2xl'} font-bold text-white uppercase tracking-wider"
+						class="text-xl xl:text-2xl font-bold text-white uppercase tracking-wider"
 					>
 						{$_('hero.challengeHasBegun')}
 					</span>
 				</div>
 			{:else}
-				<div class="flex justify-center {isMobile ? 'gap-8' : 'gap-20'}">
+				<div class="flex justify-center gap-8 lg:gap-12 xl:gap-20">
 					<!-- Companies -->
 					<div class="flex flex-col items-center">
-						<span class="{isMobile ? 'text-xl' : 'text-2xl'} font-bold text-white">
+						<span class="text-xl xl:text-2xl font-bold text-white">
 							{#if statsLoading}
 								<span class="inline-block h-5 w-16 animate-pulse rounded bg-white/30"></span>
 							{:else}
@@ -187,16 +258,14 @@
 							{/if}
 						</span>
 						<span
-							class="{isMobile
-								? 'text-sm'
-								: 'text-sm'} font-medium text-white uppercase tracking-wider mt-0.5"
+							class="text-sm font-medium text-white uppercase tracking-wider mt-0.5"
 						>
 							{$_('welcome.companies')}
 						</span>
 					</div>
 					<!-- Corporations -->
 					<div class="flex flex-col items-center">
-						<span class="{isMobile ? 'text-xl' : 'text-2xl'} font-bold text-white">
+						<span class="text-xl xl:text-2xl font-bold text-white">
 							{#if statsLoading}
 								<span class="inline-block h-5 w-16 animate-pulse rounded bg-white/30"></span>
 							{:else}
@@ -204,11 +273,24 @@
 							{/if}
 						</span>
 						<span
-							class="{isMobile
-								? 'text-sm'
-								: 'text-sm'} font-medium text-white uppercase tracking-wider mt-0.5"
+							class="text-sm font-medium text-white uppercase tracking-wider mt-0.5"
 						>
 							{$_('welcome.corporations')}
+						</span>
+					</div>
+					<!-- Activities -->
+					<div class="flex flex-col items-center">
+						<span class="text-xl xl:text-2xl font-bold text-white">
+							{#if activitiesCount === null}
+								<span class="inline-block h-5 w-16 animate-pulse rounded bg-white/30"></span>
+							{:else}
+								{formatCount(activitiesCount)}
+							{/if}
+						</span>
+						<span
+							class="text-sm font-medium text-white uppercase tracking-wider mt-0.5"
+						>
+							{$_('common.activities')}
 						</span>
 					</div>
 				</div>
@@ -227,6 +309,18 @@
 		background-position: center;
 		background-repeat: no-repeat;
 		z-index: 0;
+	}
+
+	.hero-section::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(to bottom, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.3) 100%);
+		z-index: 1;
+	}
+
+	.hero-text {
+		text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 	}
 
 	/* Use cover below 1280px */

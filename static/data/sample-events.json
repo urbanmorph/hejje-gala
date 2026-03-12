@@ -1,0 +1,111 @@
+{
+	"updatedAt": "2026-03-12T14:22:05.730Z",
+	"events": [
+		{
+			"id": "evt-001",
+			"title": "Cubbon Park Morning Walk",
+			"description": "Join us for a guided walk through Cubbon Park exploring heritage trees, colonial architecture, and green spaces. Open to all ages.",
+			"type": "Walk",
+			"startDate": "2026-03-20T07:00:00+05:30",
+			"endDate": "2026-03-20T09:00:00+05:30",
+			"venue": "Cubbon Park Main Gate, MG Road",
+			"rsvpUrl": "https://docs.google.com/forms/d/e/example1/viewform",
+			"websiteUrl": "",
+			"posterUrl": "",
+			"organizer": "Walkaluru"
+		},
+		{
+			"id": "evt-002",
+			"title": "ORR Cycling Rally",
+			"description": "A community cycling rally along the Outer Ring Road to advocate for dedicated cycle lanes. Helmets mandatory.",
+			"type": "Cycle",
+			"startDate": "2026-03-22T06:00:00+05:30",
+			"endDate": "2026-03-22T09:00:00+05:30",
+			"venue": "Silk Board Junction, Hosur Road",
+			"rsvpUrl": "https://docs.google.com/forms/d/e/example2/viewform",
+			"websiteUrl": "https://bengalurubicycleclub.org",
+			"posterUrl": "",
+			"organizer": "Bengaluru Bicycle Club"
+		},
+		{
+			"id": "evt-003",
+			"title": "Jayanagar Heritage Walk",
+			"description": "Discover the rich history of Jayanagar through its streets, parks, and local landmarks. A 5km leisurely walk.",
+			"type": "Walk",
+			"startDate": "2026-03-25T07:30:00+05:30",
+			"endDate": "2026-03-25T09:30:00+05:30",
+			"venue": "Jayanagar 4th Block Complex",
+			"rsvpUrl": "",
+			"websiteUrl": "",
+			"posterUrl": "",
+			"organizer": "Hejje Gala Champions"
+		},
+		{
+			"id": "evt-004",
+			"title": "World Bicycle Day Community Ride",
+			"description": "Celebrate World Bicycle Day with a fun community ride across the city. Refreshments provided at the finish line.",
+			"type": "Cycle",
+			"startDate": "2026-04-03T06:30:00+05:30",
+			"endDate": "2026-04-03T10:00:00+05:30",
+			"venue": "Kanteerava Stadium, Kasturba Road",
+			"rsvpUrl": "https://docs.google.com/forms/d/e/example4/viewform",
+			"websiteUrl": "",
+			"posterUrl": "",
+			"organizer": "Bicycle Mayor of Bengaluru"
+		},
+		{
+			"id": "evt-005",
+			"title": "Street Audit & Walkability Workshop",
+			"description": "Learn how to conduct street audits and assess walkability in your neighbourhood. Hands-on workshop with WRI India experts.",
+			"type": "Other",
+			"startDate": "2026-04-05T10:00:00+05:30",
+			"endDate": "2026-04-05T13:00:00+05:30",
+			"venue": "WRI India Office, Vittal Mallya Road",
+			"rsvpUrl": "https://docs.google.com/forms/d/e/example5/viewform",
+			"websiteUrl": "https://wri-india.org",
+			"posterUrl": "",
+			"organizer": "WRI India"
+		},
+		{
+			"id": "evt-006",
+			"title": "Lalbagh Botanical Garden Walk",
+			"description": "An early morning nature walk through Lalbagh, guided by a botanist. Learn about the diverse flora and the garden's 250-year history.",
+			"type": "Walk",
+			"startDate": "2026-04-10T06:30:00+05:30",
+			"endDate": "2026-04-10T08:30:00+05:30",
+			"venue": "Lalbagh Main Gate, Mavalli",
+			"rsvpUrl": "",
+			"websiteUrl": "",
+			"posterUrl": "",
+			"organizer": "Urban Morph"
+		},
+		{
+			"id": "evt-mmnk1y6v-n7nl",
+			"title": "Final Test Event",
+			"description": "",
+			"type": "Cycle",
+			"startDate": "2026-03-25T06:30:00+05:30",
+			"endDate": "2026-03-25T06:30:00+05:30",
+			"venue": "Cubbon Park",
+			"rsvpUrl": "",
+			"websiteUrl": "",
+			"mapsUrl": "",
+			"posterUrl": "",
+			"organizer": "Tester"
+		},
+		{
+			"id": "evt-mmnk42hp-wzgj",
+			"title": "Test event",
+			"description": "Bring your own bottle",
+			"type": "Walk",
+			"startDate": "2026-03-14T07:00:00+05:30",
+			"endDate": "2026-03-14T10:00:00+05:30",
+			"venue": "Phoenix market city",
+			"rsvpUrl": "",
+			"websiteUrl": "",
+			"mapsUrl": "",
+			"posterUrl": "/data/posters/evt-mmnk42hp-wzgj.jpg",
+			"organizer": "Arun Pai"
+		}
+	]
+}
