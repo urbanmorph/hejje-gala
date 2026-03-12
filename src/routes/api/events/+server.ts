@@ -1,23 +1,12 @@
 import { dev } from '$app/environment';
 import type { RequestHandler, RequestEvent } from '@sveltejs/kit';
 import type { CommunityEvent, EventsData } from '$lib/types/event';
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
-import { join } from 'node:path';
 
 const EVENTS_PATH = 'events/events.json';
 const POSTERS_PREFIX = 'events/posters/';
 
 function getR2Bucket(event: RequestEvent) {
 	return event.platform?.env?.GALA_ASSETS || null;
-}
-
-function getLocalPaths() {
-	const root = process.cwd();
-	return {
-		dataDir: join(root, 'static', 'data'),
-		eventsFile: join(root, 'static', 'data', 'sample-events.json'),
-		postersDir: join(root, 'static', 'data', 'posters')
-	};
 }
 
 function generateEventId(): string {
@@ -47,10 +36,21 @@ async function saveEventsDataR2(r2: R2Bucket, data: EventsData): Promise<void> {
 	});
 }
 
-// --- Local dev storage functions ---
+// --- Local dev storage functions (dynamically import node:fs and node:path) ---
 
-function getEventsDataLocal(): EventsData {
-	const { eventsFile } = getLocalPaths();
+async function getLocalPaths() {
+	const { join } = await import('node:path');
+	const root = process.cwd();
+	return {
+		dataDir: join(root, 'static', 'data'),
+		eventsFile: join(root, 'static', 'data', 'sample-events.json'),
+		postersDir: join(root, 'static', 'data', 'posters')
+	};
+}
+
+async function getEventsDataLocal(): Promise<EventsData> {
+	const { readFileSync, existsSync } = await import('node:fs');
+	const { eventsFile } = await getLocalPaths();
 	try {
 		if (existsSync(eventsFile)) {
 			const content = readFileSync(eventsFile, 'utf-8');
@@ -62,8 +62,9 @@ function getEventsDataLocal(): EventsData {
 	return { updatedAt: new Date().toISOString(), events: [] };
 }
 
-function saveEventsDataLocal(data: EventsData): void {
-	const { dataDir, eventsFile } = getLocalPaths();
+async function saveEventsDataLocal(data: EventsData): Promise<void> {
+	const { writeFileSync, mkdirSync, existsSync } = await import('node:fs');
+	const { dataDir, eventsFile } = await getLocalPaths();
 	data.updatedAt = new Date().toISOString();
 	console.log(`[dev] Saving to: ${eventsFile}`);
 	if (!existsSync(dataDir)) {
@@ -74,7 +75,9 @@ function saveEventsDataLocal(data: EventsData): void {
 }
 
 async function savePosterLocal(id: string, poster: File): Promise<string> {
-	const { postersDir } = getLocalPaths();
+	const { writeFileSync, mkdirSync, existsSync } = await import('node:fs');
+	const { join } = await import('node:path');
+	const { postersDir } = await getLocalPaths();
 	if (!existsSync(postersDir)) {
 		mkdirSync(postersDir, { recursive: true });
 	}
@@ -219,9 +222,9 @@ export const POST: RequestHandler = async (event) => {
 
 		// Read existing events, append, save
 		if (isLocal) {
-			const eventsData = getEventsDataLocal();
+			const eventsData = await getEventsDataLocal();
 			eventsData.events.push(newEvent);
-			saveEventsDataLocal(eventsData);
+			await saveEventsDataLocal(eventsData);
 		} else {
 			const eventsData = await getEventsDataR2(r2!);
 			eventsData.events.push(newEvent);
