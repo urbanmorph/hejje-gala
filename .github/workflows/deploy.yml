@@ -24,6 +24,12 @@ jobs:
       - run: mkdir -p src/lib/assets && echo '{"success":true,"companies":[]}' > src/lib/assets/companies-blr.json
 
       - run: pnpm run build
+        env:
+          ALTMO_DOMAIN: placeholder
+          ALTMO_API_KEY: placeholder
+          ALTMO_CHALLENGE_ID: placeholder
+          ALTMO_CITY_ID: placeholder
+          PUBLIC_GOOGLE_MAPS_API_KEY: placeholder
 
       - uses: cloudflare/wrangler-action@v3
         with:
