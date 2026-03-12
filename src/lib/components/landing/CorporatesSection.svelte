@@ -42,8 +42,6 @@
 		minutes = Math.floor((diff / (1000 * 60)) % 60);
 	}
 
-	const allZero = $derived(totalActivities === 0 && totalCo2 === 0 && totalFuel === 0);
-
 	const getNumberFormatLocale = (i18nLocale: string | null | undefined): string => {
 		const localeMap: Record<string, string> = { en: 'en-IN', kn: 'kn-IN' };
 		return localeMap[i18nLocale || 'en'] || 'en-IN';
@@ -73,6 +71,7 @@
 	const totalEmployees = $derived(allCorporations.reduce((sum, c) => sum + (c.employees || 0), 0));
 	const totalCompanies = $derived(allCorporations.reduce((sum, c) => sum + (c.companies || 0), 0));
 	const leader = $derived(allCorporations.length > 0 ? allCorporations[0] : null);
+	const allZero = $derived(totalActivities === 0 && totalCo2 === 0 && totalFuel === 0);
 
 	async function fetchLeaderboard() {
 		try {
