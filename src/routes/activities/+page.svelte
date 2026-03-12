@@ -34,7 +34,7 @@
 				}
 			}
 
-			if (!data) {
+			if (!data && isLocal) {
 				const res = await fetch('/data/sample-events.json');
 				if (res.ok) data = await res.json();
 			}
