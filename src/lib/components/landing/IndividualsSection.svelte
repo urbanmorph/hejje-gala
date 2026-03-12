@@ -131,7 +131,22 @@
 				{/each}
 			</div>
 		{:else}
-			<p class="text-gray-500 text-sm">No upcoming events.</p>
+			<div class="rounded-lg border border-gray-200 bg-gradient-to-br from-[#00A63E]/5 to-[#00A63E]/10 p-4 sm:p-5 text-center">
+				<p class="text-2xl sm:text-3xl mb-2">🚶‍♂️ 🚴‍♀️</p>
+				<p class="text-sm sm:text-base font-semibold text-gray-800 mb-1">Be the first to lead!</p>
+				<p class="text-xs sm:text-sm text-gray-600 mb-3">
+					Organise a walk, a ride, or a street audit in your neighbourhood. Every step inspires another.
+				</p>
+				<a
+					href="/activities/add"
+					class="inline-flex items-center gap-1.5 rounded-full bg-[#00A63E] px-4 py-2 text-xs sm:text-sm font-semibold text-white hover:bg-[#008a33] transition-colors"
+				>
+					Create an Event
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
+						<path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+					</svg>
+				</a>
+			</div>
 		{/if}
 	</div>
 

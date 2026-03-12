@@ -23,6 +23,27 @@
 	let allCorporations = $state<LeaderboardRow[]>([]);
 	let isLoading = $state(true);
 
+	const TARGET_DATE = new Date('2026-03-15T00:00:00+05:30');
+	let days = $state(0);
+	let hours = $state(0);
+	let minutes = $state(0);
+	let countdownDone = $state(false);
+	let countdownInterval: ReturnType<typeof setInterval> | null = null;
+
+	function updateCountdown() {
+		const diff = TARGET_DATE.getTime() - Date.now();
+		if (diff <= 0) {
+			countdownDone = true;
+			if (countdownInterval) clearInterval(countdownInterval);
+			return;
+		}
+		days = Math.floor(diff / (1000 * 60 * 60 * 24));
+		hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+		minutes = Math.floor((diff / (1000 * 60)) % 60);
+	}
+
+	const allZero = $derived(totalActivities === 0 && totalCo2 === 0 && totalFuel === 0);
+
 	const getNumberFormatLocale = (i18nLocale: string | null | undefined): string => {
 		const localeMap: Record<string, string> = { en: 'en-IN', kn: 'kn-IN' };
 		return localeMap[i18nLocale || 'en'] || 'en-IN';
@@ -73,6 +94,9 @@
 
 	onMount(() => {
 		fetchLeaderboard();
+		updateCountdown();
+		countdownInterval = setInterval(updateCountdown, 60000);
+		return () => { if (countdownInterval) clearInterval(countdownInterval); };
 	});
 </script>
 
@@ -101,24 +125,47 @@
 			<p class="text-[10px] sm:text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
 				Challenge Impact — {allCorporations.length} corporations, {formatNumber(totalCompanies)} companies
 			</p>
-			<div class="grid grid-cols-2 gap-2 sm:gap-3 mb-4 sm:mb-5">
-				<div class="rounded-lg border border-gray-200 bg-white p-2 sm:p-3 text-center">
-					<p class="text-base sm:text-lg xl:text-xl font-bold text-gray-900">{formatNumber(totalEmployees)}</p>
-					<p class="text-[9px] sm:text-[10px] xl:text-xs text-gray-500 mt-0.5">Participants</p>
+			{#if allZero && !countdownDone}
+				<div class="rounded-lg border border-gray-200 bg-gradient-to-br from-[#0D6BA3]/5 to-[#0D6BA3]/10 p-4 sm:p-5 mb-4 sm:mb-5 text-center">
+					<p class="text-xs sm:text-sm text-gray-500 mb-2">Challenge beginning in</p>
+					<div class="flex items-center justify-center gap-3 sm:gap-4">
+						<div class="flex flex-col items-center">
+							<span class="text-xl sm:text-2xl xl:text-3xl font-bold text-[#0D6BA3]">{days}</span>
+							<span class="text-[9px] sm:text-[10px] text-gray-500 uppercase tracking-wider">days</span>
+						</div>
+						<span class="text-xl sm:text-2xl font-bold text-[#0D6BA3]/40">:</span>
+						<div class="flex flex-col items-center">
+							<span class="text-xl sm:text-2xl xl:text-3xl font-bold text-[#0D6BA3]">{hours}</span>
+							<span class="text-[9px] sm:text-[10px] text-gray-500 uppercase tracking-wider">hours</span>
+						</div>
+						<span class="text-xl sm:text-2xl font-bold text-[#0D6BA3]/40">:</span>
+						<div class="flex flex-col items-center">
+							<span class="text-xl sm:text-2xl xl:text-3xl font-bold text-[#0D6BA3]">{minutes}</span>
+							<span class="text-[9px] sm:text-[10px] text-gray-500 uppercase tracking-wider">mins</span>
+						</div>
+					</div>
+					<p class="text-[10px] sm:text-xs text-gray-400 mt-2">{formatNumber(totalEmployees)} participants registered</p>
 				</div>
-				<div class="rounded-lg border border-gray-200 bg-white p-2 sm:p-3 text-center">
-					<p class="text-base sm:text-lg xl:text-xl font-bold text-gray-900">{formatCompact(totalActivities)}</p>
-					<p class="text-[9px] sm:text-[10px] xl:text-xs text-gray-500 mt-0.5">Activities</p>
+			{:else}
+				<div class="grid grid-cols-2 gap-2 sm:gap-3 mb-4 sm:mb-5">
+					<div class="rounded-lg border border-gray-200 bg-white p-2 sm:p-3 text-center">
+						<p class="text-base sm:text-lg xl:text-xl font-bold text-gray-900">{formatNumber(totalEmployees)}</p>
+						<p class="text-[9px] sm:text-[10px] xl:text-xs text-gray-500 mt-0.5">Participants</p>
+					</div>
+					<div class="rounded-lg border border-gray-200 bg-white p-2 sm:p-3 text-center">
+						<p class="text-base sm:text-lg xl:text-xl font-bold text-gray-900">{formatCompact(totalActivities)}</p>
+						<p class="text-[9px] sm:text-[10px] xl:text-xs text-gray-500 mt-0.5">Activities</p>
+					</div>
+					<div class="rounded-lg border border-gray-200 bg-white p-2 sm:p-3 text-center">
+						<p class="text-base sm:text-lg xl:text-xl font-bold text-gray-900">{formatCompact(totalCo2)}</p>
+						<p class="text-[9px] sm:text-[10px] xl:text-xs text-gray-500 mt-0.5">kg CO₂ offset</p>
+					</div>
+					<div class="rounded-lg border border-gray-200 bg-white p-2 sm:p-3 text-center">
+						<p class="text-base sm:text-lg xl:text-xl font-bold text-gray-900">{formatCompact(totalFuel)}</p>
+						<p class="text-[9px] sm:text-[10px] xl:text-xs text-gray-500 mt-0.5">Litres fuel saved</p>
+					</div>
 				</div>
-				<div class="rounded-lg border border-gray-200 bg-white p-2 sm:p-3 text-center">
-					<p class="text-base sm:text-lg xl:text-xl font-bold text-gray-900">{formatCompact(totalCo2)}</p>
-					<p class="text-[9px] sm:text-[10px] xl:text-xs text-gray-500 mt-0.5">kg CO₂ offset</p>
-				</div>
-				<div class="rounded-lg border border-gray-200 bg-white p-2 sm:p-3 text-center">
-					<p class="text-base sm:text-lg xl:text-xl font-bold text-gray-900">{formatCompact(totalFuel)}</p>
-					<p class="text-[9px] sm:text-[10px] xl:text-xs text-gray-500 mt-0.5">Litres fuel saved</p>
-				</div>
-			</div>
+			{/if}
 
 			<!-- Leading corporation -->
 			{#if leader}
