@@ -29,13 +29,12 @@
 	const translatedTitle = $derived(title || $_('hero.title'));
 	const translatedPoweredBy = $derived($_('hero.poweredBy'));
 
-	type RegistrationStats = {
+	type LeaderboardStats = {
 		companies: number;
 		corporations: number;
 	};
 
-	let stats = $state(null);
-	let statsError = $state(null);
+	let stats = $state<LeaderboardStats | null>(null);
 	let statsLoading = $state(true);
 	let activitiesCount = $state<number | null>(null);
 
@@ -66,39 +65,24 @@
 		seconds = Math.floor((diff / 1000) % 60);
 	}
 
-	async function loadRegistrationStats() {
+	async function loadLeaderboardStats() {
 		try {
 			statsLoading = true;
-			statsError = null;
 
-			const res = await fetch('https://assets.hejjegala.in/other/registration-stats.json');
+			const res = await fetch('https://assets.hejjegala.in/leaderboard/city.json');
+			if (!res.ok) throw new Error(`Failed to load leaderboard (${res.status})`);
 
-			if (!res.ok) {
-				throw new Error(`Failed to load registration stats (${res.status})`);
-			}
-
-			const data = (await res.json()) as {
-				success: boolean;
-				companies?: number;
-				corporations?: number;
-				error?: string;
-			};
-
-			if (
-				!data.success ||
-				typeof data.companies !== 'number' ||
-				typeof data.corporations !== 'number'
-			) {
-				throw new Error(data.error || 'Invalid registration stats response');
-			}
+			const data = await res.json();
+			const dimensions = data?.dimensions || {};
+			const commuteAll = dimensions.commuteAll || dimensions.recreationAll || Object.values(dimensions)[0];
+			const rows = commuteAll?.rows || [];
 
 			stats = {
-				companies: data.companies,
-				corporations: data.corporations
+				corporations: rows.length,
+				companies: rows.reduce((sum: number, r: { companies?: number }) => sum + (r.companies || 0), 0)
 			};
 		} catch (err) {
-			console.error('Error loading registration stats', err);
-			statsError = err instanceof Error ? err.message : 'Failed to load registration stats';
+			console.error('Error loading leaderboard stats', err);
 			stats = null;
 		} finally {
 			statsLoading = false;
@@ -138,7 +122,7 @@
 	}
 
 	onMount(() => {
-		loadRegistrationStats();
+		loadLeaderboardStats();
 		loadActivitiesCount();
 		updateCountdown();
 		countdownInterval = setInterval(updateCountdown, 1000);
