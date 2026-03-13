@@ -40,29 +40,35 @@
 
 	const TARGET_DATE = new Date('2026-03-15T00:00:00+05:30');
 
-	let days = $state(0);
-	let hours = $state(0);
-	let minutes = $state(0);
-	let seconds = $state(0);
-	let countdownDone = $state(false);
 	let countdownInterval: ReturnType<typeof setInterval> | null = null;
 
+	function calcCountdown() {
+		const diff = TARGET_DATE.getTime() - Date.now();
+		if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0, done: true };
+		return {
+			days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+			hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+			minutes: Math.floor((diff / (1000 * 60)) % 60),
+			seconds: Math.floor((diff / 1000) % 60),
+			done: false
+		};
+	}
+
+	const initial = calcCountdown();
+	let days = $state(initial.days);
+	let hours = $state(initial.hours);
+	let minutes = $state(initial.minutes);
+	let seconds = $state(initial.seconds);
+	let countdownDone = $state(initial.done);
+
 	function updateCountdown() {
-		const now = new Date();
-		const diff = TARGET_DATE.getTime() - now.getTime();
-		if (diff <= 0) {
-			days = 0;
-			hours = 0;
-			minutes = 0;
-			seconds = 0;
-			countdownDone = true;
-			if (countdownInterval) clearInterval(countdownInterval);
-			return;
-		}
-		days = Math.floor(diff / (1000 * 60 * 60 * 24));
-		hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-		minutes = Math.floor((diff / (1000 * 60)) % 60);
-		seconds = Math.floor((diff / 1000) % 60);
+		const c = calcCountdown();
+		days = c.days;
+		hours = c.hours;
+		minutes = c.minutes;
+		seconds = c.seconds;
+		countdownDone = c.done;
+		if (c.done && countdownInterval) clearInterval(countdownInterval);
 	}
 
 	async function loadLeaderboardStats() {
