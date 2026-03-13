@@ -77,7 +77,9 @@
 		"poweredBy": "POWERED BY",
 		"aboutTitle": "About Hejje Gala",
 		"leaderboardTitle": "Leaderboard",
-		"challengeHasBegun": "Challenge has begun"
+		"challengeHasBegun": "Challenge has begun",
+		"challengeIsLive": "The Challenge is Live!",
+		"joinNowCTA": "Register your company and get on the leaderboard"
 	},
 	"countdownTimer": {
 		"days": "Days",

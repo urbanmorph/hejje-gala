@@ -77,7 +77,9 @@
 		"poweredBy": "ಶಕ್ತಿಯುತವಾಗಿದೆ",
 		"aboutTitle": "ಹೆಜ್ಜೆ ಗಾಲಾ ಬಗ್ಗೆ",
 		"leaderboardTitle": "ಲೀಡರ್ಬೋರ್ಡ್",
-		"challengeHasBegun": "ಸವಾಲು ಪ್ರಾರಂಭವಾಗಿದೆ"
+		"challengeHasBegun": "ಸವಾಲು ಪ್ರಾರಂಭವಾಗಿದೆ",
+		"challengeIsLive": "ಸವಾಲು ಲೈವ್ ಆಗಿದೆ!",
+		"joinNowCTA": "ನಿಮ್ಮ ಕಂಪನಿಯನ್ನು ನೋಂದಾಯಿಸಿ ಮತ್ತು ಲೀಡರ್ಬೋರ್ಡ್‌ಗೆ ಸೇರಿ"
 	},
 	"countdownTimer": {
 		"days": "ದಿನಗಳು",

@@ -191,9 +191,14 @@
 
 				<div class="hero-text flex justify-center gap-2 sm:gap-4 lg:gap-6">
 					{#if countdownDone}
-						<span class="text-lg sm:text-2xl font-bold text-white lg:text-5xl xl:text-6xl">
-							{$_('hero.challengeHasBegun')}
-						</span>
+						<div class="flex flex-col items-center gap-2 lg:gap-3">
+							<span class="text-lg sm:text-2xl font-bold text-white lg:text-4xl xl:text-5xl">
+								{$_('hero.challengeIsLive')}
+							</span>
+							<span class="text-xs sm:text-sm lg:text-base text-white/80">
+								{$_('hero.joinNowCTA')}
+							</span>
+						</div>
 					{:else}
 						<div class="flex flex-col items-center">
 							<span class="text-lg sm:text-2xl font-bold text-white lg:text-5xl xl:text-6xl">{String(days).padStart(2, '0')}</span>
@@ -244,7 +249,7 @@
 					<span
 						class="text-xl xl:text-2xl font-bold text-white uppercase tracking-wider"
 					>
-						{$_('hero.challengeHasBegun')}
+						{$_('hero.challengeIsLive')}
 					</span>
 				</div>
 			{:else}
