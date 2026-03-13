@@ -230,13 +230,13 @@
 				"type": "list",
 				"section": "About Hejje Gala",
 				"items": [
-					{ "label": "Launch:", "value": "15 January 2026 to 15 June 2026" },
+					{ "label": "Launch:", "value": "15 March 2026 to 15 June 2026" },
 					{ "label": "Winners announced:", "value": "July 2026" }
 				]
 			},
 			{
 				"question": "Who can participate?",
-				"answer": "Hejje Gala is open to everyone in Bengaluru — individuals, organisations, cycling clubs, walking groups, and communities. You can participate by joining community events, becoming a champion, or tracking your active commutes via Altmo.",
+				"answer": "Hejje Gala is open to everyone in Bengaluru — individuals, organisations, cycling clubs, walking groups, and communities. You can participate by joining community events, becoming an ambassador for Altmo, or tracking your active commutes via Altmo.",
 				"type": "text",
 				"section": "Participation & Eligibility"
 			},
@@ -290,7 +290,7 @@
 			},
 			{
 				"question": "Do I have to use Altmo?",
-				"answer": "Yes - the challenge relies on Altmo to track and verify activities. Altmo has a built-in tracker, so you can use it directly on your phone. If you're more comfortable using another device (like a smartwatch or fitness tracker), you'll need to ensure it syncs with Strava and that you've selected the correct activity type (walking or cycling). You still need to sign up on Altmo and connect your Strava account - only then will your activities count on the leaderboard.",
+				"answer": "Yes - the challenge relies on Altmo to track and verify activities. Altmo has a built-in tracker, so you can use it directly on your phone. If you're more comfortable using another device (like a smartwatch or fitness tracker), you can either sync it with Strava or upload your .gpx file on the tracker page of the website [altmo.app](https://altmo.app) after you login. If you are using Strava, you will need to connect your Strava account from your profile page on the website. Make sure you've selected the correct activity type (walking or cycling) - only then will your activities count on the leaderboard.",
 				"type": "text",
 				"section": "Tracking & Eligibility"
 			},
