@@ -33,7 +33,9 @@
 				.replace(/&/g, '&amp;')
 				.replace(/</g, '&lt;')
 				.replace(/>/g, '&gt;');
-			return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline">${escapedText}</a>`;
+			const isExternal = url.startsWith('http');
+			const attrs = isExternal ? ' target="_blank" rel="noopener noreferrer"' : '';
+			return `<a href="${url}"${attrs} class="text-blue-600 hover:text-blue-800 underline">${escapedText}</a>`;
 		});
 	}
 

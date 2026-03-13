@@ -230,14 +230,13 @@
 				"type": "list",
 				"section": "About Hejje Gala",
 				"items": [
-					{ "label": "Launch:", "value": "15 January 2026" },
-					{ "label": "Challenge period:", "value": "15 February – 15 April 2026" },
-					{ "label": "Winners announced:", "value": "May 2026" }
+					{ "label": "Launch:", "value": "15 January 2026 to 15 June 2026" },
+					{ "label": "Winners announced:", "value": "July 2026" }
 				]
 			},
 			{
 				"question": "Who can participate?",
-				"answer": "Hejje Gala is designed for corporate organisations and their employees in Bengaluru.",
+				"answer": "Hejje Gala is open to everyone in Bengaluru — individuals, organisations, cycling clubs, walking groups, and communities. You can participate by joining community events, becoming a champion, or tracking your active commutes via Altmo.",
 				"type": "text",
 				"section": "Participation & Eligibility"
 			},
@@ -266,33 +265,26 @@
 				"section": "Participation & Eligibility"
 			},
 			{
-				"question": "Can employees participate without their organisation signing up?",
-				"answer": "No - Hejje Gala is a corporate challenge, so employees participate as part of their company's team. If your organisation hasn't signed up yet, this is a great opportunity to speak with your management about joining.",
-				"type": "text",
-				"section": "Participation & Eligibility"
-			},
-			{
 				"question": "How can I help drive participation at my company?",
-				"answer": "If you're an employee who wants to actively motivate your colleagues, this is the perfect chance to become an ambassador for your company. Speak to your leadership, encourage them to sign up, and ask to be nominated as your company's Hejje Gala ambassador. Ambassadors play a key role in rallying their teams and keeping the momentum going throughout the challenge.",
+				"answer": "You can ask your company representatives to sign up at [altmo.app/corporates](https://altmo.app/users/sign_up?corporates=true&plan_name=corporate&verification=pending). You can also refer your colleagues to download the altmo mobile app and join the challenge.",
 				"type": "text",
 				"section": "Participation & Eligibility"
 			},
 			{
 				"question": "How do organisations register?",
-				"answer": "Visit [www.hejjegala.in](https://www.hejjegala.in), click \"Register Now,\" and complete the sign-up process. We encourage CxOs to register and demonstrate their commitment to Bengaluru's mobility future.",
+				"answer": "Individuals in companies can just download the altmo mobile app from [Play Store](https://play.google.com/store/apps/details?id=app.altmo) / [App Store](https://apps.apple.com/app/altmo/id1554339886) or sign up at [www.altmo.app](https://www.altmo.app). Find the Hejje Gala challenge in the challenges tab and click join. Organisation representatives can click the Get Started button at [altmo.app/corporates](https://altmo.app/users/sign_up?corporates=true&plan_name=corporate&verification=pending) — we will get into a discussion with them on getting access to the backend dashboard for their employees.",
 				"type": "text",
-				"section": "How to Register",
-				"highlightText": "Register Now"
+				"section": "How to Register"
 			},
 			{
 				"question": "What support does Hejje Gala provide to participating organisations?",
-				"answer": "Registered organisations receive communication kits, promotional materials, and internal engagement ideas to help rally their teams. You'll also get access to dashboards to track your organisation's progress throughout the challenge.",
+				"answer": "Registered organisations receive support to plan and promote their events. You can submit community events through the [Activities page](/activities), which appear on the shared community calendar.",
 				"type": "text",
 				"section": "How to Register"
 			},
 			{
 				"question": "How is participation tracked?",
-				"answer": "Through Altmo, a mobile app available on Android and iOS. Employees log their walking and cycling activity, and organisations can view dashboards showing participation, kilometres covered, and aggregated impact.",
+				"answer": "Corporate challenge participation is tracked through Altmo. Community events (walks, rides, workshops) are listed on the community calendar at [hejjegala.in/activities](https://hejjegala.in/activities), where anyone can submit and discover events that you can participate in.",
 				"type": "text",
 				"section": "Tracking & Eligibility"
 			},
@@ -304,7 +296,7 @@
 			},
 			{
 				"question": "What counts as a valid commute? Do weekend rides count?",
-				"answer": "Only commutes to your primary workplace (marked on the map in Altmo) are counted towards your organisation's commute total and emission offsets. You can still log non-commute activities like recreational rides or weekend trips - these will be shown separately as activities on the leaderboard, but won't count towards commute kilometres or carbon savings. The goal is to shift everyday commuting habits, not just add leisure activity.",
+				"answer": "For the corporate challenge, only commutes to your workplace count towards your organisation's total. Community events (walks, rides, workshops) are separate — anyone can join these regardless of corporate affiliation.",
 				"type": "text",
 				"section": "Tracking & Eligibility"
 			},
@@ -346,7 +338,7 @@
 			},
 			{
 				"question": "Is there a leaderboard?",
-				"answer": "Yes. Participating organisations can view a leaderboard showing how they compare to others. This adds a friendly competitive element and helps motivate teams throughout the challenge.",
+				"answer": "Yes. Participating organisations can view a leaderboard showing how they compare to others. This adds a friendly competitive element and helps motivate teams throughout the challenge. The leaderboard tracks corporate participation. Community events are visible on the [Activities page](/activities) where you can browse upcoming walks, rides, and workshops.",
 				"type": "text",
 				"section": "Recognition & Prizes"
 			},
@@ -373,6 +365,36 @@
 				"answer": "Yes. The partners behind Hejje Gala have a proven track record of turning data and advocacy into real change. With corporate participation generating new commute data and demonstrating demand for active mobility, we aim to accelerate infrastructure improvements and policy reforms that make walking and cycling safer and more accessible across Bengaluru.",
 				"type": "text",
 				"section": "Future Infrastructure & Policy"
+			},
+			{
+				"question": "How do I find upcoming community events?",
+				"answer": "Visit the [Activities page](https://hejjegala.in/activities). You can browse events in a calendar view or card view, and filter by type — Walk, Cycle, or Other.",
+				"type": "text",
+				"section": "Community Events"
+			},
+			{
+				"question": "How do I add a community event?",
+				"answer": "Click the \"Add Event\" button on the [Activities page](/activities). Fill in the event details — title, type, date, time, venue, and description. You can optionally add an RSVP link, Google Maps link, and event poster. Events appear on the calendar immediately.",
+				"type": "text",
+				"section": "Community Events"
+			},
+			{
+				"question": "What types of events can I submit?",
+				"answer": "You can submit walks, cycling events, or other active mobility activities like street audits, walkability workshops, or community rides. Events should be related to walking, cycling, or sustainable mobility in Bengaluru.",
+				"type": "text",
+				"section": "Community Events"
+			},
+			{
+				"question": "Do I need an account to submit an event?",
+				"answer": "No. Anyone can submit a community event without logging in. We trust the community to keep the calendar useful and relevant.",
+				"type": "text",
+				"section": "Community Events"
+			},
+			{
+				"question": "Can I edit or remove my event after submitting?",
+				"answer": "Currently, events cannot be edited after submission. If you need to update or remove an event, contact us at [hejjegala@gmail.com](mailto:hejjegala@gmail.com).",
+				"type": "text",
+				"section": "Community Events"
 			},
 			{
 				"question": "Who can I contact for more information?",
