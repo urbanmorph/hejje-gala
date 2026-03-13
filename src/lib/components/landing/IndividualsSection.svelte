@@ -85,16 +85,16 @@
 <div class="flex flex-col h-full">
 	<div class="mb-3 sm:mb-4">
 		<h3 class="text-lg sm:text-xl xl:text-2xl font-bold text-gray-900">
-			<span class="text-[#00A63E]">Citizen Leaders</span>
+			<span class="text-[#00A63E]">{$_('citizenLeaders.title')}</span>
 		</h3>
 		<p class="text-xs sm:text-sm xl:text-base font-semibold text-gray-900 mt-1">
-			Citizens backing Bengaluru's active mobility movement
+			{$_('citizenLeaders.subtitle')}
 		</p>
 	</div>
 
 	<!-- Upcoming events -->
 	<div class="flex-1">
-		<h4 class="text-xs sm:text-sm xl:text-base font-semibold text-gray-800 mb-2 sm:mb-3">Upcoming Events</h4>
+		<h4 class="text-xs sm:text-sm xl:text-base font-semibold text-gray-800 mb-2 sm:mb-3">{$_('citizenLeaders.upcomingEvents')}</h4>
 
 		{#if isLoading}
 			<div class="space-y-2 sm:space-y-3">
@@ -133,15 +133,15 @@
 		{:else}
 			<div class="rounded-lg border border-gray-200 bg-gradient-to-br from-[#00A63E]/5 to-[#00A63E]/10 p-4 sm:p-5 text-center">
 				<p class="text-2xl sm:text-3xl mb-2">🚶‍♂️ 🚴‍♀️</p>
-				<p class="text-sm sm:text-base font-semibold text-gray-800 mb-1">Be the first to lead!</p>
+				<p class="text-sm sm:text-base font-semibold text-gray-800 mb-1">{$_('citizenLeaders.beTheFirst')}</p>
 				<p class="text-xs sm:text-sm text-gray-600 mb-3">
-					Organise a walk, a ride, or a street audit in your neighbourhood. Every step inspires another.
+					{$_('citizenLeaders.encouragement')}
 				</p>
 				<a
 					href="/activities/add"
 					class="inline-flex items-center gap-1.5 rounded-full bg-[#00A63E] px-4 py-2 text-xs sm:text-sm font-semibold text-white hover:bg-[#008a33] transition-colors"
 				>
-					Create an Event
+					{$_('citizenLeaders.createEvent')}
 					<svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
 						<path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
 					</svg>
@@ -156,7 +156,7 @@
 			href="/activities"
 			class="inline-flex items-center gap-2 text-sm xl:text-base font-semibold text-[#00A63E] hover:text-[#008a33] transition-colors"
 		>
-			View All Events
+			{$_('citizenLeaders.viewAllEvents')}
 			<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
 				<path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
 			</svg>

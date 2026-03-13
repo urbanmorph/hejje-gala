@@ -276,8 +276,8 @@
 		<section class="bg-[#0D6BA3] py-6 sm:py-8">
 			<div class="mx-auto max-w-[95%] xl:max-w-[80%] px-3 sm:px-4 md:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
 				<div class="text-center sm:text-left">
-					<p class="text-base sm:text-lg font-bold text-white">Want to join the challenge?</p>
-					<p class="text-xs sm:text-sm text-white/80">Download the altmo app or register your company to get started.</p>
+					<p class="text-base sm:text-lg font-bold text-white">{$_('leaderboardPage.wantToJoin')}</p>
+					<p class="text-xs sm:text-sm text-white/80">{$_('leaderboardPage.downloadAltmo')}</p>
 				</div>
 				<div class="flex items-center gap-3">
 					<a
@@ -286,7 +286,7 @@
 						rel="noopener noreferrer"
 						class="rounded-full bg-white px-4 sm:px-5 py-2 text-xs sm:text-sm font-semibold text-[#0D6BA3] hover:bg-gray-100 transition-colors whitespace-nowrap"
 					>
-						Get Started with altmo
+						{$_('leaderboardPage.getStarted')}
 					</a>
 					<AppStoreButtons size="sm" />
 				</div>
@@ -368,8 +368,8 @@
 		<section class="bg-[#0D6BA3] py-6 sm:py-8">
 			<div class="mx-auto max-w-[95%] xl:max-w-[80%] px-3 sm:px-4 md:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
 				<div class="text-center sm:text-left">
-					<p class="text-base sm:text-lg font-bold text-white">Want to join the challenge?</p>
-					<p class="text-xs sm:text-sm text-white/80">Download the altmo app or register your company to get started.</p>
+					<p class="text-base sm:text-lg font-bold text-white">{$_('leaderboardPage.wantToJoin')}</p>
+					<p class="text-xs sm:text-sm text-white/80">{$_('leaderboardPage.downloadAltmo')}</p>
 				</div>
 				<div class="flex items-center gap-3">
 					<a
@@ -378,7 +378,7 @@
 						rel="noopener noreferrer"
 						class="rounded-full bg-white px-4 sm:px-5 py-2 text-xs sm:text-sm font-semibold text-[#0D6BA3] hover:bg-gray-100 transition-colors whitespace-nowrap"
 					>
-						Get Started with altmo
+						{$_('leaderboardPage.getStarted')}
 					</a>
 					<AppStoreButtons size="sm" />
 				</div>
@@ -392,24 +392,24 @@
 			<div class="bg-[#FFFCF8] {isMobile ? 'px-3 sm:px-4 pt-3 sm:pt-4' : 'px-6 pt-4'}">
 				<div class="mx-auto {isMobile ? 'max-w-[95%]' : 'max-w-[80%]'}">
 					<div class="rounded-xl bg-gradient-to-r from-[#0D6BA3] to-[#1a85c7] p-4 sm:p-6 text-center text-white">
-						<p class="text-xs sm:text-sm font-medium text-white/80 mb-2">The Hejje Gala Corporate Challenge begins in</p>
+						<p class="text-xs sm:text-sm font-medium text-white/80 mb-2">{$_('leaderboardPage.challengeBeginsIn')}</p>
 						<div class="flex items-center justify-center gap-3 sm:gap-5">
 							<div class="flex flex-col items-center">
 								<span class="text-2xl sm:text-3xl lg:text-4xl font-bold">{days}</span>
-								<span class="text-[10px] sm:text-xs text-white/70 uppercase tracking-wider">days</span>
+								<span class="text-[10px] sm:text-xs text-white/70 uppercase tracking-wider">{$_('leaderboardPage.days')}</span>
 							</div>
 							<span class="text-2xl sm:text-3xl font-bold text-white/40">:</span>
 							<div class="flex flex-col items-center">
 								<span class="text-2xl sm:text-3xl lg:text-4xl font-bold">{hours}</span>
-								<span class="text-[10px] sm:text-xs text-white/70 uppercase tracking-wider">hours</span>
+								<span class="text-[10px] sm:text-xs text-white/70 uppercase tracking-wider">{$_('leaderboardPage.hours')}</span>
 							</div>
 							<span class="text-2xl sm:text-3xl font-bold text-white/40">:</span>
 							<div class="flex flex-col items-center">
 								<span class="text-2xl sm:text-3xl lg:text-4xl font-bold">{minutes}</span>
-								<span class="text-[10px] sm:text-xs text-white/70 uppercase tracking-wider">mins</span>
+								<span class="text-[10px] sm:text-xs text-white/70 uppercase tracking-wider">{$_('leaderboardPage.mins')}</span>
 							</div>
 						</div>
-						<p class="text-xs sm:text-sm text-white/70 mt-2">Scores on the leaderboard will update once the challenge is live.</p>
+						<p class="text-xs sm:text-sm text-white/70 mt-2">{$_('leaderboardPage.scoresNote')}</p>
 					</div>
 				</div>
 			</div>
@@ -445,10 +445,10 @@
 			<div class="mx-auto max-w-[95%] xl:max-w-[80%] px-3 sm:px-4 md:px-6">
 				<div class="text-center mb-6 sm:mb-8">
 					<h2 class="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-white mb-2">
-						Your company not on the board yet?
+						{$_('leaderboardPage.notOnBoard')}
 					</h2>
 					<p class="text-sm sm:text-base lg:text-lg text-white/80 max-w-2xl mx-auto">
-						Sign up on altmo and join the Hejje Gala challenge. Track your walks, rides, and commutes — every step counts.
+						{$_('leaderboardPage.signUpAltmo')}
 					</p>
 				</div>
 
@@ -457,10 +457,10 @@
 					<div class="rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 p-4 sm:p-6">
 						<div class="flex items-center gap-2 mb-3">
 							<span class="text-lg sm:text-xl">🏢</span>
-							<h3 class="text-base sm:text-lg font-bold text-white">For Companies</h3>
+							<h3 class="text-base sm:text-lg font-bold text-white">{$_('leaderboardPage.forCompanies')}</h3>
 						</div>
 						<p class="text-xs sm:text-sm text-white/80 mb-4">
-							Get access to the company dashboard, rally your employees, and climb the leaderboard. Show Bengaluru what your team is made of.
+							{$_('leaderboardPage.forCompaniesDesc')}
 						</p>
 						<a
 							href="https://altmo.app/users/sign_up?corporates=true&plan_name=corporate&verification=pending"
@@ -468,7 +468,7 @@
 							rel="noopener noreferrer"
 							class="inline-flex items-center gap-2 rounded-full bg-white px-4 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold text-[#0D6BA3] hover:bg-gray-100 transition-colors"
 						>
-							Get Started with altmo
+							{$_('leaderboardPage.getStarted')}
 							<svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 sm:h-4 sm:w-4" viewBox="0 0 20 20" fill="currentColor">
 								<path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
 							</svg>
@@ -479,10 +479,10 @@
 					<div class="rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 p-4 sm:p-6">
 						<div class="flex items-center gap-2 mb-3">
 							<span class="text-lg sm:text-xl">🚶</span>
-							<h3 class="text-base sm:text-lg font-bold text-white">For Individuals</h3>
+							<h3 class="text-base sm:text-lg font-bold text-white">{$_('leaderboardPage.forIndividuals')}</h3>
 						</div>
 						<p class="text-xs sm:text-sm text-white/80 mb-4">
-							Download the altmo app, log your daily walks and rides, and help your company — or your neighbourhood — lead the way.
+							{$_('leaderboardPage.forIndividualsDesc')}
 						</p>
 						<AppStoreButtons size="sm" />
 					</div>

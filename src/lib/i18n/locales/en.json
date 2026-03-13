@@ -24,6 +24,50 @@
 		"champions": "Champions",
 		"activities": "Activities"
 	},
+	"leaderboardPage": {
+		"challengeBeginsIn": "The Hejje Gala Corporate Challenge begins in",
+		"days": "days",
+		"hours": "hours",
+		"mins": "mins",
+		"scoresNote": "Scores on the leaderboard will update once the challenge is live.",
+		"wantToJoin": "Want to join the challenge?",
+		"downloadAltmo": "Download the altmo app or register your company to get started.",
+		"getStarted": "Get Started with altmo",
+		"notOnBoard": "Your company not on the board yet?",
+		"signUpAltmo": "Sign up on altmo and join the Hejje Gala challenge. Track your walks, rides, and commutes — every step counts.",
+		"forCompanies": "For Companies",
+		"forCompaniesDesc": "Get access to the company dashboard, rally your employees, and climb the leaderboard. Show Bengaluru what your team is made of.",
+		"forIndividuals": "For Individuals",
+		"forIndividualsDesc": "Download the altmo app, log your daily walks and rides, and help your company — or your neighbourhood — lead the way."
+	},
+	"corporateLeaders": {
+		"title": "Corporate Leaders",
+		"subtitle": "How companies in Bengaluru are stepping up",
+		"challengeImpact": "Challenge Impact",
+		"corporations": "corporations",
+		"companies": "companies",
+		"challengeBeginningIn": "Challenge beginning in",
+		"days": "days",
+		"hours": "hours",
+		"mins": "mins",
+		"participantsRegistered": "participants registered",
+		"participants": "Participants",
+		"activities": "Activities",
+		"co2Offset": "kg CO₂ offset",
+		"fuelSaved": "Litres fuel saved",
+		"leadingThePack": "Leading the pack",
+		"viewFullLeaderboard": "View Full Leaderboard",
+		"companyCTA": "Can your company lead the way? Get on the leaderboard."
+	},
+	"citizenLeaders": {
+		"title": "Citizen Leaders",
+		"subtitle": "Citizens backing Bengaluru's active mobility movement",
+		"upcomingEvents": "Upcoming Events",
+		"beTheFirst": "Be the first to lead!",
+		"encouragement": "Organise a walk, a ride, or a street audit in your neighbourhood. Every step inspires another.",
+		"createEvent": "Create an Event",
+		"viewAllEvents": "View All Events"
+	},
 	"header": {
 		"toggleMenu": "Toggle menu",
 		"toggleLanguage": "Toggle language"

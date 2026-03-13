@@ -102,10 +102,10 @@
 <div class="flex flex-col h-full">
 	<div class="mb-3 sm:mb-4">
 		<h3 class="text-lg sm:text-xl xl:text-2xl font-bold text-gray-900">
-			<span class="text-[#0D6BA3]">Corporate Leaders</span>
+			<span class="text-[#0D6BA3]">{$_('corporateLeaders.title')}</span>
 		</h3>
 		<p class="text-xs sm:text-sm xl:text-base font-semibold text-gray-900 mt-1">
-			How companies in Bengaluru are stepping up
+			{$_('corporateLeaders.subtitle')}
 		</p>
 	</div>
 
@@ -122,46 +122,46 @@
 		{:else}
 			<!-- Challenge-wide impact -->
 			<p class="text-[10px] sm:text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
-				Challenge Impact — {allCorporations.length} corporations, {formatNumber(totalCompanies)} companies
+				{$_('corporateLeaders.challengeImpact')} — {allCorporations.length} {$_('corporateLeaders.corporations')}, {formatNumber(totalCompanies)} {$_('corporateLeaders.companies')}
 			</p>
 			{#if allZero && !countdownDone}
 				<div class="rounded-lg border border-gray-200 bg-gradient-to-br from-[#0D6BA3]/5 to-[#0D6BA3]/10 p-4 sm:p-5 mb-4 sm:mb-5 text-center">
-					<p class="text-xs sm:text-sm text-gray-500 mb-2">Challenge beginning in</p>
+					<p class="text-xs sm:text-sm text-gray-500 mb-2">{$_('corporateLeaders.challengeBeginningIn')}</p>
 					<div class="flex items-center justify-center gap-3 sm:gap-4">
 						<div class="flex flex-col items-center">
 							<span class="text-xl sm:text-2xl xl:text-3xl font-bold text-[#0D6BA3]">{days}</span>
-							<span class="text-[9px] sm:text-[10px] text-gray-500 uppercase tracking-wider">days</span>
+							<span class="text-[9px] sm:text-[10px] text-gray-500 uppercase tracking-wider">{$_('corporateLeaders.days')}</span>
 						</div>
 						<span class="text-xl sm:text-2xl font-bold text-[#0D6BA3]/40">:</span>
 						<div class="flex flex-col items-center">
 							<span class="text-xl sm:text-2xl xl:text-3xl font-bold text-[#0D6BA3]">{hours}</span>
-							<span class="text-[9px] sm:text-[10px] text-gray-500 uppercase tracking-wider">hours</span>
+							<span class="text-[9px] sm:text-[10px] text-gray-500 uppercase tracking-wider">{$_('corporateLeaders.hours')}</span>
 						</div>
 						<span class="text-xl sm:text-2xl font-bold text-[#0D6BA3]/40">:</span>
 						<div class="flex flex-col items-center">
 							<span class="text-xl sm:text-2xl xl:text-3xl font-bold text-[#0D6BA3]">{minutes}</span>
-							<span class="text-[9px] sm:text-[10px] text-gray-500 uppercase tracking-wider">mins</span>
+							<span class="text-[9px] sm:text-[10px] text-gray-500 uppercase tracking-wider">{$_('corporateLeaders.mins')}</span>
 						</div>
 					</div>
-					<p class="text-[10px] sm:text-xs text-gray-400 mt-2">{formatNumber(totalEmployees)} participants registered</p>
+					<p class="text-[10px] sm:text-xs text-gray-400 mt-2">{formatNumber(totalEmployees)} {$_('corporateLeaders.participantsRegistered')}</p>
 				</div>
 			{:else}
 				<div class="grid grid-cols-2 gap-2 sm:gap-3 mb-4 sm:mb-5">
 					<div class="rounded-lg border border-gray-200 bg-white p-2 sm:p-3 text-center">
 						<p class="text-base sm:text-lg xl:text-xl font-bold text-gray-900">{formatNumber(totalEmployees)}</p>
-						<p class="text-[9px] sm:text-[10px] xl:text-xs text-gray-500 mt-0.5">Participants</p>
+						<p class="text-[9px] sm:text-[10px] xl:text-xs text-gray-500 mt-0.5">{$_('corporateLeaders.participants')}</p>
 					</div>
 					<div class="rounded-lg border border-gray-200 bg-white p-2 sm:p-3 text-center">
 						<p class="text-base sm:text-lg xl:text-xl font-bold text-gray-900">{formatCompact(totalActivities)}</p>
-						<p class="text-[9px] sm:text-[10px] xl:text-xs text-gray-500 mt-0.5">Activities</p>
+						<p class="text-[9px] sm:text-[10px] xl:text-xs text-gray-500 mt-0.5">{$_('corporateLeaders.activities')}</p>
 					</div>
 					<div class="rounded-lg border border-gray-200 bg-white p-2 sm:p-3 text-center">
 						<p class="text-base sm:text-lg xl:text-xl font-bold text-gray-900">{formatCompact(totalCo2)}</p>
-						<p class="text-[9px] sm:text-[10px] xl:text-xs text-gray-500 mt-0.5">kg CO₂ offset</p>
+						<p class="text-[9px] sm:text-[10px] xl:text-xs text-gray-500 mt-0.5">{$_('corporateLeaders.co2Offset')}</p>
 					</div>
 					<div class="rounded-lg border border-gray-200 bg-white p-2 sm:p-3 text-center">
 						<p class="text-base sm:text-lg xl:text-xl font-bold text-gray-900">{formatCompact(totalFuel)}</p>
-						<p class="text-[9px] sm:text-[10px] xl:text-xs text-gray-500 mt-0.5">Litres fuel saved</p>
+						<p class="text-[9px] sm:text-[10px] xl:text-xs text-gray-500 mt-0.5">{$_('corporateLeaders.fuelSaved')}</p>
 					</div>
 				</div>
 			{/if}
@@ -169,7 +169,7 @@
 			<!-- Leading corporation -->
 			{#if leader}
 				<p class="text-[10px] sm:text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
-					Leading the pack
+					{$_('corporateLeaders.leadingThePack')}
 				</p>
 				<div class="rounded-lg bg-gradient-to-r from-[#0D6BA3] to-[#1a85c7] p-3 sm:p-4">
 					<div class="flex items-center gap-2 mb-1">
@@ -177,9 +177,9 @@
 						<p class="text-sm sm:text-base xl:text-lg font-bold text-white">{leader.name}</p>
 					</div>
 					<div class="flex gap-3 sm:gap-4 mt-1 text-white/90">
-						<span class="text-[10px] sm:text-xs"><span class="font-bold text-white">{formatNumber(leader.activities)}</span> activities</span>
+						<span class="text-[10px] sm:text-xs"><span class="font-bold text-white">{formatNumber(leader.activities)}</span> {$_('corporateLeaders.activities').toLowerCase()}</span>
 						<span class="text-[10px] sm:text-xs"><span class="font-bold text-white">{formatCompact(leader.co2OffsetKg)}</span> kg CO₂</span>
-						<span class="text-[10px] sm:text-xs"><span class="font-bold text-white">{formatNumber(leader.employees || 0)}</span> participants</span>
+						<span class="text-[10px] sm:text-xs"><span class="font-bold text-white">{formatNumber(leader.employees || 0)}</span> {$_('corporateLeaders.participants').toLowerCase()}</span>
 					</div>
 				</div>
 			{/if}
@@ -192,13 +192,13 @@
 			href="/leaderboard"
 			class="inline-flex items-center gap-2 text-sm xl:text-base font-semibold text-[#0D6BA3] hover:text-[#0a5a8a] transition-colors"
 		>
-			View Full Leaderboard
+			{$_('corporateLeaders.viewFullLeaderboard')}
 			<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
 				<path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
 			</svg>
 		</a>
 		<div>
-			<p class="text-xs xl:text-sm text-gray-600 mb-2">Can your company lead the way? Get on the leaderboard.</p>
+			<p class="text-xs xl:text-sm text-gray-600 mb-2">{$_('corporateLeaders.companyCTA')}</p>
 			<AppStoreButtons size="sm" />
 		</div>
 	</div>
