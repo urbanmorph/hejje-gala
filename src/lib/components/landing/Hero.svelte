@@ -32,6 +32,7 @@
 	type LeaderboardStats = {
 		companies: number;
 		corporations: number;
+		participants: number;
 	};
 
 	let stats = $state<LeaderboardStats | null>(null);
@@ -85,7 +86,8 @@
 
 			stats = {
 				corporations: rows.length,
-				companies: rows.reduce((sum: number, r: { companies?: number }) => sum + (r.companies || 0), 0)
+				companies: rows.reduce((sum: number, r: { companies?: number }) => sum + (r.companies || 0), 0),
+				participants: rows.reduce((sum: number, r: { employees?: number }) => sum + (r.employees || 0), 0)
 			};
 		} catch (err) {
 			console.error('Error loading leaderboard stats', err);
@@ -247,6 +249,21 @@
 				</div>
 			{:else}
 				<div class="flex justify-center gap-8 lg:gap-12 xl:gap-20">
+					<!-- Participants -->
+					<div class="flex flex-col items-center">
+						<span class="text-xl xl:text-2xl font-bold text-white">
+							{#if statsLoading}
+								<span class="inline-block h-5 w-16 animate-pulse rounded bg-white/30"></span>
+							{:else}
+								{formatCount(stats?.participants)}
+							{/if}
+						</span>
+						<span
+							class="text-sm font-medium text-white uppercase tracking-wider mt-0.5"
+						>
+							{$_('corporateLeaders.participants')}
+						</span>
+					</div>
 					<!-- Companies -->
 					<div class="flex flex-col items-center">
 						<span class="text-xl xl:text-2xl font-bold text-white">
@@ -277,7 +294,7 @@
 							{$_('welcome.corporations')}
 						</span>
 					</div>
-					<!-- Activities -->
+					<!-- Events -->
 					<div class="flex flex-col items-center">
 						<span class="text-xl xl:text-2xl font-bold text-white">
 							{#if activitiesCount === null}
@@ -289,7 +306,7 @@
 						<span
 							class="text-sm font-medium text-white uppercase tracking-wider mt-0.5"
 						>
-							{$_('common.activities')}
+							{$_('events.title')}
 						</span>
 					</div>
 				</div>
