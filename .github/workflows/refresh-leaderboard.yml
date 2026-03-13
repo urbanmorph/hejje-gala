@@ -1,0 +1,29 @@
+name: Refresh Leaderboard Data
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'  # Every 30 minutes
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - run: pip install boto3 requests
+
+      - name: Generate and upload leaderboard data
+        run: python3 scripts/altmo/api.py --generate-leaderboards --generate-stats --generate-registration-stats --upload
+        env:
+          ALTMO_DOMAIN: ${{ secrets.ALTMO_DOMAIN }}
+          ALTMO_API_KEY: ${{ secrets.ALTMO_API_KEY }}
+          ALTMO_CHALLENGE_ID: ${{ secrets.ALTMO_CHALLENGE_ID }}
+          ALTMO_CITY_ID: ${{ secrets.ALTMO_CITY_ID }}
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
