@@ -24,6 +24,16 @@
 		"champions": "Champions",
 		"activities": "Activities"
 	},
+	"loading": {
+		"steps": "Taking a few more steps...",
+		"pedalling": "Pedalling to your destination...",
+		"trees": "Planting trees along the way...",
+		"streets": "Navigating Bengaluru streets...",
+		"hejje": "Every hejje counts...",
+		"fuel": "Saving fuel, one ride at a time...",
+		"lastMile": "Catching the last mile...",
+		"mapping": "Mapping the route ahead..."
+	},
 	"leaderboardPage": {
 		"challengeBeginsIn": "The Hejje Gala Corporate Challenge begins in",
 		"days": "days",

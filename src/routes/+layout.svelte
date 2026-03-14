@@ -4,29 +4,38 @@
 	import GoToTop from '$lib/components/GoToTop.svelte';
 	import { afterNavigate } from '$app/navigation';
 	import { navigating } from '$app/stores';
+	import { _ } from 'svelte-i18n';
 
 	let { children } = $props();
 
-	const loadingMessages = [
-		{ emoji: '🚶', text: 'Taking a few more steps...' },
-		{ emoji: '🚴', text: 'Pedalling to your destination...' },
-		{ emoji: '🌳', text: 'Planting trees along the way...' },
-		{ emoji: '🏙️', text: 'Navigating Bengaluru streets...' },
-		{ emoji: '👣', text: 'Every hejje counts...' },
-		{ emoji: '🌿', text: 'Saving fuel, one ride at a time...' },
-		{ emoji: '🚌', text: 'Catching the last mile...' },
-		{ emoji: '🗺️', text: 'Mapping the route ahead...' }
+	const messageKeys = [
+		{ emoji: '🚶', key: 'loading.steps' },
+		{ emoji: '🚴', key: 'loading.pedalling' },
+		{ emoji: '🌳', key: 'loading.trees' },
+		{ emoji: '🏙️', key: 'loading.streets' },
+		{ emoji: '👣', key: 'loading.hejje' },
+		{ emoji: '🌿', key: 'loading.fuel' },
+		{ emoji: '🚌', key: 'loading.lastMile' },
+		{ emoji: '🗺️', key: 'loading.mapping' }
 	];
 
-	const pick = loadingMessages[Math.floor(Math.random() * loadingMessages.length)];
-	let loadingEmoji = $state(pick.emoji);
-	let loadingMessage = $state(pick.text);
+	let messageIndex = $state(Math.floor(Math.random() * messageKeys.length));
+	let rotateInterval: ReturnType<typeof setInterval> | null = null;
+
+	const loadingEmoji = $derived(messageKeys[messageIndex].emoji);
+	const loadingMessage = $derived($_(messageKeys[messageIndex].key));
 
 	$effect(() => {
 		if ($navigating) {
-			const msg = loadingMessages[Math.floor(Math.random() * loadingMessages.length)];
-			loadingEmoji = msg.emoji;
-			loadingMessage = msg.text;
+			messageIndex = Math.floor(Math.random() * messageKeys.length);
+			rotateInterval = setInterval(() => {
+				messageIndex = (messageIndex + 1) % messageKeys.length;
+			}, 2000);
+		} else {
+			if (rotateInterval) {
+				clearInterval(rotateInterval);
+				rotateInterval = null;
+			}
 		}
 	});
 
