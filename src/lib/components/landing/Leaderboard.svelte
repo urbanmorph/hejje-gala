@@ -791,6 +791,8 @@
 				</button>
 			</div>
 		{/if}
+
+		<p class="text-[9px] sm:text-[10px] text-gray-400 text-center mt-4">{$_('leaderboard.refreshNote')}</p>
 	</div>
 </div>
 

@@ -188,7 +188,8 @@
 		"west": "West",
 		"elcita": "ELCITA",
 		"back": "Go back to Main Leaderboard",
-		"clickToExplore": "Click a row to explore →"
+		"clickToExplore": "Click a row to explore →",
+		"refreshNote": "Data refreshes every 30 minutes"
 	},
 	"about": {
 		"aboutTheCity": "About Bengaluru",
