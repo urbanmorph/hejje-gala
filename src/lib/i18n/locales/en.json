@@ -191,7 +191,7 @@
 		"clickToExplore": "Click a row to explore →",
 		"refreshNote": "Data refreshes every 30 minutes",
 		"justUpdated": "Data just updated",
-		"updatedAgo": "Last updated {minutes} min ago"
+		"updatedAgo": "Last updated {time} ago"
 	},
 	"about": {
 		"aboutTheCity": "About Bengaluru",

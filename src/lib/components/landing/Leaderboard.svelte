@@ -75,9 +75,13 @@
 
 	const lastUpdatedText = $derived.by(() => {
 		if (!lastUpdated) return '';
-		const mins = Math.floor((Date.now() - lastUpdated.getTime()) / 60000);
-		if (mins < 1) return $_('leaderboard.justUpdated');
-		return $_('leaderboard.updatedAgo', { values: { minutes: mins } });
+		const totalMins = Math.floor((Date.now() - lastUpdated.getTime()) / 60000);
+		if (totalMins < 1) return $_('leaderboard.justUpdated');
+		if (totalMins < 60) return $_('leaderboard.updatedAgo', { values: { time: `${totalMins} min` } });
+		const hrs = Math.floor(totalMins / 60);
+		const mins = totalMins % 60;
+		if (mins === 0) return $_('leaderboard.updatedAgo', { values: { time: `${hrs}h` } });
+		return $_('leaderboard.updatedAgo', { values: { time: `${hrs}h ${mins}m` } });
 	});
 
 	let searchQuery = $state('');
