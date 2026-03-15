@@ -71,6 +71,15 @@
 	let error: string | null = $state(null);
 	let isLoading = $state(true);
 
+	let lastUpdated = $state<Date | null>(null);
+
+	const lastUpdatedText = $derived.by(() => {
+		if (!lastUpdated) return '';
+		const mins = Math.floor((Date.now() - lastUpdated.getTime()) / 60000);
+		if (mins < 1) return $_('leaderboard.justUpdated');
+		return $_('leaderboard.updatedAgo', { values: { minutes: mins } });
+	});
+
 	let searchQuery = $state('');
 	let selectedFilter: ActivityFilter = $state(initialFilter);
 	let activityTypeDropdownOpen = $state(false);
@@ -124,6 +133,11 @@
 			const response = await fetch(assetsUrl || dataUrl);
 			if (!response.ok) {
 				throw new Error(`Failed to load leaderboard (${response.status})`);
+			}
+
+			const lastModified = response.headers.get('last-modified');
+			if (lastModified) {
+				lastUpdated = new Date(lastModified);
 			}
 
 			const data: LeaderboardData = await response.json();
@@ -792,7 +806,9 @@
 			</div>
 		{/if}
 
-		<p class="text-[9px] sm:text-[10px] text-gray-400 text-center mt-4">{$_('leaderboard.refreshNote')}</p>
+		{#if lastUpdatedText}
+			<p class="text-[9px] sm:text-[10px] text-gray-400 text-center mt-4">{lastUpdatedText}</p>
+		{/if}
 	</div>
 </div>
 

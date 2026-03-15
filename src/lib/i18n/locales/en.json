@@ -189,7 +189,9 @@
 		"elcita": "ELCITA",
 		"back": "Go back to Main Leaderboard",
 		"clickToExplore": "Click a row to explore →",
-		"refreshNote": "Data refreshes every 30 minutes"
+		"refreshNote": "Data refreshes every 30 minutes",
+		"justUpdated": "Data just updated",
+		"updatedAgo": "Last updated {minutes} min ago"
 	},
 	"about": {
 		"aboutTheCity": "About Bengaluru",
