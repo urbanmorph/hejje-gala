@@ -18,7 +18,7 @@ jobs:
       - run: pip install boto3 requests
 
       - name: Generate and upload leaderboard data
-        run: python3 scripts/altmo/api.py --generate-leaderboards --generate-stats --generate-registration-stats --upload
+        run: python3 scripts/altmo/api.py --generate-companies --generate-leaderboards --generate-stats --generate-registration-stats --upload
         env:
           ALTMO_DOMAIN: ${{ secrets.ALTMO_DOMAIN }}
           ALTMO_API_KEY: ${{ secrets.ALTMO_API_KEY }}

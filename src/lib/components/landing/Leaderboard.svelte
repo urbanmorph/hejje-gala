@@ -443,6 +443,13 @@
 			</div>
 		{/if}
 
+		<!-- Drill-down hint -->
+		{#if context === 'city' || context === 'corporation'}
+			<p class="text-[10px] sm:text-xs text-gray-400 mb-2 text-right">
+				{$_('leaderboard.clickToExplore')}
+			</p>
+		{/if}
+
 		<!-- Leaderboard Table -->
 		<div class="bg-white rounded-lg border border-gray-200 overflow-hidden">
 			<div class="overflow-x-auto">
@@ -721,6 +728,14 @@
 											</div>
 										</td>
 									{/if}
+
+										{#if isClickable}
+											<td class="{isMobile ? 'px-1 py-2' : 'px-2 py-3'} whitespace-nowrap">
+												<svg xmlns="http://www.w3.org/2000/svg" class="{isMobile ? 'w-4 h-4' : 'w-5 h-5'} text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+													<path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+												</svg>
+											</td>
+										{/if}
 								</tr>
 							{/each}
 						{/if}

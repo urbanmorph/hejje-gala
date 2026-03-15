@@ -187,7 +187,8 @@
 		"north": "North",
 		"west": "West",
 		"elcita": "ELCITA",
-		"back": "Go back to Main Leaderboard"
+		"back": "Go back to Main Leaderboard",
+		"clickToExplore": "Click a row to explore →"
 	},
 	"about": {
 		"aboutTheCity": "About Bengaluru",
