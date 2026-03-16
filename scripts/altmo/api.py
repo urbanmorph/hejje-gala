@@ -495,12 +495,9 @@ class JSONGenerator:
                     )
     
     def _get_company_id(self, company_name: str) -> str:
-        """Get company ID from companies-blr.json."""
+        """Generate a company ID from the company name."""
         if company_name in self._companies_blr_name_to_id:
             return self._companies_blr_name_to_id[company_name]
-        
-        # Fallback for unknown companies
-        print(f"Warning: Company '{company_name}' not found in companies-blr.json, using generated ID")
         return f"unknown-{company_name.lower().replace(' ', '-').replace('/', '-')}"
     
     def _create_company_entry(self, company_name: str, company_data: Dict[str, Any],
@@ -633,7 +630,6 @@ class JSONGenerator:
                     company_id = self._get_company_id(company_name)
                     
                     if company_id.startswith("unknown-"):
-                        print(f"Warning: Company '{company_name}' not found, skipping from companies.json")
                         continue
                     
                     if company_id not in companies_data:
