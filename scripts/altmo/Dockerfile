@@ -9,4 +9,4 @@ COPY api.py .
 COPY cron.sh .
 RUN chmod +x cron.sh
 
-CMD ["./cron.sh", "--sleep", "1800", "--options", "--generate-leaderboards --generate-stats --generate-registration-stats --upload"]
+CMD ["./cron.sh", "--sleep", "1800", "--options", "--generate-leaderboards --generate-stats --upload"]
