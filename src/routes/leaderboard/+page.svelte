@@ -343,25 +343,23 @@
 		<!-- Corporation Selection Buttons -->
 		<div class="bg-[#FFFCF8] {isMobile ? 'py-3 sm:py-4' : 'py-8'}">
 			<div class="mx-auto {isMobile ? 'max-w-[95%] px-3 sm:px-4' : 'max-w-[80%] px-6'}">
-				<div
-					class="flex w-full flex-wrap items-center justify-center gap-0 rounded-full border border-[#00A640] bg-white {isMobile
-						? 'p-0.5'
-						: 'p-0.5'}"
-				>
-					{#each corporations as corp, i}
-						<button
-							onclick={() => selectCorporation(corp.id)}
-							class="flex-1 min-w-0 {isMobile
-								? 'px-1.5 py-1.5 sm:px-2 sm:py-2 text-[10px] sm:text-xs'
-								: 'px-6 py-4 text-md'} font-semibold transition-all
-								{selectedCorpId === corp.id ? ' bg-[#00A640] text-white' : ' text-slate-900 bg-transparent'}
-								{i < corporations.length - 1 ? ' border-r border-[#00A640]' : ''}
-								{i === 0 ? ' rounded-l-full' : ''}
-								{i === corporations.length - 1 ? ' rounded-r-full' : ''}"
-						>
-							{corp.name}
-						</button>
-					{/each}
+				<div class="{isMobile ? 'overflow-x-auto -mx-3 px-3 scrollbar-hide' : ''}">
+					<div
+						class="flex items-center gap-0 rounded-full border border-[#00A640] bg-white p-0.5 {isMobile ? 'w-max min-w-full' : 'w-full'}"
+					>
+						{#each corporations as corp, i}
+							<button
+								onclick={() => selectCorporation(corp.id)}
+								class="{isMobile ? 'px-3 py-2 text-xs whitespace-nowrap' : 'flex-1 px-6 py-4 text-md'} font-semibold transition-all
+									{selectedCorpId === corp.id ? ' bg-[#00A640] text-white' : ' text-slate-900 bg-transparent'}
+									{i < corporations.length - 1 ? ' border-r border-[#00A640]' : ''}
+									{i === 0 ? ' rounded-l-full' : ''}
+									{i === corporations.length - 1 ? ' rounded-r-full' : ''}"
+							>
+								{corp.name}
+							</button>
+						{/each}
+					</div>
 				</div>
 			</div>
 		</div>
@@ -526,6 +524,14 @@
 </div>
 
 <style>
+	.scrollbar-hide {
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+	}
+	.scrollbar-hide::-webkit-scrollbar {
+		display: none;
+	}
+
 	:global(.prose) {
 		color: inherit;
 	}
