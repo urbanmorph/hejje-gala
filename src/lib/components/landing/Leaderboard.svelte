@@ -289,16 +289,7 @@
 
 	// Handle row click to navigate to company/corporation page
 	function handleRowClick(row: LeaderboardRow) {
-		if (context === 'corporation' && row.companyId) {
-			// Get corporationId from URL params or from row data
-			const corpId = row.corporationId || $page.url.searchParams.get('corp');
-			if (corpId) {
-				// Navigate to company view from corporation leaderboard
-				goto(`/leaderboard?view=company&corp=${corpId}&company=${row.companyId}`, {
-					noScroll: true
-				});
-			}
-		} else if (context === 'city' && row.corporationId) {
+		if (context === 'city' && row.corporationId) {
 			// Navigate to corporation view from city leaderboard
 			goto(`/leaderboard?view=corporation&corp=${row.corporationId}`, { noScroll: true });
 		}
@@ -462,7 +453,7 @@
 		{/if}
 
 		<!-- Drill-down hint -->
-		{#if context === 'city' || context === 'corporation'}
+		{#if context === 'city'}
 			<p class="text-[10px] sm:text-xs text-gray-400 mb-2 text-right">
 				{$_('leaderboard.clickToExplore')}
 			</p>
@@ -583,7 +574,6 @@
 						{:else}
 							{#each paginatedRows as row (row.rank)}
 								{@const isClickable =
-									(context === 'corporation' && row.companyId) ||
 									(context === 'city' && row.corporationId)}
 								<tr
 									class="hover:bg-gray-50 transition-colors {isClickable ? 'cursor-pointer' : ''}"
