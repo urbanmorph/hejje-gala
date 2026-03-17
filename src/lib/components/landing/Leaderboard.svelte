@@ -161,6 +161,17 @@
 		}
 	});
 
+	// Recreation activities lookup (for city context, maps corporation name to recreation count)
+	let recreationMap = $derived.by(() => {
+		if (!leaderboardData || context !== 'city') return {};
+		const recRows = leaderboardData.dimensions?.recreationAll?.rows || [];
+		const map: Record<string, number> = {};
+		for (const row of recRows) {
+			map[row.name] = row.activities;
+		}
+		return map;
+	});
+
 	// Get current rows based on selected activity type and mode
 	let rows = $derived.by(() => {
 		if (!leaderboardData) return [];
@@ -511,8 +522,17 @@
 									? 'px-2 py-2 text-xs'
 									: 'px-3 py-3 text-sm'} text-left font-semibold text-[#0F172A] tracking-wider"
 							>
-								{$_('leaderboard.activities')}
+								{context === 'city' ? $_('leaderboard.commute') : $_('leaderboard.activities')}
 							</th>
+							{#if context === 'city'}
+								<th
+									class="{isMobile
+										? 'px-2 py-2 text-xs'
+										: 'px-3 py-3 text-sm'} text-left font-semibold text-[#0F172A] tracking-wider"
+								>
+									{$_('leaderboard.recreation')}
+								</th>
+							{/if}
 							{#if selectedActivityType !== 'recreation'}
 								<th
 									class="{isMobile
@@ -536,7 +556,7 @@
 							<tr>
 								<td
 									colspan={(() => {
-										let cols = context === 'city' ? 4 : context === 'corporation' ? 5 : 4; // #, Name, (Companies/Campus/Employees), Activities
+										let cols = context === 'city' ? 5 : context === 'corporation' ? 5 : 4; // #, Name, (Companies/Campus/Employees), Activities (+Recreation for city)
 										if (selectedActivityType !== 'recreation') cols += 2; // CO2, Fuel
 										return cols;
 									})()}
@@ -549,7 +569,7 @@
 							<tr>
 								<td
 									colspan={(() => {
-										let cols = context === 'city' ? 4 : context === 'corporation' ? 5 : 4; // #, Name, (Companies/Campus/Employees), Activities
+										let cols = context === 'city' ? 5 : context === 'corporation' ? 5 : 4; // #, Name, (Companies/Campus/Employees), Activities (+Recreation for city)
 										if (selectedActivityType !== 'recreation') cols += 2; // CO2, Fuel
 										return cols;
 									})()}
@@ -562,7 +582,7 @@
 							<tr>
 								<td
 									colspan={(() => {
-										let cols = context === 'city' ? 4 : context === 'corporation' ? 5 : 4; // #, Name, (Companies/Campus/Employees), Activities
+										let cols = context === 'city' ? 5 : context === 'corporation' ? 5 : 4; // #, Name, (Companies/Campus/Employees), Activities (+Recreation for city)
 										if (selectedActivityType !== 'recreation') cols += 2; // CO2, Fuel
 										return cols;
 									})()}
@@ -706,6 +726,22 @@
 											>
 										</div>
 									</td>
+
+									{#if context === 'city'}
+										<!-- Recreation Activities -->
+										<td class="{isMobile ? 'px-2 py-2' : 'px-3 py-3'} whitespace-nowrap">
+											<div class="flex items-center {isMobile ? 'gap-1' : 'gap-2'}">
+												<img
+													src="/assets/icons/activities.svg"
+													alt={$_('leaderboard.recreation')}
+													class={isMobile ? 'w-4 h-4' : 'w-5 h-5'}
+												/>
+												<span class="{isMobile ? 'text-xs' : 'text-sm'} text-gray-700"
+													>{recreationMap[row.name] ?? 0}</span
+												>
+											</div>
+										</td>
+									{/if}
 
 									{#if selectedActivityType !== 'recreation'}
 										<!-- CO2 Offset -->
