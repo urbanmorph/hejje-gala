@@ -20,7 +20,9 @@
 		{ id: 'east', name: $_('leaderboard.east') },
 		{ id: 'north', name: $_('leaderboard.north') },
 		{ id: 'west', name: $_('leaderboard.west') },
-		{ id: 'elcita', name: $_('leaderboard.elcita') }
+		{ id: 'elcita', name: $_('leaderboard.elcita') },
+		{ id: 'blr-urban', name: $_('leaderboard.blrUrban') },
+		{ id: 'blr-rural', name: $_('leaderboard.blrRural') }
 	]);
 
 	const selectedCorpId = $derived($page.url.searchParams.get('corp'));

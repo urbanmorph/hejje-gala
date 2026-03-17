@@ -39,7 +39,9 @@ CORPORATION_MAPPING = {
     "GBA North": "north",
     "GBA South": "south",
     "GBA West": "west",
-    "ELCITA": "elcita"
+    "ELCITA": "elcita",
+    "Bangalore Urban": "blr-urban",
+    "Bangalore Rural": "blr-rural"
 }
 
 DIMENSIONS = [
@@ -472,27 +474,31 @@ class JSONGenerator:
             print(f"Loaded {len(self._companies_blr_name_to_emp_count)} company empCounts from companies-blr.json")
     
     def set_leaderboard_participants(self, leaderboard: List[Dict[str, Any]]) -> None:
-        """Populate participants mapping from leaderboard API response.
-        
+        """Populate participants and total activities mapping from leaderboard API response.
+
         Uses child_entities[].participants which represents *all* users
         from the company, not just active users in the challenge period.
+        Also captures activities_count which includes commute + recreation.
         """
         self._leaderboard_company_participants.clear()
+        self._leaderboard_company_activities: Dict[str, int] = {}
         for corp_entry in leaderboard or []:
             for child in corp_entry.get("child_entities", []):
                 company_name = child.get("name")
                 if not company_name:
                     continue
                 participants = child.get("participants")
-                if participants is None:
-                    continue
-                try:
-                    self._leaderboard_company_participants[company_name] = int(participants)
-                except (TypeError, ValueError):
-                    print(
-                        f"Warning: Invalid participants value '{participants}' "
-                        f"for company '{company_name}' in leaderboard API response"
-                    )
+                if participants is not None:
+                    try:
+                        self._leaderboard_company_participants[company_name] = int(participants)
+                    except (TypeError, ValueError):
+                        pass
+                activities_count = child.get("activities_count")
+                if activities_count is not None:
+                    try:
+                        self._leaderboard_company_activities[company_name] = int(activities_count)
+                    except (TypeError, ValueError):
+                        pass
     
     def _get_company_id(self, company_name: str) -> str:
         """Generate a company ID from the company name."""
@@ -546,7 +552,9 @@ class JSONGenerator:
             "city": DEFAULT_CITY,
             "dimensions": {}
         }
-        
+
+        # First pass: generate commute dimensions to know commute counts
+        commute_counts: Dict[str, int] = {}
         for dimension in DIMENSIONS:
             companies = [
                 self._create_company_entry(company_name, company_data, dimension, corporation_name)
@@ -555,7 +563,21 @@ class JSONGenerator:
             ]
             rank_entries(companies, lambda x: x["score"], self._companies_blr_name_to_emp_count)
             result["dimensions"][dimension] = {"rows": companies}
-        
+
+            # Track commute counts for recreation calculation
+            if dimension == "commuteAll":
+                for c in companies:
+                    commute_counts[c["name"]] = c["activities"]
+
+        # Fix recreation dimensions: activities = leaderboard_total - commute
+        for dimension in ["recreationAll", "recreationWalk", "recreationCycle"]:
+            if dimension in result["dimensions"]:
+                for company in result["dimensions"][dimension]["rows"]:
+                    total = self._leaderboard_company_activities.get(company["name"], 0)
+                    commute = commute_counts.get(company["name"], 0)
+                    recreation = max(0, total - commute)
+                    company["activities"] = recreation
+
         return result
     
     def generate_city_json(self, aggregation: Dict[str, Dict[str, Any]]) -> Dict[str, Any]:
@@ -565,25 +587,39 @@ class JSONGenerator:
             "updatedAt": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
             "dimensions": {}
         }
-        
+
+        # Load corporation-level JSONs to get recreation-corrected company counts
+        corp_recreation_totals: Dict[str, int] = {}
+        for corp_name, corp_id in CORPORATION_MAPPING.items():
+            corp_data = load_json(LEADERBOARD_DIR / f"{corp_id}.json")
+            if corp_data:
+                rec_rows = corp_data.get("dimensions", {}).get("recreationAll", {}).get("rows", [])
+                corp_recreation_totals[corp_name] = sum(r.get("activities", 0) for r in rec_rows)
+
         for dimension in DIMENSIONS:
             corporations = []
             for corporation_name, companies in aggregation.get(dimension, {}).items():
                 corp_id = self.mapper.get_corp_id(corporation_name)
                 if not corp_id:
                     continue
-                
+
                 totals = self._calculate_corporation_totals(companies)
+
+                # For recreation dimensions, use the corrected totals from corporation JSONs
+                activities = totals["activities"]
+                if dimension == "recreationAll" and corporation_name in corp_recreation_totals:
+                    activities = corp_recreation_totals[corporation_name]
+
                 score = calculate_score(
-                    dimension, totals["activities"], totals["participants"],
+                    dimension, activities, totals["participants"],
                     totals["co2Offset"], totals["fuelSaved"], totals["moneySaved"]
                 )
-                
+
                 corporations.append({
                     "rank": 0,
                     "corporationId": corp_id,
                     "name": corporation_name,
-                    "activities": totals["activities"],
+                    "activities": activities,
                     "co2OffsetKg": round(totals["co2Offset"], 2),
                     "fuelSavedL": round(totals["fuelSaved"], 2),
                     "moneySaved": round(totals["moneySaved"], 2),
@@ -591,10 +627,10 @@ class JSONGenerator:
                     "employees": totals["participants"],
                     "score": round(score, 2)
                 })
-            
+
             rank_entries(corporations, lambda x: x["score"])
             result["dimensions"][dimension] = {"rows": corporations}
-        
+
         return result
     
     def _calculate_corporation_totals(self, companies: Dict[str, Any]) -> Dict[str, Any]:

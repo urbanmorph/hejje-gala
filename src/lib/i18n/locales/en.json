@@ -187,6 +187,8 @@
 		"north": "North",
 		"west": "West",
 		"elcita": "ELCITA",
+		"blrUrban": "BLR Urban",
+		"blrRural": "BLR Rural",
 		"back": "Go back to Main Leaderboard",
 		"clickToExplore": "Click a row to explore →",
 		"refreshNote": "Data refreshes every 30 minutes",

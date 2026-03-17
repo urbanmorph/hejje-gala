@@ -90,10 +90,25 @@
 			const data = await res.json();
 
 			const dimensions = data?.dimensions || {};
-			const commuteAll = dimensions.commuteAll || dimensions.recreationAll || Object.values(dimensions)[0];
-			const rows = commuteAll?.rows || [];
+			const commuteRows = dimensions.commuteAll?.rows || [];
+			const recreationRows = dimensions.recreationAll?.rows || [];
 
-			allCorporations = rows.sort((a: LeaderboardRow, b: LeaderboardRow) => a.rank - b.rank);
+			// Merge commute + recreation activities per corporation
+			const merged: Record<string, LeaderboardRow> = {};
+			for (const row of commuteRows) {
+				merged[row.name] = { ...row };
+			}
+			for (const row of recreationRows) {
+				if (merged[row.name]) {
+					merged[row.name].activities += row.activities;
+					merged[row.name].co2OffsetKg += row.co2OffsetKg;
+					merged[row.name].fuelSavedL += row.fuelSavedL;
+				} else {
+					merged[row.name] = { ...row };
+				}
+			}
+
+			allCorporations = Object.values(merged).sort((a, b) => a.rank - b.rank);
 		} catch (err) {
 			console.error('Error fetching leaderboard:', err);
 		} finally {
