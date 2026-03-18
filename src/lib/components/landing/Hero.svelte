@@ -168,12 +168,17 @@
 			style="--banner-image: url('{bannerImage}'); aspect-ratio: 1782 / 769;"
 		>
 			<div
-				class="absolute inset-0 z-10 flex flex-col items-center justify-between px-6 pt-8 pb-4 lg:pt-12 lg:pb-8"
+				class="absolute inset-0 z-10 flex flex-col items-center justify-center gap-2 sm:gap-4 lg:gap-6 px-4 sm:px-6"
 			>
 				<div class="hero-text text-center">
-					<h1 class="mt-2 mb-4 text-xl sm:text-2xl lg:mt-4 lg:mb-6 leading-tight font-bold text-white lg:text-5xl xl:text-6xl max-w-4xl mx-auto">
-						{translatedTitle}
+					<h1 class="mb-1 sm:mb-2 text-xl sm:text-2xl leading-tight font-bold text-white lg:text-5xl xl:text-6xl max-w-4xl mx-auto">
+						Bengaluru is moving.
 					</h1>
+					<p class="mb-0 text-sm sm:text-lg font-semibold text-white/90 tracking-wide lg:text-2xl xl:text-3xl">
+						Walk <span class="text-white/50 mx-1">|</span>
+						Cycle <span class="text-white/50 mx-1">|</span>
+						Lead
+					</p>
 					{#if showCTA}
 						<div class="mb-6 flex justify-center lg:mb-12">
 							{#if postRegistration}
@@ -191,12 +196,12 @@
 
 				<div class="hero-text flex justify-center gap-2 sm:gap-4 lg:gap-6">
 					{#if countdownDone}
-						<div class="flex flex-col items-center gap-2 lg:gap-3">
-							<span class="text-lg sm:text-2xl font-bold text-white lg:text-4xl xl:text-5xl">
+						<div class="flex flex-col items-center gap-1 lg:gap-2">
+							<span class="text-base sm:text-xl font-bold text-white lg:text-3xl xl:text-4xl">
 								{$_('hero.challengeIsLive')}
 							</span>
-							<span class="text-xs sm:text-sm lg:text-base text-white/80">
-								{$_('hero.joinNowCTA')}
+							<span class="text-[10px] sm:text-sm lg:text-base text-white/80">
+								15 March 2026 — 15 June 2026
 							</span>
 						</div>
 					{:else}
