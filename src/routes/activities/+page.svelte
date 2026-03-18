@@ -11,12 +11,17 @@
 	import type { CommunityEvent, EventsData } from '$lib/types/event';
 
 	let isMobile = $state(false);
-	let activeView = $state<'calendar' | 'events'>('events');
+	let activeView = $state<'calendar' | 'events'>('calendar');
 	let events = $state<CommunityEvent[]>([]);
 	let loading = $state(true);
 
 	function checkMobile() {
 		isMobile = checkIsMobile();
+	}
+
+	function handleDateClick(date: Date) {
+		const d = date.toISOString().split('T')[0];
+		window.location.href = `/activities/add?date=${d}`;
 	}
 
 	async function fetchEvents() {
@@ -130,12 +135,12 @@
 							class="h-8 w-8 animate-spin rounded-full border-4 border-gray-200 border-t-[#00A63E]"
 						></div>
 					</div>
+				{:else if activeView === 'calendar'}
+					<Calendar {isMobile} {events} onDateClick={handleDateClick} />
 				{:else if events.length === 0}
 					<div class="py-20 text-center text-gray-400">
 						{$_('events.noEvents')}
 					</div>
-				{:else if activeView === 'calendar'}
-					<Calendar {isMobile} {events} />
 				{:else}
 					<Activities {isMobile} {events} />
 				{/if}

@@ -9,9 +9,10 @@
 	interface Props {
 		isMobile?: boolean;
 		events: CommunityEvent[];
+		onDateClick?: (date: Date) => void;
 	}
 
-	let { isMobile = false, events = [] }: Props = $props();
+	let { isMobile = false, events = [], onDateClick }: Props = $props();
 
 	const EVENT_COLORS: Record<string, string> = {
 		Walk: '#22c55e',
@@ -92,6 +93,9 @@
 		eventClick: (info: { event: { id: string } }) => {
 			const event = eventMap.get(info.event.id);
 			if (event) selectedEvent = event;
+		},
+		dateClick: (info: { date: Date }) => {
+			if (onDateClick) onDateClick(info.date);
 		}
 	});
 
@@ -249,6 +253,14 @@
 		font-size: 1.125rem;
 		font-weight: 600;
 		color: #111827;
+	}
+
+	.calendar-wrapper :global(.ec-day) {
+		cursor: pointer;
+	}
+
+	.calendar-wrapper :global(.ec-day:hover) {
+		background-color: rgba(0, 166, 62, 0.04);
 	}
 
 	.calendar-wrapper :global(.ec-event) {

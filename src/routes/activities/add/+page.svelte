@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { page } from '$app/stores';
 	import Header from '$lib/components/landing/Header.svelte';
 	import Footer from '$lib/components/landing/Footer.svelte';
 	import { Input } from '$lib/components/ui/input';
@@ -186,6 +187,11 @@
 
 	onMount(() => {
 		checkMobile();
+		const dateParam = $page.url.searchParams.get('date');
+		if (dateParam) {
+			startDate = dateParam;
+			endDate = dateParam;
+		}
 		const resizeHandler = () => checkMobile();
 		window.addEventListener('resize', resizeHandler);
 		return () => window.removeEventListener('resize', resizeHandler);
