@@ -83,14 +83,14 @@
 </script>
 
 <div class="flex flex-col h-full">
-	<div class="mb-3 sm:mb-4">
+	<a href="/activities" class="block mb-3 sm:mb-4 group">
 		<h3 class="text-lg sm:text-xl xl:text-2xl font-bold text-gray-900">
-			<span class="text-[#00A63E]">{$_('citizenLeaders.title')}</span>
+			<span class="text-[#00A63E] group-hover:underline">{$_('citizenLeaders.title')}</span>
 		</h3>
 		<p class="text-xs sm:text-sm xl:text-base font-semibold text-gray-900 mt-1">
 			{$_('citizenLeaders.subtitle')}
 		</p>
-	</div>
+	</a>
 
 	<!-- Upcoming events -->
 	<div class="flex-1">
@@ -154,7 +154,7 @@
 	<div class="mt-4 sm:mt-6">
 		<a
 			href="/activities"
-			class="inline-flex items-center gap-2 text-sm xl:text-base font-semibold text-[#00A63E] hover:text-[#008a33] transition-colors"
+			class="inline-flex items-center justify-center gap-2 rounded-full bg-[#00A63E] px-5 py-2.5 text-sm xl:text-base font-semibold text-white hover:bg-[#008a33] transition-colors w-full sm:w-auto"
 		>
 			{$_('citizenLeaders.viewAllEvents')}
 			<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">

@@ -125,14 +125,14 @@
 </script>
 
 <div class="flex flex-col h-full">
-	<div class="mb-3 sm:mb-4">
+	<a href="/leaderboard" class="block mb-3 sm:mb-4 group">
 		<h3 class="text-lg sm:text-xl xl:text-2xl font-bold text-gray-900">
-			<span class="text-[#0D6BA3]">{$_('corporateLeaders.title')}</span>
+			<span class="text-[#0D6BA3] group-hover:underline">{$_('corporateLeaders.title')}</span>
 		</h3>
 		<p class="text-xs sm:text-sm xl:text-base font-semibold text-gray-900 mt-1">
 			{$_('corporateLeaders.subtitle')}
 		</p>
-	</div>
+	</a>
 
 	<div class="flex-1">
 		{#if isLoading}
@@ -215,7 +215,7 @@
 	<div class="mt-4 sm:mt-6 space-y-3 sm:space-y-4">
 		<a
 			href="/leaderboard"
-			class="inline-flex items-center gap-2 text-sm xl:text-base font-semibold text-[#0D6BA3] hover:text-[#0a5a8a] transition-colors"
+			class="inline-flex items-center justify-center gap-2 rounded-full bg-[#0D6BA3] px-5 py-2.5 text-sm xl:text-base font-semibold text-white hover:bg-[#0a5a8a] transition-colors w-full sm:w-auto"
 		>
 			{$_('corporateLeaders.viewFullLeaderboard')}
 			<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
