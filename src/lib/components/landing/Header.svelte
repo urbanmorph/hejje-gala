@@ -21,7 +21,7 @@
 			Home: 'common.home',
 			Leaderboard: 'common.leaderboard',
 			Champions: 'common.champions',
-			Activities: 'common.activities',
+			Events: 'common.events',
 			'About Challenge': 'common.aboutChallenge',
 			FAQs: 'common.faqs'
 		};
@@ -36,7 +36,7 @@
 		if (path === '/about') return 'About Challenge';
 		if (path === '/leaderboard') return 'Leaderboard';
 		if (path === '/champions') return 'Champions';
-		if (path === '/activities') return 'Activities';
+		if (path === '/activities') return 'Events';
 		return 'Home';
 	});
 

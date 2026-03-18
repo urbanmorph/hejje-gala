@@ -11,7 +11,7 @@ export const siteConfig = {
 export const navigation = [
 	{ label: 'Home', href: '#' },
 	{ label: 'Leaderboard', href: '/leaderboard' },
-	{ label: 'Activities', href: '/activities' },
+	{ label: 'Events', href: '/activities' },
 	{ label: 'About Challenge', href: '/about' },
 	{ label: 'FAQs', href: '/about#faqs' }
 ];

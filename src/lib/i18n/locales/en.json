@@ -6,7 +6,7 @@
 		"faqs": "FAQs",
 		"viewLeaderboard": "VIEW LEADERBOARD",
 		"knowMore": "KNOW MORE",
-		"viewActivities": "VIEW ACTIVITIES",
+		"viewActivities": "VIEW EVENTS",
 		"readMore": "READ MORE",
 		"back": "Back",
 		"search": "Search",
@@ -22,7 +22,8 @@
 		"gbaLetter": "GBA Letter",
 		"becomeAChampion": "BECOME A CHAMPION",
 		"champions": "Champions",
-		"activities": "Activities"
+		"activities": "Activities",
+		"events": "Events"
 	},
 	"loading": {
 		"steps": "Taking a few more steps...",

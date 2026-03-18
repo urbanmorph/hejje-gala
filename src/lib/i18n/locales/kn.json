@@ -6,7 +6,7 @@
 		"faqs": "ಪ್ರಶ್ನೆಗಳು",
 		"viewLeaderboard": "ಲೀಡರ್ಬೋರ್ಡ್ ವೀಕ್ಷಿಸಿ",
 		"knowMore": "ಹೆಚ್ಚು ತಿಳಿಯಿರಿ",
-		"viewActivities": "ಚಟುವಟಿಕೆಗಳನ್ನು ವೀಕ್ಷಿಸಿ",
+		"viewActivities": "ಕಾರ್ಯಕ್ರಮಗಳನ್ನು ವೀಕ್ಷಿಸಿ",
 		"readMore": "ಹೆಚ್ಚು ಓದಿ",
 		"back": "ಹಿಂದೆ",
 		"search": "ಹುಡುಕಿ",
@@ -22,7 +22,8 @@
 		"gbaLetter": "GBA ಪತ್ರ",
 		"becomeAChampion": "ಚಾಂಪಿಯನ್ ಆಗಿ",
 		"champions": "ಚಾಂಪಿಯನ್‌ಗಳು",
-		"activities": "ಚಟುವಟಿಕೆಗಳು"
+		"activities": "ಚಟುವಟಿಕೆಗಳು",
+		"events": "ಕಾರ್ಯಕ್ರಮಗಳು"
 	},
 	"loading": {
 		"steps": "ಇನ್ನೂ ಕೆಲವು ಹೆಜ್ಜೆಗಳು...",
