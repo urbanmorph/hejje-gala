@@ -483,6 +483,7 @@ class JSONGenerator:
         self._leaderboard_company_participants.clear()
         self._leaderboard_company_activities: Dict[str, int] = {}
         self._leaderboard_corp_data: Dict[str, Dict[str, Any]] = {}
+        self._raw_leaderboard = leaderboard or []
         for corp_entry in leaderboard or []:
             corp_name = corp_entry.get("name", "")
             if corp_name:
@@ -565,30 +566,86 @@ class JSONGenerator:
             "dimensions": {}
         }
 
-        # First pass: generate commute dimensions to know commute counts
-        commute_counts: Dict[str, int] = {}
-        for dimension in DIMENSIONS:
-            companies = [
-                self._create_company_entry(company_name, company_data, dimension, corporation_name)
-                for company_name, company_data in aggregation.get(dimension, {})
-                .get(corporation_name, {}).items()
-            ]
-            rank_entries(companies, lambda x: x["score"], self._companies_blr_name_to_emp_count)
-            result["dimensions"][dimension] = {"rows": companies}
+        # Check if aggregation has any companies for this corporation
+        has_aggregated_data = any(
+            aggregation.get(dim, {}).get(corporation_name, {})
+            for dim in DIMENSIONS
+        )
 
-            # Track commute counts for recreation calculation
-            if dimension == "commuteAll":
-                for c in companies:
-                    commute_counts[c["name"]] = c["activities"]
+        if has_aggregated_data:
+            # Normal path: generate from aggregated activity data
+            commute_counts: Dict[str, int] = {}
+            for dimension in DIMENSIONS:
+                companies = [
+                    self._create_company_entry(company_name, company_data, dimension, corporation_name)
+                    for company_name, company_data in aggregation.get(dimension, {})
+                    .get(corporation_name, {}).items()
+                ]
+                rank_entries(companies, lambda x: x["score"], self._companies_blr_name_to_emp_count)
+                result["dimensions"][dimension] = {"rows": companies}
 
-        # Fix recreation dimensions: activities = leaderboard_total - commute
-        for dimension in ["recreationAll", "recreationWalk", "recreationCycle"]:
-            if dimension in result["dimensions"]:
-                for company in result["dimensions"][dimension]["rows"]:
-                    total = self._leaderboard_company_activities.get(company["name"], 0)
-                    commute = commute_counts.get(company["name"], 0)
-                    recreation = max(0, total - commute)
-                    company["activities"] = recreation
+                if dimension == "commuteAll":
+                    for c in companies:
+                        commute_counts[c["name"]] = c["activities"]
+
+            # Fix recreation dimensions: activities = leaderboard_total - commute
+            for dimension in ["recreationAll", "recreationWalk", "recreationCycle"]:
+                if dimension in result["dimensions"]:
+                    for company in result["dimensions"][dimension]["rows"]:
+                        total = self._leaderboard_company_activities.get(company["name"], 0)
+                        commute = commute_counts.get(company["name"], 0)
+                        recreation = max(0, total - commute)
+                        company["activities"] = recreation
+        else:
+            # Fallback: populate from API leaderboard data
+            corp_api = self._leaderboard_corp_data.get(corporation_name, {})
+            if corp_api:
+                # Find child entities from the stored leaderboard
+                # Build company rows from leaderboard child entities
+                child_rows = []
+                for company_name, activities_count in self._leaderboard_company_activities.items():
+                    participants = self._leaderboard_company_participants.get(company_name, 0)
+                    # Only include companies that belong to this corporation
+                    # Check by seeing if the company is a child of this corp in the mapping
+                    if company_name in self._leaderboard_company_participants:
+                        # We need to check corporation membership
+                        pass
+
+                # Use corp-level data to create a single entry per company
+                # Get child entities from the original leaderboard data
+                for lb_entry in (self._raw_leaderboard or []):
+                    if lb_entry.get("name") != corporation_name:
+                        continue
+                    for child in lb_entry.get("child_entities", []):
+                        company_name = child.get("name", "")
+                        if not company_name:
+                            continue
+                        total_activities = child.get("activities_count", 0)
+                        participants = child.get("participants", 0)
+                        co2 = child.get("co2_offset", 0)
+                        fuel = child.get("fuel_saved", 0)
+                        money = child.get("money_saved", 0)
+
+                        row = {
+                            "rank": 0,
+                            "companyId": self._get_company_id(company_name),
+                            "name": company_name,
+                            "activities": total_activities,
+                            "co2OffsetKg": round(co2, 2),
+                            "fuelSavedL": round(fuel, 2),
+                            "moneySaved": round(money, 2),
+                            "employees": participants,
+                            "score": round(calculate_score("commuteAll", total_activities, participants, co2, fuel, money), 2),
+                            "sector": "Corporate offices",
+                            "location": corporation_name,
+                            "description": f"Company participating in {corporation_name} challenge.",
+                            "metrics": []
+                        }
+                        child_rows.append(row)
+
+                rank_entries(child_rows, lambda x: x["score"], self._companies_blr_name_to_emp_count)
+                for dimension in DIMENSIONS:
+                    result["dimensions"][dimension] = {"rows": [r.copy() for r in child_rows]}
 
         return result
     
