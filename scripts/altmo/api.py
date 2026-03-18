@@ -482,7 +482,19 @@ class JSONGenerator:
         """
         self._leaderboard_company_participants.clear()
         self._leaderboard_company_activities: Dict[str, int] = {}
+        self._leaderboard_corp_data: Dict[str, Dict[str, Any]] = {}
         for corp_entry in leaderboard or []:
+            corp_name = corp_entry.get("name", "")
+            if corp_name:
+                self._leaderboard_corp_data[corp_name] = {
+                    "activities_count": corp_entry.get("activities_count", 0),
+                    "participants": corp_entry.get("participants", 0),
+                    "co2_offset": corp_entry.get("co2_offset", 0),
+                    "fuel_saved": corp_entry.get("fuel_saved", 0),
+                    "distance": corp_entry.get("distance", 0),
+                    "money_saved": corp_entry.get("money_saved", 0),
+                    "companies": len(corp_entry.get("child_entities", []))
+                }
             for child in corp_entry.get("child_entities", []):
                 company_name = child.get("name")
                 if not company_name:
@@ -598,11 +610,13 @@ class JSONGenerator:
 
         for dimension in DIMENSIONS:
             corporations = []
+            seen_corps = set()
             for corporation_name, companies in aggregation.get(dimension, {}).items():
                 corp_id = self.mapper.get_corp_id(corporation_name)
                 if not corp_id:
                     continue
 
+                seen_corps.add(corporation_name)
                 totals = self._calculate_corporation_totals(companies)
 
                 # For recreation dimensions, use the corrected totals from corporation JSONs
@@ -627,6 +641,27 @@ class JSONGenerator:
                     "employees": totals["participants"],
                     "score": round(score, 2)
                 })
+
+            # Add corporations from API leaderboard that have no aggregated activities
+            for corp_name, corp_id in CORPORATION_MAPPING.items():
+                if corp_name not in seen_corps and corp_name in self._leaderboard_corp_data:
+                    api_data = self._leaderboard_corp_data[corp_name]
+                    activities = api_data["activities_count"]
+                    if dimension == "recreationAll":
+                        activities = corp_recreation_totals.get(corp_name, 0)
+
+                    corporations.append({
+                        "rank": 0,
+                        "corporationId": corp_id,
+                        "name": corp_name,
+                        "activities": activities,
+                        "co2OffsetKg": round(api_data["co2_offset"], 2),
+                        "fuelSavedL": round(api_data["fuel_saved"], 2),
+                        "moneySaved": round(api_data["money_saved"], 2),
+                        "companies": api_data["companies"],
+                        "employees": api_data["participants"],
+                        "score": 0
+                    })
 
             rank_entries(corporations, lambda x: x["score"])
             result["dimensions"][dimension] = {"rows": corporations}
