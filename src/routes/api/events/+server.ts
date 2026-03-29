@@ -188,6 +188,11 @@ export const POST: RequestHandler = async (event) => {
 				? `${fields.startDate}T${fields.endTime}:00+05:30`
 				: startISO;
 
+		// Ensure end is not before start
+		if (new Date(endISO) < new Date(startISO)) {
+			return jsonResponse({ success: false, error: 'End date/time must be after start date/time' }, 400);
+		}
+
 		// Upload poster
 		let posterUrl = '';
 		const poster = fields.poster;
