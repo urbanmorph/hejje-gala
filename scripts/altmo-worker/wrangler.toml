@@ -1,0 +1,19 @@
+name = "hejje-gala-cron"
+main = "src/index.ts"
+compatibility_date = "2026-03-18"
+
+# Run every hour at minute 0
+[triggers]
+crons = ["0 * * * *"]
+
+# Bind the existing R2 bucket that serves assets.hejjegala.in
+[[r2_buckets]]
+binding = "GALA_ASSETS"
+bucket_name = "hejje-gala-assets"
+
+# Non-secret config (set ALTMO_API_KEY via `wrangler secret put ALTMO_API_KEY`)
+[vars]
+ALTMO_DOMAIN = "altmo.app"
+ALTMO_CHALLENGE_ID = "41"
+ALTMO_CITY_ID = "18326"
+DEFAULT_CITY = "Bengaluru"
