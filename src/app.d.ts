@@ -1,6 +1,22 @@
 // See https://svelte.dev/docs/kit/types#app.d.ts
 // for information about these interfaces
 declare global {
+	interface R2Bucket {
+		get(key: string): Promise<R2ObjectBody | null>;
+		// Cloudflare's actual R2 put return shape is rich; keep this loose so callers
+		// that read uploaded/version/customMetadata still typecheck.
+		put(
+			key: string,
+			value: ArrayBuffer | ArrayBufferView | string | ReadableStream,
+			options?: { httpMetadata?: { contentType?: string } }
+		): Promise<Record<string, unknown> & { key: string; etag: string; size: number }>;
+		delete(key: string): Promise<void>;
+	}
+	interface R2ObjectBody {
+		text(): Promise<string>;
+		json<T = unknown>(): Promise<T>;
+		arrayBuffer(): Promise<ArrayBuffer>;
+	}
 	namespace App {
 		// interface Error {}
 		// interface Locals {}

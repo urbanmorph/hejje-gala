@@ -54,6 +54,11 @@
 	let plugins = [DayGrid, Interaction];
 	let selectedEvent = $state<CommunityEvent | null>(null);
 
+	function isPast(ev: CommunityEvent): boolean {
+		const end = new Date(ev.endDate || ev.startDate);
+		return !isNaN(end.getTime()) && end.getTime() < Date.now();
+	}
+
 	let calendarEvents = $derived(
 		events.map((e) => ({
 			id: e.id,
@@ -205,6 +210,26 @@
 						</p>
 					{:else}
 						<p class="mb-4 text-sm italic text-gray-400">{$_('calendar.noDescription')}</p>
+					{/if}
+
+					{#if isPast(selectedEvent) && (selectedEvent.recapPhotoUrl || selectedEvent.recapDescription)}
+						<div class="mb-4 border-t border-gray-100 pt-4">
+							<h4 class="mb-2 text-xs font-semibold tracking-wider text-gray-500 uppercase">
+								{$_('events.howItWent')}
+							</h4>
+							{#if selectedEvent.recapPhotoUrl}
+								<img
+									src={selectedEvent.recapPhotoUrl}
+									alt={selectedEvent.title}
+									class="mb-3 w-full rounded-lg object-contain"
+								/>
+							{/if}
+							{#if selectedEvent.recapDescription}
+								<p class="text-sm leading-relaxed text-gray-700">
+									{@html linkify(selectedEvent.recapDescription)}
+								</p>
+							{/if}
+						</div>
 					{/if}
 
 					<div class="flex flex-wrap gap-2">

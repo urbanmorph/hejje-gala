@@ -11,6 +11,8 @@ export interface CommunityEvent {
 	mapsUrl?: string;
 	posterUrl?: string;
 	organizer: string;
+	recapDescription?: string;
+	recapPhotoUrl?: string;
 }
 
 export interface EventsData {
