@@ -35,7 +35,6 @@ declare module '$env/static/private' {
 	export const ALTMO_API_KEY: string;
 	export const ALTMO_CHALLENGE_ID: string;
 	export const ALTMO_CITY_ID: string;
-	export const ADMIN_EVENTS_TOKEN: string;
 }
 
 declare module '$env/static/public' {

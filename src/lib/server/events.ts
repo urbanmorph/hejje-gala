@@ -1,5 +1,5 @@
 import { dev } from '$app/environment';
-import { ADMIN_EVENTS_TOKEN } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 import type { RequestEvent } from '@sveltejs/kit';
 import type { CommunityEvent, EventsData } from '$lib/types/event';
 
@@ -48,8 +48,9 @@ function timingSafeEqual(a: string, b: string): boolean {
 }
 
 export function isValidAdminToken(token: string | null | undefined): boolean {
-	if (!token || !ADMIN_EVENTS_TOKEN) return false;
-	return timingSafeEqual(token, ADMIN_EVENTS_TOKEN);
+	const expected = env.ADMIN_EVENTS_TOKEN;
+	if (!token || !expected) return false;
+	return timingSafeEqual(token, expected);
 }
 
 export function bearerFromHeaders(headers: Headers): string | null {
