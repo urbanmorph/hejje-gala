@@ -31,10 +31,13 @@
 	let filterType = $state('all');
 	let selectedEvent = $state<CommunityEvent | null>(null);
 
+	function isPast(ev: CommunityEvent): boolean {
+		const end = new Date(ev.endDate || ev.startDate);
+		return !isNaN(end.getTime()) && end.getTime() < Date.now();
+	}
+
 	let sortedEvents = $derived(
-		[...events].sort(
-			(a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime()
-		)
+		[...events].sort((a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime())
 	);
 
 	let filtered = $derived(
@@ -158,7 +161,9 @@
 					{:else}
 						<div
 							class="flex h-full items-center justify-center"
-							style="background: linear-gradient(135deg, {TYPE_COLORS[event.type]}15, {TYPE_COLORS[event.type]}30)"
+							style="background: linear-gradient(135deg, {TYPE_COLORS[event.type]}15, {TYPE_COLORS[
+								event.type
+							]}30)"
 						>
 							<div
 								class="flex h-12 w-12 items-center justify-center rounded-full opacity-50"
@@ -309,6 +314,26 @@
 						<p class="mb-4 text-sm leading-relaxed text-gray-700">
 							{@html linkify(selectedEvent.description)}
 						</p>
+					{/if}
+
+					{#if isPast(selectedEvent) && (selectedEvent.recapPhotoUrl || selectedEvent.recapDescription)}
+						<div class="mb-4 border-t border-gray-100 pt-4">
+							<h4 class="mb-2 text-xs font-semibold tracking-wider text-gray-500 uppercase">
+								{$_('events.howItWent')}
+							</h4>
+							{#if selectedEvent.recapPhotoUrl}
+								<img
+									src={selectedEvent.recapPhotoUrl}
+									alt={selectedEvent.title}
+									class="mb-3 w-full rounded-lg object-contain"
+								/>
+							{/if}
+							{#if selectedEvent.recapDescription}
+								<p class="text-sm leading-relaxed text-gray-700">
+									{@html linkify(selectedEvent.recapDescription)}
+								</p>
+							{/if}
+						</div>
 					{/if}
 
 					<div class="flex flex-wrap gap-2">

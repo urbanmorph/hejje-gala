@@ -143,11 +143,7 @@
 			"8km Cycle Lanes"
 		],
 		"futurePlansTitle": "Here's what we're looking to bolster",
-		"futurePlans": [
-			"Mobility Plan 2020",
-			"Active Mobility Bill",
-			"Right to Walk"
-		]
+		"futurePlans": ["Mobility Plan 2020", "Active Mobility Bill", "Right to Walk"]
 	},
 	"footer": {
 		"poweredBy": "Powered by",
@@ -506,6 +502,7 @@
 		"moreInfo": "More Info",
 		"organizer": "Organizer",
 		"venue": "Venue",
+		"howItWent": "How it went",
 		"noEvents": "No events available yet.",
 		"form": {
 			"pageTitle": "Add Event",
@@ -590,4 +587,3 @@
 		"viewLeaderboard": "View Leaderboard"
 	}
 }
-

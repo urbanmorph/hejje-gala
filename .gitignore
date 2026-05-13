@@ -26,3 +26,7 @@ __pycache__
 src/lib/assets/*
 supporting-docs/
 
+# Local dev event uploads (R2-only in production)
+/static/data/posters/
+/static/data/recap-photos/
+
