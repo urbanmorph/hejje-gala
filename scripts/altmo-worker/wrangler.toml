@@ -2,9 +2,10 @@ name = "hejje-gala-cron"
 main = "src/index.ts"
 compatibility_date = "2026-03-18"
 
-# Run every hour at minute 0
+# Cron disabled — Hejje Gala challenge is over, no more hourly refresh needed.
+# To re-enable, uncomment and run `wrangler deploy` (or PUT the schedule via the CF API).
 [triggers]
-crons = ["0 * * * *"]
+crons = []
 
 # Bind the existing R2 bucket that serves assets.hejjegala.in
 [[r2_buckets]]
