@@ -1,9 +1,11 @@
 name: Refresh Leaderboard Data
 
 on:
-  schedule:
-    - cron: '*/30 * * * *'  # Every 30 minutes
-  workflow_dispatch:  # Allow manual trigger
+  # Scheduled refresh disabled — the Hejje Gala challenge ended 15 Jun 2026 and the
+  # Altmo challenge endpoint now returns HTTP 500. Re-enable the cron for a future challenge.
+  # schedule:
+  #   - cron: '*/30 * * * *'  # Every 30 minutes
+  workflow_dispatch:  # Manual trigger only
 
 jobs:
   refresh:
