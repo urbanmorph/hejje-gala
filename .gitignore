@@ -30,3 +30,6 @@ supporting-docs/
 /static/data/posters/
 /static/data/recap-photos/
 
+# Generated reports / deliverables (shared via mdshare, not tracked here)
+/reports/
+
